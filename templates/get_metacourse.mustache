@@ -1,0 +1,73 @@
+{{!                                                                                                                                 
+    This file is part of Moodle - http://moodle.org/                                                                                
+                                                                                                                                    
+    Moodle is free software: you can redistribute it and/or modify                                                                  
+    it under the terms of the GNU General Public License as published by                                                            
+    the Free Software Foundation, either version 3 of the License, or                                                               
+    (at your option) any later version.                                                                                             
+                                                                                                                                    
+    Moodle is distributed in the hope that it will be useful,                                                                       
+    but WITHOUT ANY WARRANTY; without even the implied warranty of                                                                  
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                                                                   
+    GNU General Public License for more details.                                                                                    
+                                                                                                                                    
+    You should have received a copy of the GNU General Public License                                                               
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.                                                                 
+  }}                                                                                                                                  
+  {{!                                                                                                                                 
+    @template block/ocmyproducts                                                                                                        
+
+    
+                                                                                                                                    
+    Classes required for JS:                                                                                                        
+    * none                                                                                                                        
+                                                                                                                                    
+    Data attributes required for JS:                                                                                                
+    * none                                                                                                                
+                                                                                                                                    
+    Context variables required for this template:
+    * url
+    * fileurl
+    * coursetitle
+    * lecturer
+    * uni
+    * language
+    * subject
+    * processingtime
+    * starttime
+                                                                                                                                    
+  }}
+    <div class="metatile">
+		<a href="{{{url}}}">
+			<div class="metatile-img" style="background-image:url({{{fileurl}}});"></div>
+			<div class="metatile-content">
+				<h2>{{{coursetitle}}}</h2>
+				<table class="metatile-table">
+					<tr>
+						<td class="metatileicon iconlecturer">Anbieter:</td>
+						<td>{{{lecturer}}}</td>
+					</tr>
+					<tr>
+						<td class="metatileicon iconuni">Anbietende Hochschule:</td>
+						<td>{{{uni}}}</td>
+					</tr>
+					<tr>
+						<td class="metatileicon iconcourselanguage">Kurssprache:</td>
+						<td>{{{language}}}</td>
+					</tr>
+					<tr>
+						<td class="metatileicon iconsubject">Wissensgebiet:</td>
+						<td>{{{subject}}}</td>
+					</tr>
+					<tr>
+						<td class="metatileicon iconprocessingtime">Durchschnittlicher Arbeitsaufwand:</td>
+						<td>{{{processingtime}}} Stunden</td>
+					</tr>
+					<tr>
+						<td class="metatileicon iconstarttime">Kursbeginn:</td>
+						<td>{{{starttime}}}</td>
+					</tr>
+				</table>
+			</div>
+		</a>
+	</div>

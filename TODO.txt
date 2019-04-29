@@ -1,0 +1,10 @@
+- Wenn nicht eingeloggt, Alle Meta-Bilder nicht sichtbar
+- Andere Icons (Bootstrap)
+- Dozenten, Bildupload direkt im Editor
+- Bild Detailseite Funktionalität (Abfrage ob entweder nur Video oder Bild)
+✔ Freitextsuche
+✔ Bugfix Bilder nach Speichern gelöst
+✔ Klick auf Tag aktiviert Suche (funktioniert schonmal lokal)
+✔ Einschreiben Button
+✔ Auch in Detailseite Konfigurationsseite zu Öffnen (Link neben Kurstitel)
+✔ Indexierung ja/nein Funktionalität
