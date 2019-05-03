@@ -9,5 +9,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_ildmetaselect';
-$plugin->version = 2018301102;
+$plugin->version = 2019043000;
 $plugin->requires  = 2018120300;
