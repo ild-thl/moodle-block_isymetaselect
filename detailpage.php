@@ -224,7 +224,7 @@ $render_data->subject = $subject;
 $render_data->processingtime = $getdb->processingtime;
 $render_data->starttime = $starttime;
 $render_data->fileurl = $fileurl;
-$render_data->$is_enrolled = $$is_enrolled;
+$render_data->is_enrolled = $is_enrolled;
 
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
