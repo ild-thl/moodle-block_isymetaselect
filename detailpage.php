@@ -202,7 +202,7 @@ echo $OUTPUT->header();
 
 $render_data = new stdClass();
 $render_data->url = $url;
-$render_data->teasertext = $teasertext;
+$render_data->teasertext = $getdb->teasertext;
 $render_data->videocode = $video;
 $render_data->learninggoals = $getdb->learninggoals;
 $render_data->gliederung = $getdb->structure;
