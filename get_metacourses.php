@@ -48,7 +48,6 @@ function get_metacourses($coursestodisplay, $context)
                 }
 
                 $url = $CFG->wwwroot . '/blocks/ildmetaselect/detailpage.php?id=' . $data->courseid;
-                //$files = $fs->get_area_files($context->id, 'local_ildmeta', 'overviewimage', $data->overviewimage);
                 $coursecontext = context_course::instance($data->courseid);
                 $files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
 
@@ -58,7 +57,6 @@ function get_metacourses($coursestodisplay, $context)
                 $language = $lang_list[$getdb->courselanguage];
 
                 foreach ($files as $file) {
-                    //if ($file->get_itemid() == $data->overviewimage && $file->get_filename() !== '.') {
                     if ($file->get_itemid() == 0 && $file->get_filename() !== '.') {
                         $fileurl = moodle_url::make_pluginfile_url(
                             $file->get_contextid(),

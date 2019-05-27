@@ -76,10 +76,6 @@ $certificate = '';
 $targetgroup = '';
 $license = '';
 
-/*
-$tosearch->university = ($fromform->university == 0) ? '%' : $fromform->university-1;
-*/
-
 $lang_list = [
     'Deutsch',
     'Englisch'
@@ -134,7 +130,6 @@ for ($i = 1; $i < $image_count; $i++) {
             $lect_fs = get_file_storage();
             $fileurl_lecturer = '';
             $lect_context = context_system::instance();
-            //$lecturer_files = $lect_fs->get_area_files($lect_context->id, 'local_ildmeta', 'detailslecturer_image_' . $i, $item->value);
 			$coursecontext = context_course::instance($courseid);
 			$lecturer_files = $lect_fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailslecturer_image_' . $i, 0);
 
@@ -229,8 +224,6 @@ $render_data->is_enrolled = $is_enrolled;
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
 
-//$mform->display();
 echo $display;
-//$cluster = $DB->get_records($tbl);
 
 echo $OUTPUT->footer();

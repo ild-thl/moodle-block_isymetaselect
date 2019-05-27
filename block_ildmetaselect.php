@@ -43,7 +43,6 @@ class block_ildmetaselect extends block_base
 
         $universities = $DB->get_record('user_info_field', array('shortname' => 'universities'));
         $university = explode("\n", $universities->param1);
-        //$university_key = array_search($searchterm, $university);
 
         $university_query = '';
         foreach ($university as $key => $part) {
@@ -55,19 +54,12 @@ class block_ildmetaselect extends block_base
 
         $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
         $subjectarea = explode("\n", $subjectareas->param1);
-        //$subjectarea_key = array_search($searchterm, $subjectarea);
-        //$subjectarea_query =
         $subjectarea_query = '';
         foreach ($subjectarea as $key => $part) {
             if (stripos($part, $searchterm) !== false) {
                 $subjectarea_query .= "OR subjectarea LIKE '%$key%' ";
             }
         }
-        
-        //print_object($university_key);
-        //print_r($university_key);
-        // quick solution for presentation
-
 
         //Zu durchsuchende Bereiche: Kurstitel, Tags, Kursbeschreibungstext, Metainfos, Vorname + Nachname weiterer Autoren
         $searchquery = "SELECT * FROM mdl_ildmeta
@@ -83,7 +75,6 @@ class block_ildmetaselect extends block_base
 							OR detailsmorelecturer LIKE '%$searchterm%'";
 
         $this->searchresults = $DB->get_records_sql($searchquery);
-        //print_object($searchquery);
     }
 
     public function get_content()
@@ -95,7 +86,6 @@ class block_ildmetaselect extends block_base
         $this->content = new stdClass();
 
         $sform = new search_form($PAGE->url);
-        //$result .= '<p class="vhbinfo">Für die Nutzung von OPEN vhb-Kursen ist eine separate Registrierung erforderlich, auch wenn Sie bereits curricular verankerte Kurse aus dem Bereich CLASSIC vhb genutzt haben oder aktuell nutzen. OPEN vhb-Kurse sind nicht-curriculare, offene Lehrangebote der bayrischen Hochschulen, die für alle Interessierten kostenfrei nutzbar sind; ECTS-Punkte können nicht erworben werden.</p>';
         $result .= $sform->render();
 
 
@@ -130,7 +120,6 @@ class block_ildmetaselect extends block_base
 
 
             $tosearch = new stdClass;
-            //$tosearch->courselanguage = ($fromform->courselanguage == 0) ? '%' : $lang_list[$fromform->courselanguage];
 
             if ($fromform->courselanguage == 0 || $fromform->courselanguage == 1) {
                 $tosearch->courselanguage = '%';
@@ -203,7 +192,6 @@ class block_ildmetaselect extends block_base
 							AND courselanguage LIKE '$tosearch->courselanguage'
 							AND processingtime $tosearch->processingtime
 							AND starttime $tosearch->starttime";
-            //ORDER BY starttime DESC";
 
             $coursestodisplay = $DB->get_records_sql($query);
 
@@ -214,10 +202,6 @@ class block_ildmetaselect extends block_base
 
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
-
-                //$sql_future = "SELECT * FROM {ildmeta} ORDER BY starttime ASC, coursetitle ASC";
-                //$coursestodisplay = $DB->get_records_sql($sql_future);
-
 
                 //first of all get all courses which didn't started yet
                 $sql_future = "SELECT * FROM {ildmeta} WHERE starttime >= ? ORDER BY starttime ASC, coursetitle ASC";

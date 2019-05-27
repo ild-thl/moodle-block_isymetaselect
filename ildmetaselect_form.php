@@ -56,10 +56,6 @@ class ildmetaselect_form extends moodleform {
 		$subjectarea_list =  explode("\n", $subjectareas->param1);
 		array_unshift($subjectarea_list, 'Alle Wissensgebiete');
 		array_unshift($subjectarea_list, 'Wissensgebiet');
-		// ---
-		// print_object($subjectarea_list);
-
-	    // $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
 	    $subjectarea = $mform->createElement('select', 'subjectarea', '', [], array('onchange' => 'javascript:this.form.submit();'));
 	    $mform->setType('subjectarea', PARAM_RAW);
 
@@ -85,11 +81,6 @@ class ildmetaselect_form extends moodleform {
 			$university->addOption($label, $value, $attributes);
 		}
 		$mform->addElement($university);
-
-	//    $mform->addElement('select', 'courselanguage', '', $this->courselanguage_list, array('onchange' => 'javascript:this.form.submit();'));
-	//    $mform->setType('courselanguage', PARAM_RAW);
-
-
 
 	    $courselanguage = $mform->createElement('select', 'courselanguage', '', [], array('onchange' => 'javascript:this.form.submit();'));
 	    $mform->setType('courselanguage', PARAM_RAW);
@@ -119,9 +110,6 @@ class ildmetaselect_form extends moodleform {
 			}
 
 		$mform->addElement($processingtime);
-        //	$mform->setDefault('filter_status_value', $this->_customdata['filter_status_value']);
-
-
 
 	    $starttime = $mform->createElement('select', 'starttime', '', [], array('onchange' => 'javascript:this.form.submit();'));
 	    $mform->setType('starttime', PARAM_RAW);
@@ -134,22 +122,8 @@ class ildmetaselect_form extends moodleform {
 			}
 			$starttime->addOption($label, $value, $attributes);
 	}
-
-/*
-	    foreach ($starttime_list as $value => $label) {
-	       $attributes = array();
-			if ($value === '-') {
-				$attributes['disabled'] = 'disabled';
-				$attributes['selected'] = 'selected';
-			}
-			$starttime->addOption($label, $value, $attributes);
-		}
-*/
 	$mform->addElement($starttime);
 
 	}
-
-
-
 
 }
