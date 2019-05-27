@@ -10,10 +10,8 @@
 
 require_once('../../config.php');
 require_once('lib.php');
-//require_once('ildmeta_form.php');
 
 $url = new moodle_url('/block/ildmetaselect/detailpage.php');
-//require_login();
 
 $tbl = 'ildmeta';
 $courseid = required_param('id', PARAM_INT);
@@ -40,7 +38,6 @@ $coursecontext = context_course::instance($courseid);
 $files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
 
 foreach ($files as $file) {
-    //if ($file->get_itemid() == $getdb->overviewimage && $file->get_filename() !== '.') {
 	if ($file->get_filename() !== '.') {
         $fileurl = moodle_url::make_pluginfile_url(
             $file->get_contextid(),
@@ -53,13 +50,12 @@ foreach ($files as $file) {
         );
     }
 }
-//echo $fileurl;
 $url = $CFG->wwwroot . '/course/view.php?id=' . $courseid;
 
 $video = '';
 if ($getdb->videocode != null) {
 
-/* Regex stolen from https://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id */ 
+/* Regex used from https://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id */ 
 preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $getdb->videocode, $ytcode);
     
     $video = format_text('<a href="'.$getdb->videocode.'">'.$getdb->videocode.'</a>');
