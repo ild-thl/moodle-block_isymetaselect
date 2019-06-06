@@ -203,20 +203,23 @@ class block_ildmetaselect extends block_base
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
 
-                //first of all get all courses which didn't started yet
+                //$sql_future = "SELECT * FROM {ildmeta} ORDER BY starttime ASC, coursetitle ASC";
+                //$coursestodisplay = $DB->get_records_sql($sql_future);
+
+
+                //first of all get all courses which already started (newest first)
+                $sql_running = "SELECT * FROM {ildmeta} WHERE starttime < ? ORDER BY starttime DESC, coursetitle ASC";
+                $sql_param_r = array('starttime' => $to_midnight);
+                $coursestodisplay_runnig = $DB->get_records_sql($sql_running, $sql_param_r);
+
+                // and now get all courses which will start in the future (starting soon first)
                 $sql_future = "SELECT * FROM {ildmeta} WHERE starttime >= ? ORDER BY starttime ASC, coursetitle ASC";
                 $sql_param_f = array('starttime' => $to_midnight);
                 $coursestodisplay_future = $DB->get_records_sql($sql_future, $sql_param_f);
-
-                $result .= get_metacourses($coursestodisplay_future, $context);
-
-                //and now get all courses which already begun
-                $sql = "SELECT * FROM {ildmeta} WHERE starttime < ? ORDER BY starttime ASC, coursetitle ASC";
-                $sql_param = array('starttime' => $to_midnight);
-                $coursestodisplay = $DB->get_records_sql($sql, $sql_param);
+                
+                $coursestodisplay = array_merge($coursestodisplay_runnig, $coursestodisplay_future);
 
                 $result .= get_metacourses($coursestodisplay, $context);
-
             } else {
                 $result .= get_metacourses($this->searchresults, $context);
             }
