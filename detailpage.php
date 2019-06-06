@@ -10,8 +10,10 @@
 
 require_once('../../config.php');
 require_once('lib.php');
+//require_once('ildmeta_form.php');
 
 $url = new moodle_url('/block/ildmetaselect/detailpage.php');
+//require_login();
 
 $tbl = 'ildmeta';
 $courseid = required_param('id', PARAM_INT);
@@ -30,6 +32,7 @@ $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subject
 $uni = explode("\n", $universities->param1)[$getdb->university];
 $subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
 $starttime = date('d.m.y', $getdb->starttime);
+$started = $getdb->starttime < time();
 
 $fs = get_file_storage();
 $fileurl = '';
@@ -38,6 +41,7 @@ $coursecontext = context_course::instance($courseid);
 $files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
 
 foreach ($files as $file) {
+    //if ($file->get_itemid() == $getdb->overviewimage && $file->get_filename() !== '.') {
 	if ($file->get_filename() !== '.') {
         $fileurl = moodle_url::make_pluginfile_url(
             $file->get_contextid(),
@@ -50,12 +54,13 @@ foreach ($files as $file) {
         );
     }
 }
+//echo $fileurl;
 $url = $CFG->wwwroot . '/course/view.php?id=' . $courseid;
 
 $video = '';
 if ($getdb->videocode != null) {
 
-/* Regex used from https://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id */ 
+/* Regex stolen from https://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id */ 
 preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $getdb->videocode, $ytcode);
     
     $video = format_text('<a href="'.$getdb->videocode.'">'.$getdb->videocode.'</a>');
@@ -71,6 +76,10 @@ $detailsmorelecturer = '';
 $certificate = '';
 $targetgroup = '';
 $license = '';
+
+/*
+$tosearch->university = ($fromform->university == 0) ? '%' : $fromform->university-1;
+*/
 
 $lang_list = [
     'Deutsch',
@@ -126,6 +135,7 @@ for ($i = 1; $i < $image_count; $i++) {
             $lect_fs = get_file_storage();
             $fileurl_lecturer = '';
             $lect_context = context_system::instance();
+            //$lecturer_files = $lect_fs->get_area_files($lect_context->id, 'local_ildmeta', 'detailslecturer_image_' . $i, $item->value);
 			$coursecontext = context_course::instance($courseid);
 			$lecturer_files = $lect_fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailslecturer_image_' . $i, 0);
 
@@ -214,12 +224,15 @@ $render_data->language = $language;
 $render_data->subject = $subject;
 $render_data->processingtime = $getdb->processingtime;
 $render_data->starttime = $starttime;
+$render_data->started = $started;
 $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
 
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
 
+//$mform->display();
 echo $display;
+//$cluster = $DB->get_records($tbl);
 
 echo $OUTPUT->footer();

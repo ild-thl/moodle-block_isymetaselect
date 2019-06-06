@@ -1,15 +1,17 @@
 .block_ildmetaselect .content {
 	width: inherit;
 }
+#block-region-side-post .block.block_ildmetaselect .content{
+	padding-bottom: 40px;
+}
 .metatile td {
     width: 50%;
 }
 .metatile-container {
-	    display: flex;
+	display: flex;
     flex-flow: wrap;
-        max-width: 1200px;
-        margin: 0 auto;
-            margin-bottom: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .metatile {
@@ -49,10 +51,11 @@
 }
 
 .metatile-content {
-	    padding-top: 10px;
+	padding-top: 10px;
     padding-bottom: 10px;
-        padding-right: 10px;
-        display: grid;
+    padding-right: 10px;
+	display: grid;
+	min-height: 170px;
 }
 
 .metatile h2 {
@@ -651,3 +654,25 @@ font-size: 18px;
 	display: none;
 }
 
+div.metatile-img div.icon-coming-soon {
+	position: relative;
+	width: 75px;
+	height: 75px;
+	z-index: 10;
+	left:-57px;
+	top: -10px;
+	background: url([[pix:block_ildmetaselect|coming_soon]]);
+	background-size: cover;
+}
+
+#page-block-ildmetaselect-detailpage div.metatile-img div.icon-coming-soon{
+	left:-50px;
+	top: -40px;
+}
+
+@media (min-width: 700px) and (max-width: 1120px) {
+	div.metatile-img div.icon-coming-soon {
+		left: 0px;
+		top: 0px;
+	}
+}

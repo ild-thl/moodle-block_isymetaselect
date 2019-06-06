@@ -40,14 +40,10 @@ function get_metacourses($coursestodisplay, $context)
                 //if starttime < today then echo "fortlaufend" instead of date
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
-
-                if ($data->starttime > $to_midnight) {
-                    $starttime = date('d.m.y', $data->starttime);
-                } else {
-                    $starttime = "Fortlaufend";
-                }
+                $starttime = date('d.m.y', $data->starttime);
 
                 $url = $CFG->wwwroot . '/blocks/ildmetaselect/detailpage.php?id=' . $data->courseid;
+                //$files = $fs->get_area_files($context->id, 'local_ildmeta', 'overviewimage', $data->overviewimage);
                 $coursecontext = context_course::instance($data->courseid);
                 $files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
 
@@ -57,6 +53,7 @@ function get_metacourses($coursestodisplay, $context)
                 $language = $lang_list[$getdb->courselanguage];
 
                 foreach ($files as $file) {
+                    //if ($file->get_itemid() == $data->overviewimage && $file->get_filename() !== '.') {
                     if ($file->get_itemid() == 0 && $file->get_filename() !== '.') {
                         $fileurl = moodle_url::make_pluginfile_url(
                             $file->get_contextid(),
@@ -78,7 +75,9 @@ function get_metacourses($coursestodisplay, $context)
                 $render_data->language = $language;
                 $render_data->subject = $subject;
                 $render_data->processingtime = $data->processingtime;
-                $render_data->starttime = $starttime;
+                if ($data->starttime > $to_midnight) {
+                    $render_data->starttime = $starttime;
+                }
 
                 $string .= $OUTPUT->render_from_template("block_ildmetaselect/get_metacourse", $render_data);
             }

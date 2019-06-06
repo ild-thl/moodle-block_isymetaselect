@@ -39,12 +39,16 @@
   }}
     <div class="metatile">
 		<a href="{{{url}}}">
-			<div class="metatile-img" style="background-image:url({{{fileurl}}});"></div>
+			<div class="metatile-img" style="background-image:url({{{fileurl}}});">
+				{{#starttime}}
+					<div class="icon-coming-soon"></div>
+				{{/starttime}}
+			</div>
 			<div class="metatile-content">
 				<h2>{{{coursetitle}}}</h2>
 				<table class="metatile-table">
 					<tr>
-						<td class="metatileicon iconlecturer">Anbieter:</td>
+						<td class="metatileicon iconlecturer">Anbieter*innen:</td>
 						<td>{{{lecturer}}}</td>
 					</tr>
 					<tr>
@@ -63,10 +67,12 @@
 						<td class="metatileicon iconprocessingtime">Durchschnittlicher Arbeitsaufwand:</td>
 						<td>{{{processingtime}}} Stunden</td>
 					</tr>
+					{{#starttime}}
 					<tr>
 						<td class="metatileicon iconstarttime">Kursbeginn:</td>
 						<td>{{{starttime}}}</td>
 					</tr>
+					{{/starttime}}
 				</table>
 			</div>
 		</a>

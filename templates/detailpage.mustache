@@ -59,12 +59,15 @@
   <div class="metadetail-container">
 	<div class="metadetail-header">
 		<div class="metadetail-header-image metatile-img" style="background-image:url('{{fileurl}}');">
+    {{^started}}
+      <div class="icon-coming-soon"></div>
+    {{/started}}
 		</div>
 		<div class="metadetail-header-infos">
 			<h2>{{{coursetitle}}} {{{edit_string}}}</h2>
 			<table>
 				<tr>
-					<td>Anbieter:</td>
+					<td>Anbieter*innen:</td>
 					<td>{{{lecturer}}}</td>
 				</tr>
 				<tr>
@@ -78,14 +81,30 @@
 				<tr>
 					<td>Wissensgebiet:</td>
 					<td>{{subject}}</td>
+          {{#started}}<td class="hide-small"><strong class="free">Kostenfrei</strong></td>{{/started}}
 				</tr>
 				<tr>
 					<td>Durchschnittlicher Arbeitsaufwand:</td>
 					<td>{{processingtime}} Stunden</td>
-					<td class="hide-small"><strong class="free">Kostenfrei</strong></td>
-				</tr>
+					{{^started}}
+          <td class="hide-small"><strong class="free">Kostenfrei</strong></td>
+          {{/started}}
+
+          {{#started}}
+          <td class="hide-desktop"><strong class="free">Kostenfrei</strong></td>
+					{{#is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">zum Kurs</a></td>
+          {{/is_enrolled}}
+          {{^is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">Einschreiben</a></td>
+          {{/is_enrolled}}
+          {{/started}}
+
+        </tr>
+				{{^started}}
 				<tr>
-					<td>Kursbeginn:</td>
+
+          <td>Kursbeginn:</td>
 					<td>{{starttime}}</td>
 					<td class="hide-desktop"><strong class="free">Kostenfrei</strong></td>
 					{{#is_enrolled}}
@@ -95,6 +114,7 @@
             <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">Einschreiben</a></td>
           {{/is_enrolled}}
 				</tr>
+        {{/started}}
 			</table>
 		</div>
 	</div>
@@ -163,7 +183,7 @@
     </div>
 		<div class="md-certificateofachievement">
     {{#certificate}}
-      <h2>Teilnahmebescheinigung</h2>
+      <h2>Teilnahmebestätigung</h2>
       {{{certificate}}}
     {{/certificate}}
     </div>
