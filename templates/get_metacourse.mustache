@@ -38,7 +38,9 @@
                                                                                                                                     
   }}
     <div class="metatile">
+		{{#link_detailpage}}
 		<a href="{{{url}}}">
+		{{/link_detailpage}}
 			<div class="metatile-img" style="background-image:url({{{fileurl}}});">
 				{{#starttime}}
 					<div class="icon-coming-soon"></div>
@@ -75,5 +77,7 @@
 					{{/starttime}}
 				</table>
 			</div>
+		{{#link_detailpage}}
 		</a>
+		{{/link_detailpage}}
 	</div>

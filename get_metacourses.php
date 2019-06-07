@@ -28,7 +28,7 @@ function get_metacourses($coursestodisplay, $context)
         foreach ($coursestodisplay as $data) {
             if ($coursecheck = $DB->get_record('course', array('id' => $data->courseid))) {
 
-                if ($data->noindexcourse) continue; // hide course when index setting is 'no'
+                if ($data->noindexcourse == 1) continue; // hide course when index setting is 'no'
 
                 $universities = $DB->get_record('user_info_field', array('shortname' => 'universities'));
                 $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
@@ -75,6 +75,7 @@ function get_metacourses($coursestodisplay, $context)
                 $render_data->language = $language;
                 $render_data->subject = $subject;
                 $render_data->processingtime = $data->processingtime;
+                $render_data->link_detailpage = $data->noindexcourse == 0;
                 if ($data->starttime > $to_midnight) {
                     $render_data->starttime = $starttime;
                 }
