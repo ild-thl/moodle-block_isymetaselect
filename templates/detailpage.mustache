@@ -29,6 +29,7 @@
     * url
     * teasertext
     * videocode
+    * altpic
     * learninggoals
     * gliederung
     * alllecturers
@@ -139,6 +140,9 @@
 		<div class="md-teaservideo">
     {{#videocode}}
       {{{videocode}}}
+    {{/videocode}}
+    {{^videocode}}
+      <img src="{{altpic}}"></img>
     {{/videocode}}
     </div>
 		<div class="md-learninggoals">

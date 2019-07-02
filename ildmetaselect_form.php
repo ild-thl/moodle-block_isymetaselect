@@ -67,7 +67,7 @@ class ildmetaselect_form extends moodleform {
 			}
 			$subjectarea->addOption($label, $value, $attributes);
 		}
-		$mform->addElement($subjectarea);
+		#$mform->addElement($subjectarea);
 
 	    $university = $mform->createElement('select', 'university', '', [], array('onchange' => 'javascript:this.form.submit();'));
 	    $mform->setType('university', PARAM_RAW);
@@ -80,7 +80,7 @@ class ildmetaselect_form extends moodleform {
 			}
 			$university->addOption($label, $value, $attributes);
 		}
-		$mform->addElement($university);
+		#$mform->addElement($university);
 
 	    $courselanguage = $mform->createElement('select', 'courselanguage', '', [], array('onchange' => 'javascript:this.form.submit();'));
 	    $mform->setType('courselanguage', PARAM_RAW);
@@ -93,7 +93,7 @@ class ildmetaselect_form extends moodleform {
 			}
 			$courselanguage->addOption($label, $value, $attributes);
 		}
-		$mform->addElement($courselanguage);
+		#$mform->addElement($courselanguage);
 
 
 	    $processingtime = $mform->createElement('select', 'processingtime', '', [], array('onchange' => 'javascript:this.form.submit();'));
@@ -109,7 +109,7 @@ class ildmetaselect_form extends moodleform {
 				$processingtime->addOption($label, $value, $attributes);
 			}
 
-		$mform->addElement($processingtime);
+		#$mform->addElement($processingtime);
 
 	    $starttime = $mform->createElement('select', 'starttime', '', [], array('onchange' => 'javascript:this.form.submit();'));
 	    $mform->setType('starttime', PARAM_RAW);
@@ -121,8 +121,8 @@ class ildmetaselect_form extends moodleform {
 				$attributes['selected'] = 'selected';
 			}
 			$starttime->addOption($label, $value, $attributes);
-	}
-	$mform->addElement($starttime);
+		}
+		#$mform->addElement($starttime);
 
 	}
 

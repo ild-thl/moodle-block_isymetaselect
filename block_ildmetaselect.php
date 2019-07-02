@@ -191,7 +191,8 @@ class block_ildmetaselect extends block_base
 							AND subjectarea LIKE '$tosearch->subjectarea'
 							AND courselanguage LIKE '$tosearch->courselanguage'
 							AND processingtime $tosearch->processingtime
-							AND starttime $tosearch->starttime";
+                            AND starttime $tosearch->starttime
+                            AND noindexcourse = 0";
 
             $coursestodisplay = $DB->get_records_sql($query);
 

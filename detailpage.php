@@ -54,8 +54,12 @@ foreach ($files as $file) {
         );
     }
 }
+
 //echo $fileurl;
 $url = $CFG->wwwroot . '/course/view.php?id=' . $courseid;
+
+#$detailimage = $CFG->wwwroot."/draftfile.php/4090/user/draft/$getdb->detailimage/Unbenannt.PNG";
+#echo "<img src='$detailimage'></img>";
 
 $video = '';
 if ($getdb->videocode != null) {
@@ -227,6 +231,7 @@ $render_data->starttime = $starttime;
 $render_data->started = $started;
 $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
+$render_data->altpic = file_get_drafarea_files($getdb->detailimage)->list[0]->url;
 
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
