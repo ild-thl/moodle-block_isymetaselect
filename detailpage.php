@@ -12,12 +12,13 @@ require_once('../../config.php');
 require_once('lib.php');
 //require_once('ildmeta_form.php');
 
-$url = new moodle_url('/block/ildmetaselect/detailpage.php');
 //require_login();
 
 $tbl = 'ildmeta';
 $courseid = required_param('id', PARAM_INT);
 $getdb = $DB->get_record($tbl, array('courseid' => $courseid));
+
+$url = new moodle_url('/blocks/ildmetaselect/detailpage.php?id='.$courseid);
 
 $context = context_system::instance();
 
@@ -44,6 +45,22 @@ foreach ($files as $file) {
     //if ($file->get_itemid() == $getdb->overviewimage && $file->get_filename() !== '.') {
 	if ($file->get_filename() !== '.') {
         $fileurl = moodle_url::make_pluginfile_url(
+            $file->get_contextid(),
+            $file->get_component(),
+            $file->get_filearea(),
+            $file->get_itemid(),
+            $file->get_filepath(),
+            $file->get_filename(),
+			false
+        );
+    }
+}
+
+$files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailimage', 0);
+foreach ($files as $file) {
+    //if ($file->get_itemid() == $getdb->overviewimage && $file->get_filename() !== '.') {
+	if ($file->get_filename() !== '.') {
+        $fileurl_di = moodle_url::make_pluginfile_url(
             $file->get_contextid(),
             $file->get_component(),
             $file->get_filearea(),
@@ -231,7 +248,7 @@ $render_data->starttime = $starttime;
 $render_data->started = $started;
 $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
-$render_data->altpic = file_get_drafarea_files($getdb->detailimage)->list[0]->url;
+$render_data->altpic = $fileurl_di;
 
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
