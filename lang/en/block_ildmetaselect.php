@@ -1,6 +1,6 @@
 <?php
 
-$string['pluginname'] = 'OPEN vhb-Kursübersicht';
+$string['pluginname'] = 'Kursübersicht';
 
 $string['proctime_name'] = 'Bearbeitungszeit';
 $string['proctime_all'] = 'Alle Bearbeitungszeiten';

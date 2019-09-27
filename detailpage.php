@@ -30,7 +30,11 @@ $PAGE->set_heading($getdb->coursetitle);
 
 $universities = $DB->get_record('user_info_field', array('shortname' => 'universities'));
 $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
-$uni = explode("\n", $universities->param1)[$getdb->university];
+$unis = explode("\n", $universities->param1);
+$uni = "";
+foreach(explode(",", $getdb->university) as $uni_select){
+    $uni .= "<span>" . $unis[$uni_select] . "</span></br>";
+}
 $subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
 $starttime = date('d.m.y', $getdb->starttime);
 $started = $getdb->starttime < time();

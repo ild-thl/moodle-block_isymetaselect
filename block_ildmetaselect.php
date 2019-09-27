@@ -8,6 +8,7 @@
 
 require_once(__DIR__ . '/../../config.php');
 require_once 'lib.php';
+require_once 'locallib.php';
 require_once 'ildmetaselect_form.php';
 require_once 'search_form.php';
 require_once 'get_metacourses.php';
@@ -80,6 +81,7 @@ class block_ildmetaselect extends block_base
     public function get_content()
     {
         global $USER, $PAGE, $CFG, $DB;
+        $PAGE->requires->js_call_amd('block_ildmetaselect/ildmetaselect', 'init', array());
         $table = 'ildmeta';
         $result = '';
         $context = context_system::instance();
@@ -102,99 +104,32 @@ class block_ildmetaselect extends block_base
         }
 
 // Meta select form
-        $mform = new ildmetaselect_form($PAGE->url->out(false));
+        $data = new stdClass();
+        $data->courselanguage = optional_param('courselanguage', 1, PARAM_INT);
+        $data->subjectarea = optional_param('subjectarea', 1, PARAM_INT);
+        $data->university = optional_param('university', 1, PARAM_INT);
+        $data->processingtime = optional_param('processingtime', "all", PARAM_TEXT);
+        $data->starttime = optional_param('starttime', "all", PARAM_TEXT);
+
+        $records = get_courses_records($data);
+
+        $customdata = array();
+        $customdata['university_list'] = get_filtered_university_list($records);
+        $customdata['subjectarea_list'] = get_filtered_subjectarea_list($records);
+        $customdata['processingtime_list'] = get_filtered_processingtime_list($records);
+        $customdata['starttime_list'] = get_filtered_starttime_list($records);
+        $customdata['lang_list'] = get_filtered_lang_list($records);
+        $customdata['data'] = $data;
+        
+        $mform = new ildmetaselect_form($PAGE->url->out(false), $customdata);
         $result .= $mform->render();
 
         if ($mform->is_cancelled()) {
             // not possible
         } else if ($fromform = $mform->get_data()) {
 
-
-            // temporär bis dynamische Methode gefunden wird
-            $lang_list = [
-                'Kurssprachen',
-                'Alle Kurssprachen',
-                'Deutsch',
-                'Englisch'
-            ];
-
-
-            $tosearch = new stdClass;
-
-            if ($fromform->courselanguage == 0 || $fromform->courselanguage == 1) {
-                $tosearch->courselanguage = '%';
-            } else {
-                $tosearch->courselanguage = $fromform->courselanguage - 2;
-            }
-
-            if ($fromform->subjectarea == 1 || $fromform->subjectarea == 0) {
-                $tosearch->subjectarea = '%';
-            } else {
-                $tosearch->subjectarea = $fromform->subjectarea - 2;
-            }
-
-            if ($fromform->university == 1 || $fromform->university == 0) {
-                $tosearch->university = '%';
-            } else {
-                $tosearch->university = $fromform->university - 2;
-            }
-
-            switch ($fromform->processingtime) {
-                case '-':
-                case 'all':
-                    $tosearch->processingtime = "LIKE '%'";
-                    break;
-                case 'upto15':
-                    $tosearch->processingtime = '<= 15';
-                    break;
-                case 'between16and20':
-                    $tosearch->processingtime = 'BETWEEN 16 AND 20';
-                    break;
-                case 'between21and25':
-                    $tosearch->processingtime = 'BETWEEN 21 AND 25';
-                    break;
-                case 'morethan25':
-                    $tosearch->processingtime = '>= 26';
-                    break;
-            }
-
-            $time_now = time();
-            $time_week = 604800;
-            $time_day = 86400;
-
-            switch ($fromform->starttime) {
-                case '-':
-                case 'all':
-                    $tosearch->starttime = "LIKE '%'";
-                    break;
-                case 'current':
-                    $tosearch->starttime = "< " . $time_now;
-                    break;
-                case 'less2weeks':
-                    $tosearch->starttime = '>= ' . ($time_now + ($time_week * 2));
-                    break;
-                case 'between3and4weeks':
-                    $tosearch->starttime = 'BETWEEN ' . ($time_now + ($time_week * 2)) . ' AND ' . ($time_now + ($time_week * 4));
-                    break;
-                case 'between5and6weeks':
-                    $tosearch->starttime = 'BETWEEN ' . ($time_now + ($time_week * 4)) . ' AND ' . ($time_now + ($time_week * 6));
-                    break;
-                case 'between7and8weeks':
-                    $tosearch->starttime = 'BETWEEN ' . ($time_now + ($time_week * 6)) . ' AND ' . ($time_now + ($time_week * 8));
-                    break;
-            }
-
-            $query = "
-						SELECT * FROM mdl_ildmeta
-						WHERE
-							university LIKE '$tosearch->university'
-							AND subjectarea LIKE '$tosearch->subjectarea'
-							AND courselanguage LIKE '$tosearch->courselanguage'
-							AND processingtime $tosearch->processingtime
-                            AND starttime $tosearch->starttime
-                            AND noindexcourse = 0";
-
-            $coursestodisplay = $DB->get_records_sql($query);
+            //$coursestodisplay = get_courses_records($fromform);
+            $coursestodisplay = get_courses_records($data);
 
             $result .= get_metacourses($coursestodisplay, $context);
 
@@ -226,6 +161,9 @@ class block_ildmetaselect extends block_base
             }
         }
         $this->content->text = $result;
+
+        #$this->page->requires->js_call_amd('block_ildmetaselect/ildmetaselect', 'init', array());
+
         return $this->content;
     }
 }

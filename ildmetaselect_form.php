@@ -14,89 +14,61 @@ class ildmetaselect_form extends moodleform {
 
 	public function definition() {
 
-		$processingtime_list = [
-			'-' => get_string('proctime_name','block_ildmetaselect'),
-			'all' => get_string('proctime_all','block_ildmetaselect'),
-			'upto15' => get_string('proctime_upto15','block_ildmetaselect'),
-			'between16and20' => get_string('proctime_between16and20','block_ildmetaselect'),
-			'between21and25' => get_string('proctime_between21and25','block_ildmetaselect'),
-			'morethan25' => get_string('proctime_morethan25','block_ildmetaselect')
-		];
-
-		$starttime_list = [
-			'-' => get_string('starttime_name','block_ildmetaselect'),
-			'all' => get_string('starttime_all','block_ildmetaselect'),
-			'current' => get_string('starttime_current','block_ildmetaselect'),
-			'less2weeks' => get_string('starttime_less2weeks','block_ildmetaselect'),
-			'between3and4weeks' => get_string('starttime_between3and4weeks','block_ildmetaselect'),
-			'between5and6weeks' => get_string('starttime_between5and6weeks','block_ildmetaselect'),
-			'between7and8weeks' => get_string('starttime_between7and8weeks', 'block_ildmetaselect')
-		];
-
-		// temporär bis dynamische Methode gefunden wird
-		$lang_list = [
-			'Kurssprache',
-			'Alle Kurssprachen',
-			'Deutsch',
-			'Englisch'
-		];
-
 		global $CFG, $DB;
 
 		$mform = $this->_form;
 
 		$mform->disable_form_change_checker();
 
-		$universities = $DB->get_record('user_info_field', array('shortname' => 'universities'));
-		$university_list =  explode("\n", $universities->param1);
-		array_unshift($university_list, 'Alle Hochschulen');
-		array_unshift($university_list, 'Hochschule');
+		$university_list = $this->_customdata['university_list'];
+		$subjectarea_list = $this->_customdata['subjectarea_list'];
+		$lang_list =  $this->_customdata['lang_list'];
+		$processingtime_list =  $this->_customdata['processingtime_list'];
+		$starttime_list =  $this->_customdata['starttime_list'];
 
-		$subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
-		$subjectarea_list =  explode("\n", $subjectareas->param1);
-		array_unshift($subjectarea_list, 'Alle Wissensgebiete');
-		array_unshift($subjectarea_list, 'Wissensgebiet');
-	    $subjectarea = $mform->createElement('select', 'subjectarea', '', [], array('onchange' => 'javascript:this.form.submit();'));
+		$data = $this->_customdata['data'];
+
+	    $subjectarea = $mform->createElement('select', 'subjectarea', '', [], array());
 	    $mform->setType('subjectarea', PARAM_RAW);
 
 		foreach ($subjectarea_list as $value => $label) {
 			$attributes = array();
-			if ($label === 'Wissensgebiet') {
+			if ($value === 0) {
 				$attributes['disabled'] = 'disabled';
 				$attributes['selected'] = 'selected';
 			}
-			$subjectarea->addOption($label, $value, $attributes);
+			$subjectarea->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 		}
-		#$mform->addElement($subjectarea);
+		$mform->addElement($subjectarea);
 
-	    $university = $mform->createElement('select', 'university', '', [], array('onchange' => 'javascript:this.form.submit();'));
+	    $university = $mform->createElement('select', 'university', '', [], array());
 	    $mform->setType('university', PARAM_RAW);
 
 		foreach ($university_list as $value => $label) {
 			$attributes = array();
-			if ($label === 'Hochschule') {
+			if ($value === 0) {
 				$attributes['disabled'] = 'disabled';
 				$attributes['selected'] = 'selected';
 			}
-			$university->addOption($label, $value, $attributes);
+			$university->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 		}
-		#$mform->addElement($university);
+		$mform->addElement($university);
 
-	    $courselanguage = $mform->createElement('select', 'courselanguage', '', [], array('onchange' => 'javascript:this.form.submit();'));
+	    $courselanguage = $mform->createElement('select', 'courselanguage', '', [], array());
 	    $mform->setType('courselanguage', PARAM_RAW);
 
 		foreach ($lang_list as $value => $label) {
 			$attributes = array();
-			if ($label === 'Kurssprache') {
+			if ($value === 0) {
 				$attributes['disabled'] = 'disabled';
 				$attributes['selected'] = 'selected';
 			}
-			$courselanguage->addOption($label, $value, $attributes);
+			$courselanguage->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 		}
-		#$mform->addElement($courselanguage);
+		$mform->addElement($courselanguage);
 
 
-	    $processingtime = $mform->createElement('select', 'processingtime', '', [], array('onchange' => 'javascript:this.form.submit();'));
+	    $processingtime = $mform->createElement('select', 'processingtime', '', [], array());
 	    $mform->setType('processingtime', PARAM_RAW);
 
 
@@ -106,12 +78,12 @@ class ildmetaselect_form extends moodleform {
 					$attributes['disabled'] = 'disabled';
 					$attributes['selected'] = 'selected';
 				}
-				$processingtime->addOption($label, $value, $attributes);
+				$processingtime->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 			}
 
-		#$mform->addElement($processingtime);
+		$mform->addElement($processingtime);
 
-	    $starttime = $mform->createElement('select', 'starttime', '', [], array('onchange' => 'javascript:this.form.submit();'));
+	    $starttime = $mform->createElement('select', 'starttime', '', [], array());
 	    $mform->setType('starttime', PARAM_RAW);
 
 	    foreach ($starttime_list as $value => $label) {
@@ -120,9 +92,11 @@ class ildmetaselect_form extends moodleform {
 				$attributes['disabled'] = 'disabled';
 				$attributes['selected'] = 'selected';
 			}
-			$starttime->addOption($label, $value, $attributes);
+			$starttime->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 		}
-		#$mform->addElement($starttime);
+		$mform->addElement($starttime);
+
+		$mform->addElement('submit', 'submitbutton', 'Suche');
 
 	}
 

@@ -34,7 +34,11 @@ function get_metacourses($coursestodisplay, $context)
                 $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
 
                 $fileurl = '';
-                $uni = explode("\n", $universities->param1)[$data->university];
+                $unis = explode("\n", $universities->param1);
+                $uni = "";
+                foreach(explode(",", $data->university) as $uni_select){
+                    $uni .= "<span>" . $unis[$uni_select] . "</span>";
+                }
                 $subject = explode("\n", $subjectareas->param1)[$data->subjectarea];
 
                 //if starttime < today then echo "fortlaufend" instead of date
