@@ -218,8 +218,8 @@ function get_filtered_university_list($records){
         }
     }
 
-    array_unshift($filtered, '1=>Alle Hochschulen');
-    array_unshift($filtered, '0=>Hochschule');
+    array_unshift($filtered, '1=>'.get_string('university_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('university','block_ildmetaselect'));
 
     return $filtered;
 }
@@ -239,8 +239,8 @@ function get_university_list($input){
             $filtered[$key] = "$key=>$value";
         }
     }
-    array_unshift($filtered, '1=>Alle Hochschulen');
-    array_unshift($filtered, '0=>Hochschule');
+    array_unshift($filtered, '1=>'.get_string('university_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('university','block_ildmetaselect'));
 
     return $filtered;
 }
@@ -256,14 +256,14 @@ function get_filtered_subjectarea_list($records){
     foreach($subjectarea_list as $key => $value){
         foreach($records as $record){
             if($record->subjectarea == $key){
-                $filtered[$key+2] = ($key+2)."$k=>$value";
+                $filtered[$key+2] = ($key+2)."=>$value";
                 break;
             }
         }
     }
 
-    array_unshift($filtered, '1=>Alle Wissensgebiete');
-    array_unshift($filtered, '0=>Wissensgebiet');
+    array_unshift($filtered, '1=>'.get_string('subjectarea_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('subjectarea','block_ildmetaselect'));
 
     return $filtered;
 }
@@ -284,8 +284,8 @@ function get_subjectarea_list($input){
         }
     }
 
-    array_unshift($filtered, '1=>Alle Wissensgebiete');
-    array_unshift($filtered, '0=>Wissensgebiet');
+    array_unshift($filtered, '1=>'.get_string('subjectarea_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('subjectarea','block_ildmetaselect'));
     
     return $filtered;
 }
@@ -393,17 +393,17 @@ function get_filtered_lang_list($records){
     global $DB;
 
     $lang_list = [
-        'Deutsch',
-        'Englisch'
+        get_string('german','block_ildmetaselect'),
+        get_string('english','block_ildmetaselect')
     ];
 
     $filtered = array();
-    $filtered[] = '0=>Kurssprache';
-    $filtered[] = '1=>Alle Kurssprachen';
+    $filtered[] = '0=>'.get_string('courselanguage','block_ildmetaselect');
+    $filtered[] = '1=>'.get_string('courselanguage_all','block_ildmetaselect');
 
     foreach($lang_list as $key => $value){
         foreach($records as $record){
-            if($key == $records->courselanguage){
+            if($key == $record->courselanguage){
                 $filtered[$key+2] = ($key+2)."=>$value";
             }
         }
