@@ -9,8 +9,8 @@
   * @module block_ildmetaselect/ildmetaselect
   */
 
- define(['jquery', 'core/templates', 'core/ajax', 'core/str']
-    , function($, Templates, ajax, str) {
+ define(['jquery', 'core/ajax']
+    , function($, ajax) {
 
     var run = false;
 
@@ -26,27 +26,25 @@
         var courselanguage = $('select[name=courselanguage]');
         var processingtime = $('select[name=processingtime]');
         var starttime = $('select[name=starttime]');
-        
+
         //console.log(response.university);
-        console.log(response.debug);
 
         recreate_select(university , university_list, university.find('option:selected').text());
         recreate_select(subjectarea , subjectarea_list, subjectarea.find('option:selected').text());
         recreate_select(processingtime , processingtime_list, processingtime.find('option:selected').text());
         recreate_select(starttime , starttime_list, starttime.find('option:selected').text());
         recreate_select(courselanguage , courselanguage_list, courselanguage.find('option:selected').text());
-        
+
         return;
-        
     }
 
     function recreate_select(select, newOptions, val){
         var sel;
 
         select.empty(); // remove old options
-        
+
         $.each(newOptions, function(key,value) {
-            var split = value.split("=>")
+            var split = value.split("=>");
             var option = $("<option></option>").attr("value", split[0]);
             if(val == split[1]){
                 sel = split[0];
@@ -60,26 +58,26 @@
         select.val(sel);
     }
 
-    function call_get_filter(val, type){
+    function call_get_filter(){
         var subjectarea = $('select[name=subjectarea]').val();
         var university = $('select[name=university]').val();
         var courselanguage = $('select[name=courselanguage]').val();
         var processingtime = $('select[name=processingtime]').val();
         var starttime = $('select[name=starttime]').val();
 
-        if(subjectarea == null){
+        if(subjectarea === null){
             subjectarea = 0;
         }
-        if(university == null){
+        if(university === null){
             university = 0;
         }
-        if(courselanguage == null){
+        if(courselanguage === null){
             courselanguage = 0;
         }
-        if(processingtime == null){
+        if(processingtime === null){
             processingtime = "-";
         }
-        if(starttime == null){
+        if(starttime === null){
             starttime = "-";
         }
 
@@ -97,8 +95,6 @@
 
         promises[0].done(function(response) {
             set_filter(response);
-        }).fail(function(ex) {
-            console.log(ex);
         });
     }
 
@@ -109,25 +105,20 @@
             }
             run = true;
 
-            $('select[name=subjectarea]').change(function(e){
-                var val = $(this).val();
-                call_get_filter(val, 0);
+            $('select[name=subjectarea]').change(function(){
+                call_get_filter();
             });
-            $('select[name=university]').change(function(e){
-                var val = $(this).val();
-                call_get_filter(val, 1);
+            $('select[name=university]').change(function(){
+                call_get_filter();
             });
-            $('select[name=courselanguage]').change(function(e){
-                var val = $(this).val();
-                call_get_filter(val, 2);
+            $('select[name=courselanguage]').change(function(){
+                call_get_filter();
             });
-            $('select[name=processingtime]').change(function(e){
-                var val = $(this).val();
-                call_get_filter(val, 3);
+            $('select[name=processingtime]').change(function(){
+                call_get_filter();
             });
-            $('select[name=starttime]').change(function(e){
-                var val = $(this).val();
-                call_get_filter(val, 4);
+            $('select[name=starttime]').change(function(){
+                call_get_filter();
             });
         }
     };
