@@ -3,7 +3,7 @@
 $string['pluginname'] = 'Course Overview';
 
 $string['proctime_name'] = 'Workload';
-$string['proctime_all'] = 'All  Workloa';
+$string['proctime_all'] = 'All  Workload';
 $string['proctime_upto15'] = 'Up to 15 Hours';
 $string['proctime_between16and20'] = '16 - 20 Hours';
 $string['proctime_between21and25'] = '21 - 25 Hours';
