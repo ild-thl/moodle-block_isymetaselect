@@ -81,7 +81,6 @@ class block_ildmetaselect extends block_base
     public function get_content()
     {
         global $USER, $PAGE, $CFG, $DB;
-        $PAGE->requires->js_call_amd('block_ildmetaselect/ildmetaselect', 'init', array());
         $table = 'ildmeta';
         $result = '';
         $context = context_system::instance();
@@ -162,7 +161,7 @@ class block_ildmetaselect extends block_base
         }
         $this->content->text = $result;
 
-        #$this->page->requires->js_call_amd('block_ildmetaselect/ildmetaselect', 'init', array());
+        $this->page->requires->js_call_amd('block_ildmetaselect/ildmetaselect', 'init', array());
 
         return $this->content;
     }

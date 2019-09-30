@@ -30,12 +30,26 @@ $PAGE->set_heading($getdb->coursetitle);
 
 $universities = $DB->get_record('user_info_field', array('shortname' => 'universities'));
 $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
-$unis = explode("\n", $universities->param1);
+#$unis = explode("\n", $universities->param1);
+switch(current_language()){
+    case 'de':
+        $unis = explode("\n", $universities->param1);
+        $subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
+        break;
+    case 'en':
+        $unis = explode("\n", $universities->param2);
+        $subject = explode("\n", $subjectareas->param2)[$getdb->subjectarea];
+        break;
+    default:
+        $unis = explode("\n", $universities->param1);
+        $subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
+        break;
+}
 $uni = "";
 foreach(explode(",", $getdb->university) as $uni_select){
     $uni .= "<span>" . $unis[$uni_select] . "</span></br>";
 }
-$subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
+#$subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
 $starttime = date('d.m.y', $getdb->starttime);
 $started = $getdb->starttime < time();
 
@@ -253,6 +267,17 @@ $render_data->started = $started;
 $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
 $render_data->altpic = $fileurl_di;
+
+$render_data->lecturer_detail = get_string('lecturer_detail', 'block_ildmetaselect');
+$render_data->university_detail = get_string('university_detail', 'block_ildmetaselect');
+$render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
+$render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
+$render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
+$render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
+$render_data->hours = get_string('hours', 'block_ildmetaselect');
+$render_data->free = get_string('free', 'block_ildmetaselect');
+$render_data->enrol = get_string('enrol', 'block_ildmetaselect');
+$render_data->tocourse = get_string('tocourse', 'block_ildmetaselect');
 
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);

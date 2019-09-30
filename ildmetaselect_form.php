@@ -96,7 +96,7 @@ class ildmetaselect_form extends moodleform {
 		}
 		$mform->addElement($starttime);
 
-		$mform->addElement('submit', 'submitbutton', 'Suche');
+		$mform->addElement('submit', 'submitbutton', get_string('search'));
 
 	}
 

@@ -12,8 +12,8 @@ function get_metacourses($coursestodisplay, $context)
     global $DB, $CFG, $OUTPUT;
 
     $lang_list = [
-        "Deutsch",
-        "Englisch"
+        get_string('german', 'block_ildmetaselect'),
+        get_string('english', 'block_ildmetaselect'),
     ];
 
 
@@ -34,13 +34,25 @@ function get_metacourses($coursestodisplay, $context)
                 $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
 
                 $fileurl = '';
-                $unis = explode("\n", $universities->param1);
+                switch(current_language()){
+                    case 'de':
+                        $unis = explode("\n", $universities->param1);
+                        $subject = explode("\n", $subjectareas->param1)[$data->subjectarea];
+                        break;
+                    case 'en':
+                        $unis = explode("\n", $universities->param2);
+                        $subject = explode("\n", $subjectareas->param2)[$data->subjectarea];
+                        break;
+                    default:
+                        $unis = explode("\n", $universities->param1);
+                        $subject = explode("\n", $subjectareas->param1)[$data->subjectarea];
+                        break;
+                }
                 $uni = "";
                 foreach(explode(",", $data->university) as $uni_select){
                     $uni .= "<span>" . $unis[$uni_select] . "</span>";
                 }
-                $subject = explode("\n", $subjectareas->param1)[$data->subjectarea];
-
+                
                 //if starttime < today then echo "fortlaufend" instead of date
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
@@ -84,11 +96,19 @@ function get_metacourses($coursestodisplay, $context)
                     $render_data->starttime = $starttime;
                 }
 
+                $render_data->lecturer_detail = get_string('lecturer_detail', 'block_ildmetaselect');
+                $render_data->university_detail = get_string('university_detail', 'block_ildmetaselect');
+                $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
+                $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
+                $render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
+                $render_data->hours = get_string('hours', 'block_ildmetaselect');
+                $render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
+
                 $string .= $OUTPUT->render_from_template("block_ildmetaselect/get_metacourse", $render_data);
             }
         }
     } else {
-        $string .= '<span class="nocoursefound">Keinen Kurs gefunden!</span>';
+        $string .= '<span class="nocoursefound">' . get_string('noresultsfound', 'block_ildmetaselect') . '</span>';
     }
     $string .= '</div>';
 

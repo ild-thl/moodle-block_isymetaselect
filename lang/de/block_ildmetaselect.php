@@ -17,17 +17,36 @@ $string['starttime_between3and4weeks'] = 'In 3-4 Wochen';
 $string['starttime_between5and6weeks'] = 'In 5-6 Wochen';
 $string['starttime_between7and8weeks'] = 'In 7-8 Wochen';
 
-$string['courselanguage'] = 'Courselanguage';
-$string['courselanguage_all'] = 'All Courselanguages';
+$string['courselanguage'] = 'Kurssprache';
+$string['courselanguage_all'] = 'Alle Kurssprachen';
 
-$string['university'] = 'University';
-$string['university_all'] = 'All Universities';
+$string['university'] = 'Universität';
+$string['university_all'] = 'Alle Universitäten';
 
-$string['subjectarea'] = 'Subjectarea';
-$string['subjectarea_all'] = 'All Subjectareas';
+$string['subjectarea'] = 'Wissensgebiet';
+$string['subjectarea_all'] = 'Alle Wissensgebiete';
 
 $string['german'] = 'German';
 $string['english'] = 'English';
 
+$string['lecturer_detail'] = 'Anbieter*innen';
+$string['university_detail'] = 'Anbietende Hochschule';
+$string['courselanguage_detail'] = 'Kurssprache';
+$string['subjectarea_detail'] = 'Wissensgebiet';
+$string['avgworkload_detail'] = 'Durchschnittlicher Arbeitsaufwand';
+$string['starttime_detail'] = 'Kursbeginn';
 
-$string['noresultsfound'] = 'No results found';
+$string['hours'] = 'Stunden';
+$string['free'] = 'Kostenfrei';
+$string['enrol'] = 'Einschreiben';
+$string['tocourse'] = 'zum Kurs';
+
+$string['noresultsfound'] = 'Keine Ergebnisse gefunden.';
+
+$string['h_awaits'] = 'Was erwartet Sie in diesem Kurs?';
+$string['h_learn'] = 'Was können Sie in diesem Kurs lernen?';
+$string['h_outline'] = 'Gliederung';
+$string['h_further_auth'] = 'Weitere Autoren*innen';
+$string['h_target_group'] = 'Zielgruppe';
+$string['h_confirmation'] = 'Teilnahmebestätigung';
+$string['license'] = 'Lizenz';

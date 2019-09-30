@@ -21,7 +21,7 @@ class search_form extends moodleform {
 		$sform->addElement('text', 'search', 'Suche');
 		$sform->setType('search', PARAM_RAW);
 
-		$sform->addElement('submit', 'submitbutton', 'Suche');
+		$sform->addElement('submit', 'submitbutton', get_string('search'));
 	}
 
 }
