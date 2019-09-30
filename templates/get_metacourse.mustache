@@ -35,6 +35,14 @@
     * subject
     * processingtime
     * starttime
+
+	* lecturer_detail
+	* university_detail
+	* courselanguages_detail
+	* subjectarea_detail
+	* avgworkload_detail
+	* hours_detail
+	* starttime_detail
                                                                                                                                     
   }}
     <div class="metatile">
@@ -50,28 +58,28 @@
 				<h2>{{{coursetitle}}}</h2>
 				<table class="metatile-table">
 					<tr>
-						<td class="metatileicon iconlecturer">Anbieter*innen:</td>
+						<td class="metatileicon iconlecturer">{{{lecturer_detail}}}:</td>
 						<td>{{{lecturer}}}</td>
 					</tr>
 					<tr>
-						<td class="metatileicon iconuni">Anbietende Hochschule:</td>
+						<td class="metatileicon iconuni">{{{university_detail}}}:</td>
 						<td>{{{uni}}}</td>
 					</tr>
 					<tr>
-						<td class="metatileicon iconcourselanguage">Kurssprache:</td>
+						<td class="metatileicon iconcourselanguage">{{{courselanguage_detail}}}:</td>
 						<td>{{{language}}}</td>
 					</tr>
 					<tr>
-						<td class="metatileicon iconsubject">Wissensgebiet:</td>
+						<td class="metatileicon iconsubject">{{{subjectarea_detail}}}:</td>
 						<td>{{{subject}}}</td>
 					</tr>
 					<tr>
-						<td class="metatileicon iconprocessingtime">Durchschnittlicher Arbeitsaufwand:</td>
-						<td>{{{processingtime}}} Stunden</td>
+						<td class="metatileicon iconprocessingtime">{{{avgworkload_detail}}}:</td>
+						<td>{{{processingtime}}} {{{hours}}}</td>
 					</tr>
 					{{#starttime}}
 					<tr>
-						<td class="metatileicon iconstarttime">Kursbeginn:</td>
+						<td class="metatileicon iconstarttime">{{{starttime_detail}}}:</td>
 						<td>{{{starttime}}}</td>
 					</tr>
 					{{/starttime}}

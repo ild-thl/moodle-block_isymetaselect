@@ -54,6 +54,26 @@
     * is_enrolled
     * alllecturers_notempty
     * allauthors_notempty
+
+    * lecturer_detail
+    * university_detail
+    * courselanguages_detail
+    * subjectarea_detail
+    * avgworkload_detail
+    * hours_detail
+    * starttime_detail
+
+    * free
+    * enrol
+    * tocourse
+
+    * h_awaits
+    * h_learn
+    * h_outline
+    * h_further_auth
+    * h_target_group
+    * h_confirmation
+    * license
                                                                                                                                     
   }}
 
@@ -68,36 +88,36 @@
 			<h2>{{{coursetitle}}} {{{edit_string}}}</h2>
 			<table>
 				<tr>
-					<td>Anbieter*innen:</td>
+					<td>{{{lecturer_detail}}}:</td>
 					<td>{{{lecturer}}}</td>
 				</tr>
 				<tr>
-					<td>Anbietende Hochschule:</td>
+					<td>{{{university_detail}}}:</td>
 					<td>{{{uni}}}</td>
 				</tr>
 				<tr>
-					<td>Kurssprache:</td>
+					<td>{{{courselanguage_detail}}}:</td>
 					<td>{{language}}</td>
 				</tr>
 				<tr>
-					<td>Wissensgebiet:</td>
+					<td>{{{subjectarea_detail}}}:</td>
 					<td>{{subject}}</td>
-          {{#started}}<td class="hide-small"><strong class="free">Kostenfrei</strong></td>{{/started}}
+          {{#started}}<td class="hide-small"><strong class="free">{{{free}}}</strong></td>{{/started}}
 				</tr>
 				<tr>
-					<td>Durchschnittlicher Arbeitsaufwand:</td>
-					<td>{{processingtime}} Stunden</td>
+					<td>{{{avgworkload_detail}}}:</td>
+					<td>{{processingtime}} {{{hours}}}</td>
 					{{^started}}
-          <td class="hide-small"><strong class="free">Kostenfrei</strong></td>
+          <td class="hide-small"><strong class="free">{{{free}}}</strong></td>
           {{/started}}
 
           {{#started}}
-          <td class="hide-desktop"><strong class="free">Kostenfrei</strong></td>
+          <td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
 					{{#is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">zum Kurs</a></td>
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
           {{/is_enrolled}}
           {{^is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">Einschreiben</a></td>
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
           {{/is_enrolled}}
           {{/started}}
 
@@ -105,14 +125,14 @@
 				{{^started}}
 				<tr>
 
-          <td>Kursbeginn:</td>
+          <td>{{{starttime_detail}}}:</td>
 					<td>{{starttime}}</td>
-					<td class="hide-desktop"><strong class="free">Kostenfrei</strong></td>
+					<td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
 					{{#is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">zum Kurs</a></td>
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
           {{/is_enrolled}}
           {{^is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">Einschreiben</a></td>
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
           {{/is_enrolled}}
 				</tr>
         {{/started}}
@@ -133,7 +153,7 @@
 
 		<div class="md-teasertext">
     {{#teasertext}}
-      <h2>Was erwartet Sie in diesem Kurs?</h2>
+      <h2>{{{h_awaits}}}</h2>
       {{{teasertext}}}
     {{/teasertext}}
     </div>
@@ -147,19 +167,19 @@
     </div>
 		<div class="md-learninggoals">
     {{#learninggoals}}
-      <h2>Was können Sie in diesem Kurs lernen?</h2>
+      <h2>{{{h_learn}}}</h2>
       {{{learninggoals}}}
     {{/learninggoals}}
     </div>
 		<div class="md-structure">
     {{#gliederung}}
-      <h2>Gliederung</h2>
+      <h2>{{{h_outline}}}</h2>
       {{{gliederung}}}
     {{/gliederung}}
     </div>
 		<div class="md-lecturer">
     {{#alllecturers_notempty}}
-    <h2>Anbieter*innen</h2>
+    <h2>{{{lecturer_detail}}}</h2>
     {{/alllecturers_notempty}}
     {{#alllecturers}}
       <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
@@ -167,7 +187,7 @@
     </div>
     	<div class="md-lecturer">
       {{#allauthors_notempty}}
-        <h2>Weitere Autoren*innen</h2>
+        <h2>{{{h_further_auth}}}</h2>
       {{/allauthors_notempty}}
       {{#allauthors}}
         <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
@@ -175,25 +195,25 @@
       </div>
 		<div class="md-morelecturer">
     {{#detailsmorelecturer}}
-      <h2>Weitere Autoren*innen</h2>
+      <h2>{{{h_further_auth}}}</h2>
       {{{detailsmorelecturer}}}
     {{/detailsmorelecturer}}
     </div>
 		<div class="md-targetgroup">
     {{#targetgroup}}
-      <h2>Zielgruppe</h2>
+      <h2>{{{h_target_group}}}</h2>
       {{{targetgroup}}}
     {{/targetgroup}}
     </div>
 		<div class="md-certificateofachievement">
     {{#certificate}}
-      <h2>Teilnahmebestätigung</h2>
+      <h2>{{{h_confirmation}}}</h2>
       {{{certificate}}}
     {{/certificate}}
     </div>
 		<div class="md-license">
     {{#license}}
-      <h2>Lizenz</h2>
+      <h2>{{{license}}}</h2>
       {{{license}}}
     {{/license}}
     </div>
