@@ -279,6 +279,14 @@ $render_data->free = get_string('free', 'block_ildmetaselect');
 $render_data->enrol = get_string('enrol', 'block_ildmetaselect');
 $render_data->tocourse = get_string('tocourse', 'block_ildmetaselect');
 
+$render_data->h_awaits = get_string('h_awaits', 'block_ildmetaselect');
+$render_data->h_learn = get_string('h_learn', 'block_ildmetaselect');
+$render_data->h_outline = get_string('h_outline', 'block_ildmetaselect');
+$render_data->h_further_auth = get_string('h_further_auth', 'block_ildmetaselect');
+$render_data->h_target_group = get_string('h_target_group', 'block_ildmetaselect');
+$render_data->h_confirmation = get_string('h_confirmation', 'block_ildmetaselect');
+$render_data->license = get_string('license', 'block_ildmetaselect');
+
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
 
