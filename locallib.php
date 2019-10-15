@@ -164,7 +164,7 @@ function get_courses_records($fromform){
     $tosearch->starttime = starttime_to_sql($fromform->starttime);
 
     $query = "
-        SELECT id, courseid, subjectarea, university, courselanguage, processingtime, starttime, noindexcourse FROM {ildmeta}
+        SELECT id, coursetitle, courseid, subjectarea, university, courselanguage, processingtime, starttime, noindexcourse FROM {ildmeta}
             WHERE
                 subjectarea LIKE '$tosearch->subjectarea'
                 AND courselanguage LIKE '$tosearch->courselanguage'

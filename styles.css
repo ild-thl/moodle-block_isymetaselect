@@ -676,3 +676,12 @@ div.metatile-img div.icon-coming-soon {
 		top: 0px;
 	}
 }
+
+/* SF - MOD */
+.md-teaservideo {
+    max-width: 50%;
+}
+
+img {
+    width: 100%;
+}
