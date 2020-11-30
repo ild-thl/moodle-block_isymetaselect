@@ -1,0 +1,248 @@
+{{!                                                                                                                                 
+    This file is part of Moodle - http://moodle.org/                                                                                
+                                                                                                                                    
+    Moodle is free software: you can redistribute it and/or modify                                                                  
+    it under the terms of the GNU General Public License as published by                                                            
+    the Free Software Foundation, either version 3 of the License, or                                                               
+    (at your option) any later version.                                                                                             
+                                                                                                                                    
+    Moodle is distributed in the hope that it will be useful,                                                                       
+    but WITHOUT ANY WARRANTY; without even the implied warranty of                                                                  
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                                                                   
+    GNU General Public License for more details.                                                                                    
+                                                                                                                                    
+    You should have received a copy of the GNU General Public License                                                               
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.                                                                 
+  }}                                                                                                                                  
+  {{!                                                                                                                                 
+    @template block/ocmyproducts                                                                                                        
+
+    detalpage of ildmetaselect
+                                                                                                                                    
+    Classes required for JS:                                                                                                        
+    * none                                                                                                                        
+                                                                                                                                    
+    Data attributes required for JS:                                                                                                
+    * none                                                                                                                
+                                                                                                                                    
+    Context variables required for this template:
+    * url
+    * teasertext
+    * videocode
+    * altpic
+    * learninggoals
+    * gliederung
+    * alllecturers
+    * allauthors
+    * detailsmorelecturer
+    * targetgroup
+    * certificate
+    * license
+    * taglist
+    * tagurlarray
+
+    * coursetitle
+    * edit_string
+    * lecturer
+    * uni
+    * language
+    * subject
+    * processingtime
+    * starttime
+    * fileurl
+
+    * is_enrolled
+    * alllecturers_notempty
+    * allauthors_notempty
+
+    * lecturer_detail
+    * university_detail
+    * courselanguages_detail
+    * subjectarea_detail
+    * avgworkload_detail
+    * hours_detail
+    * starttime_detail
+
+    * free
+    * enrol
+    * tocourse
+
+    * h_awaits
+    * h_learn
+    * h_outline
+    * h_further_auth
+    * h_target_group
+    * h_confirmation
+    * license
+                                                                                                                                    
+  }}
+
+  <div class="metadetail-container">
+	<div class="metadetail-header">
+		<div class="metadetail-header-image metatile-img" style="background-image:url('{{fileurl}}');">
+    {{^started}}
+      <div class="icon-coming-soon"></div>
+    {{/started}}
+		</div>
+		<div class="metadetail-header-infos">
+			<h2>{{{coursetitle}}} {{{edit_string}}}</h2>
+			<table>
+      
+        <tr>
+					<td>{{{university_detail}}}:</td> <!-- jetzt: Zielgruppe -->
+					<td>{{{uni}}}</td>
+				</tr>
+
+        <tr>
+					<td>Thema:</td>
+					<td>Thema-Platzhalter</td>
+				</tr>
+
+				<tr>
+					<td>{{{lecturer_detail}}}:</td>
+					<td>{{{lecturer}}}</td>
+				</tr>
+				
+        <tr>
+          <td>{{{avgworkload_detail}}}:</td>
+					<td>{{processingtime}} {{{hours}}}</td>
+        </tr>
+
+        <tr>
+          <td>{{{starttime_detail}}}:</td>
+					<td>{{starttime}}</td>
+          {{^started}}
+          <td class="hide-small"><strong class="free">{{{free}}}</strong></td>
+          {{/started}}
+        </tr>
+
+				<tr>
+					<td>{{{subjectarea_detail}}}:</td> <!-- jetzt: Format -->
+					<td>{{subject}}</td>
+          <!--{{#started}}<td class="hide-small"><strong class="free">{{{free}}}</strong></td>{{/started}}-->
+          
+          				{{^started}}
+				
+        
+
+          
+					<td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
+					{{#is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
+          {{/is_enrolled}}
+          {{^is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
+          {{/is_enrolled}}
+				
+        {{/started}}
+          
+				</tr>
+				<!--<tr>-->
+					
+					
+
+         
+
+        <!--</tr>
+				{{^started}}-->
+				
+       <!-- <tr>
+
+          
+					<td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
+					{{#is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
+          {{/is_enrolled}}
+          {{^is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
+          {{/is_enrolled}}
+				</tr>
+        {{/started}}-->
+			</table>
+		</div>
+	</div>
+
+	<div class="meta-share">
+    <div class="meta-share-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-twitter"><a href="https://twitter.com/intent/tweet?url={{{url}}}">{{# str}} metatweet, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-whatsapp"><a href="whatsapp://send?text={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;summary=&amp;url={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-xing"><a href="https://www.xing.com/social_plugins/share?url={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-mail"><a href="mailto:?subject={{coursetitle}}&amp;body={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+	</div>
+
+	<div class="metadetail-body">
+
+		<div class="md-teasertext">
+    {{#teasertext}}
+      <h2>{{{h_awaits}}}</h2>
+      {{{teasertext}}}
+    {{/teasertext}}
+    </div>
+		<div class="md-teaservideo">
+    {{#videocode}}
+      {{{videocode}}}
+    {{/videocode}}
+    {{^videocode}}
+      <img src="{{altpic}}"></img>
+    {{/videocode}}
+    </div>
+    {{#learninggoals}}
+		<div class="md-learninggoals">
+      <h2>{{{h_learn}}}</h2>
+      {{{learninggoals}}}
+    </div>
+    {{/learninggoals}}
+    {{#gliederung}}
+		<div class="md-structure">
+      <h2>{{{h_outline}}}</h2>
+      {{{gliederung}}}
+    </div>
+    {{/gliederung}}
+    {{#alllecturers_notempty}}
+		<div class="md-lecturer">
+    <h2>{{{lecturer_detail}}}</h2>
+    {{/alllecturers_notempty}}
+    {{#alllecturers}}
+      <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
+    </div>
+    {{/alllecturers}}
+    {{#allauthors_notempty}}
+    <div class="md-lecturer">
+      <h2>{{{h_further_auth}}}</h2>
+    {{/allauthors_notempty}}
+    {{#allauthors}}
+      <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
+    </div>
+    {{/allauthors}}
+    {{#detailsmorelecturer}}
+		<div class="md-morelecturer">
+      <h2>{{{h_further_auth}}}</h2>
+      {{{detailsmorelecturer}}}
+    </div>
+    {{/detailsmorelecturer}}
+    {{#targetgroup}}
+		<div class="md-targetgroup">
+      <h2>{{{h_target_group}}}</h2>
+      {{{targetgroup}}}
+    </div>
+    {{/targetgroup}}
+    {{#certificate}}
+		<div class="md-certificateofachievement">
+      <h2>{{{h_confirmation}}}</h2>
+      {{{certificate}}}
+    </div>
+    {{/certificate}}
+    {{#license}}
+		<div class="md-license">
+      <h2>{{{licensetitle}}}</h2>
+      {{{license}}}
+    </div>
+    {{/license}}
+    {{#taglist}}
+		<div class="md-tags">
+      <span class="metatag"><a href="{{url}}">{{tag}}</a></span>
+    </div>
+    {{/taglist}}
+	</div>
+</div>
