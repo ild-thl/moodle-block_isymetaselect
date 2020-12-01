@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package        block_ildmetaselect
+ * @package        block_metatiles
  * @author        Dustin Neß <dustin.ness@th-luebeck.de>
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -9,11 +9,11 @@
 require_once(__DIR__ . '/../../config.php');
 require_once 'lib.php';
 require_once 'locallib.php';
-require_once 'ildmetaselect_form.php';
+require_once 'metatiles_form.php';
 require_once 'search_form.php';
 require_once 'get_metacourses.php';
 
-class block_ildmetaselect extends block_base
+class block_metatiles extends block_base
 {
 
     public $searchresults;
@@ -21,7 +21,7 @@ class block_ildmetaselect extends block_base
     public function init()
     {
         global $PAGE;
-        $this->title = get_string('pluginname', 'block_ildmetaselect');
+        $this->title = get_string('pluginname', 'block_metatiles');
     }
 
     public function hide_header()
@@ -62,7 +62,7 @@ class block_ildmetaselect extends block_base
         }
 
         //Zu durchsuchende Bereiche: Kurstitel, Tags, Kursbeschreibungstext, Metainfos, Vorname + Nachname weiterer Autoren
-        $searchquery = "SELECT * FROM mdl_ildmeta
+        $searchquery = "SELECT * FROM mdl_metatiles
 						WHERE
 							(coursetitle LIKE '%$searchterm%'
 							OR tags LIKE '%$searchterm%'
@@ -88,7 +88,7 @@ class block_ildmetaselect extends block_base
     public function get_content()
     {
         global $USER, $PAGE, $CFG, $DB;
-        $table = 'ildmeta';
+        $table = 'metatiles';
         $result = '';
         $context = context_system::instance();
         $this->content = new stdClass();
@@ -127,7 +127,7 @@ class block_ildmetaselect extends block_base
         $customdata['lang_list'] = get_filtered_lang_list($records);
         $customdata['data'] = $data;
         
-        $mform = new ildmetaselect_form($PAGE->url->out(false), $customdata);
+        $mform = new metatiles_form($PAGE->url->out(false), $customdata);
         $result .= $mform->render();
 
         if ($mform->is_cancelled()) {
@@ -148,17 +148,17 @@ class block_ildmetaselect extends block_base
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
 
-                //$sql_future = "SELECT * FROM {ildmeta} ORDER BY starttime ASC, coursetitle ASC";
+                //$sql_future = "SELECT * FROM {metatiles} ORDER BY starttime ASC, coursetitle ASC";
                 //$coursestodisplay = $DB->get_records_sql($sql_future);
 
 
                 //first of all get all courses which already started (newest first)
-                $sql_running = "SELECT * FROM {ildmeta} WHERE starttime < ? ORDER BY starttime DESC, coursetitle ASC";
+                $sql_running = "SELECT * FROM {metatiles} WHERE starttime < ? ORDER BY starttime DESC, coursetitle ASC";
                 $sql_param_r = array('starttime' => $to_midnight);
                 $coursestodisplay_runnig = $DB->get_records_sql($sql_running, $sql_param_r);
 
                 // and now get all courses which will start in the future (starting soon first)
-                $sql_future = "SELECT * FROM {ildmeta} WHERE starttime >= ? ORDER BY starttime ASC, coursetitle ASC";
+                $sql_future = "SELECT * FROM {metatiles} WHERE starttime >= ? ORDER BY starttime ASC, coursetitle ASC";
                 $sql_param_f = array('starttime' => $to_midnight);
                 $coursestodisplay_future = $DB->get_records_sql($sql_future, $sql_param_f);
                 
@@ -171,7 +171,7 @@ class block_ildmetaselect extends block_base
         }
         $this->content->text = $result;
 
-        $this->page->requires->js_call_amd('block_ildmetaselect/ildmetaselect', 'init', array());
+        $this->page->requires->js_call_amd('block_metatiles/metatiles_block', 'init', array());
 
         return $this->content;
     }

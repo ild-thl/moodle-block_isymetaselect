@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package		block_ildmetaselect
+ * @package		block_metatiles
  * @author		Dustin Neß <dustin.ness@th-luebeck.de>
  * @license		http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -10,7 +10,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once("$CFG->libdir/formslib.php");
 
-class ildmetaselect_form extends moodleform {
+class metatiles_form extends moodleform {
 
 	public function definition() {
 

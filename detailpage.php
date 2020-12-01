@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package        block_ildmetaselect
+ * @package        block_metatiles
  * @author         Dustin Neß <dustin.ness@th-luebeck.de>
  * @author         Markus Strehling (modified) <markus.strehling@oncampus.de>
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -10,15 +10,15 @@
 
 require_once('../../config.php');
 require_once('lib.php');
-//require_once('ildmeta_form.php');
+//require_once('metatiles_form.php');
 
 //require_login();
 
-$tbl = 'ildmeta';
+$tbl = 'metatiles';
 $courseid = required_param('id', PARAM_INT);
 $getdb = $DB->get_record($tbl, array('courseid' => $courseid));
 
-$url = new moodle_url('/blocks/ildmetaselect/detailpage.php?id='.$courseid);
+$url = new moodle_url('/blocks/metatiles/detailpage.php?id='.$courseid);
 
 $context = context_system::instance();
 
@@ -57,7 +57,7 @@ $fs = get_file_storage();
 $fileurl = '';
 $context = context_system::instance();
 $coursecontext = context_course::instance($courseid);
-$files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
+$files = $fs->get_area_files($coursecontext->id, 'local_metatiles', 'overviewimage', 0);
 
 foreach ($files as $file) {
     //if ($file->get_itemid() == $getdb->overviewimage && $file->get_filename() !== '.') {
@@ -74,7 +74,7 @@ foreach ($files as $file) {
     }
 }
 
-$files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailimage', 0);
+$files = $fs->get_area_files($coursecontext->id, 'local_metatiles', 'detailimage', 0);
 foreach ($files as $file) {
     //if ($file->get_itemid() == $getdb->overviewimage && $file->get_filename() !== '.') {
 	if ($file->get_filename() !== '.') {
@@ -145,7 +145,7 @@ if ($getdb->tags != null) {
     }
 }
 
-$imgtbl = 'ildmeta_additional';
+$imgtbl = 'metatiles_additional';
 $image_count = $DB->count_records($imgtbl) / 3; // divide by 3 because 3 rows are generated per entry
 $db_metadd = $DB->get_records($imgtbl, ['courseid' => $courseid]);
 
@@ -175,9 +175,9 @@ for ($i = 1; $i < $image_count; $i++) {
             $lect_fs = get_file_storage();
             $fileurl_lecturer = '';
             $lect_context = context_system::instance();
-            //$lecturer_files = $lect_fs->get_area_files($lect_context->id, 'local_ildmeta', 'detailslecturer_image_' . $i, $item->value);
+            //$lecturer_files = $lect_fs->get_area_files($lect_context->id, 'local_metatiles', 'detailslecturer_image_' . $i, $item->value);
 			$coursecontext = context_course::instance($courseid);
-			$lecturer_files = $lect_fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailslecturer_image_' . $i, 0);
+			$lecturer_files = $lect_fs->get_area_files($coursecontext->id, 'local_metatiles', 'detailslecturer_image_' . $i, 0);
 
             foreach ($lecturer_files as $file) {
                 $fileurl_lecturer = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(), $file->get_itemid(), $file->get_filepath(), $file->get_filename());
@@ -269,27 +269,27 @@ $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
 $render_data->altpic = $fileurl_di;
 
-$render_data->lecturer_detail = get_string('lecturer_detail', 'block_ildmetaselect');
-$render_data->university_detail = get_string('university_detail', 'block_ildmetaselect');
-$render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
-$render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
-$render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
-$render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
-$render_data->hours = get_string('hours', 'block_ildmetaselect');
-$render_data->free = get_string('free', 'block_ildmetaselect');
-$render_data->enrol = get_string('enrol', 'block_ildmetaselect');
-$render_data->tocourse = get_string('tocourse', 'block_ildmetaselect');
+$render_data->lecturer_detail = get_string('lecturer_detail', 'block_metatiles');
+$render_data->university_detail = get_string('university_detail', 'block_metatiles');
+$render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_metatiles');
+$render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_metatiles');
+$render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_metatiles');
+$render_data->starttime_detail = get_string('starttime_detail', 'block_metatiles');
+$render_data->hours = get_string('hours', 'block_metatiles');
+$render_data->free = get_string('free', 'block_metatiles');
+$render_data->enrol = get_string('enrol', 'block_metatiles');
+$render_data->tocourse = get_string('tocourse', 'block_metatiles');
 
-$render_data->h_awaits = get_string('h_awaits', 'block_ildmetaselect');
-$render_data->h_learn = get_string('h_learn', 'block_ildmetaselect');
-$render_data->h_outline = get_string('h_outline', 'block_ildmetaselect');
-$render_data->h_further_auth = get_string('h_further_auth', 'block_ildmetaselect');
-$render_data->h_target_group = get_string('h_target_group', 'block_ildmetaselect');
-$render_data->h_confirmation = get_string('h_confirmation', 'block_ildmetaselect');
-$render_data->licensetitle = get_string('license', 'block_ildmetaselect');
+$render_data->h_awaits = get_string('h_awaits', 'block_metatiles');
+$render_data->h_learn = get_string('h_learn', 'block_metatiles');
+$render_data->h_outline = get_string('h_outline', 'block_metatiles');
+$render_data->h_further_auth = get_string('h_further_auth', 'block_metatiles');
+$render_data->h_target_group = get_string('h_target_group', 'block_metatiles');
+$render_data->h_confirmation = get_string('h_confirmation', 'block_metatiles');
+$render_data->licensetitle = get_string('license', 'block_metatiles');
 
 
-$display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
+$display = $OUTPUT->render_from_template("block_metatiles/detailpage", $render_data);
 
 //$mform->display();
 echo $display;

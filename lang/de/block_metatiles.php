@@ -1,6 +1,6 @@
 <?php
 
-$string['pluginname'] = 'Course Overview';
+$string['pluginname'] = 'Metatiles';
 
 $string['proctime_name'] = 'Bearbeitungszeit';
 $string['proctime_all'] = 'Alle Bearbeitungszeiten';

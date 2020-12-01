@@ -1,7 +1,7 @@
-.block_ildmetaselect .content {
+.block_metatiles_block .content {
 	width: inherit;
 }
-#block-region-side-post .block.block_ildmetaselect .content{
+#block-region-side-post .block.block_metatiles_block .content{
 	padding-bottom: 40px;
 }
 .metatile td {
@@ -124,16 +124,16 @@
     background-image: url([[pix:theme|gly-592-person-running]]);
 }
 
-.block_ildmetaselect .action-menu {
+.block_metatiles_block .action-menu {
 	position: absolute;
     top: 10px;
     right: 10px;
 }
-.block_ildmetaselect {
+.block_metatiles_block {
 	position: relative;
 }
 /*
-.block_ildmetaselect:before {
+.block_metatiles_block:before {
 	content: "loading...";
     position: absolute;
     width: 100%;
@@ -145,17 +145,17 @@
 }
 */
 
-.block_ildmetaselect .card-body {
+.block_metatiles_block .card-body {
 	padding: 0;
 }
 
-.block_ildmetaselect .card-title {
+.block_metatiles_block .card-title {
 	padding: 1.25rem;
     display: block !important;
     margin-bottom: 0;
 }
 
-.block_ildmetaselect .card-text {
+.block_metatiles_block .card-text {
 	margin-top: 0 !important;
 }
 
@@ -381,27 +381,27 @@
 }
 
 .meta-share-facebook a:before {
-	background-image: url([[pix:block_ildmetaselect|glyphicons-social-31-facebook]]);
+	background-image: url([[pix:block_metatiles_block|glyphicons-social-31-facebook]]);
 }
 
 .meta-share-twitter a:before {
-	background-image: url([[pix:block_ildmetaselect|glyphicons-social-32-twitter]]);
+	background-image: url([[pix:block_metatiles_block|glyphicons-social-32-twitter]]);
 }
 
 .meta-share-whatsapp a:before {
-    background-image: url([[pix:block_ildmetaselect|glyphicons-social-62-whatsapp]]);
+    background-image: url([[pix:block_metatiles_block|glyphicons-social-62-whatsapp]]);
 }
 
 .meta-share-linkedin a:before {
-	background-image: url([[pix:block_ildmetaselect|glyphicons-social-18-linked-in]]);
+	background-image: url([[pix:block_metatiles_block|glyphicons-social-18-linked-in]]);
 }
 
 .meta-share-xing a:before {
-	background-image: url([[pix:block_ildmetaselect|glyphicons-social-13-xing]]);
+	background-image: url([[pix:block_metatiles_block|glyphicons-social-13-xing]]);
 }
 
 .meta-share-mail a:before {
-	background-image: url([[pix:block_ildmetaselect|glyphicons-social-14-e-mail-envelope]]);
+	background-image: url([[pix:block_metatiles_block|glyphicons-social-14-e-mail-envelope]]);
 }
 
 @media(min-width: 700px) {
@@ -437,30 +437,30 @@
 }
 
 
-.block_ildmetaselect {
+.block_metatiles_block {
 	max-width: 900px;
 	    margin-top: 20px;
 	margin: 0 auto;
 }
 
-.block_ildmetaselect .fitemtitle {
+.block_metatiles_block .fitemtitle {
 	display: none !important; /* leider !important */
 }
 
-.block_ildmetaselect .fselect {
+.block_metatiles_block .fselect {
 	margin-left: 0 !important; /* leider !important */
 }
 
-.block_ildmetaselect select {
+.block_metatiles_block select {
 	width: 100% !important;
 	margin-left: 0 !important; /* leider !important */
 }
 
-.block_ildmetaselect fieldset>div {
+.block_metatiles_block fieldset>div {
 	display: flex;
 }
 
-.block_ildmetaselect .fitem {
+.block_metatiles_block .fitem {
 	    flex: calc(100% / 3) !important;
 }
 
@@ -483,15 +483,15 @@ font-size: 18px;
 	background-size: cover;
 }
 
-.block_ildmetaselect {
+.block_metatiles_block {
 	margin-top: 20px !important;
 }
 
 @media(max-width: 700px) {
-	.block_ildmetaselect .fitem_fselect {
+	.block_metatiles_block .fitem_fselect {
 	    flex: 100% !important;
 	}
-	.block_ildmetaselect fieldset>div {
+	.block_metatiles_block fieldset>div {
     	display: block;
     	padding: 10px;
 	}
@@ -508,16 +508,16 @@ font-size: 18px;
 }
 
 @media(min-width: 700px) {
-	.block_ildmetaselect .fitem {
+	.block_metatiles_block .fitem {
 		margin-right: 10px;
 	}
 
-	.block_ildmetaselect .fitem:last-child {
+	.block_metatiles_block .fitem:last-child {
 		margin-right: 0;
 	}
 }
 
-.block_ildmetaselect #fitem_id_submitbutton {
+.block_metatiles_block #fitem_id_submitbutton {
     background-color: transparent;
     padding: 0;
     border: none;
@@ -525,57 +525,57 @@ font-size: 18px;
     flex: 0 !important;
 }
 
-.block_ildmetaselect .fsubmit {
+.block_metatiles_block .fsubmit {
 	margin-left: 0 !important;
 }
-.block_ildmetaselect .fbutton {
+.block_metatiles_block .fbutton {
 	margin-left: 0 !important;
 }
 
-.block_ildmetaselect .ftext {
+.block_metatiles_block .ftext {
     margin: 0 !important;
     flex: 0 !important;
 }
 
-.block_ildmetaselect #id_search {
+.block_metatiles_block #id_search {
 	padding-bottom: 7px;
     padding-top: 7px;
 }
 
-.block_ildmetaselect #fitem_id_search {
+.block_metatiles_block #fitem_id_search {
     margin: 0;
     flex: 0 !important;
 }
 
-.block_ildmetaselect .id_submitbutton {
+.block_metatiles_block .id_submitbutton {
 	margin-bottom: 0;
 }
 
-.block_ildmetaselect #mform1  fieldset > div {
+.block_metatiles_block #mform1  fieldset > div {
 	float: right;
 	clear: both;
 }
 
 @media(max-width: 700px) {
 
-.block_ildmetaselect #mform1 fieldset > div {
+.block_metatiles_block #mform1 fieldset > div {
 	float: none;
 }
 
-	.block_ildmetaselect #fitem_id_search {
+	.block_metatiles_block #fitem_id_search {
 		width: calc(100% - 15px);
 	}
 
-.block_ildmetaselect #id_search {
+.block_metatiles_block #id_search {
 	width: 100%;
 }
 
 
-	.block_ildmetaselect .fsubmit {
+	.block_metatiles_block .fsubmit {
 		padding: 0 !important;
 	}
 
-	.block_ildmetaselect #id_submitbutton {
+	.block_metatiles_block #id_submitbutton {
 		width: 100%;
     	margin: 0 !important;
 	}
@@ -630,7 +630,7 @@ font-size: 18px;
 }
 
 @media(max-width: 930px) {
-	.block_ildmetaselect {
+	.block_metatiles_block {
 		margin: 0 10px;
 	}
 
@@ -664,11 +664,11 @@ div.metatile-img div.icon-coming-soon {
 	z-index: 10;
 	left:-57px;
 	top: -10px;
-	background: url([[pix:block_ildmetaselect|coming_soon]]);
+	background: url([[pix:block_metatiles_block|coming_soon]]);
 	background-size: cover;
 }
 
-#page-block-ildmetaselect-detailpage div.metatile-img div.icon-coming-soon{
+#page-block-metatiles_block-detailpage div.metatile-img div.icon-coming-soon{
 	left:-50px;
 	top: -40px;
 }

@@ -1,12 +1,12 @@
 // Standard license block omitted.
 /*
- * @package    ildmetaselect
+ * @package    metatiles
  * @author     Markus Strehling <markus.strehling@oncampus.de)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
  /**
-  * @module block_ildmetaselect/ildmetaselect
+  * @module block_metatiles/metatiles
   */
 
  define(['jquery', 'core/ajax']
@@ -82,7 +82,7 @@
         }
 
         var promises = ajax.call([
-            { methodname: 'blocks_ildmetaselect_getfilter',
+            { methodname: 'blocks_metatiles_getfilter',
             args: {
                 subjectarea: subjectarea,
                 university: university,

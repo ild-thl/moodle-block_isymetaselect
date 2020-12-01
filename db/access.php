@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package        block_ildmetaselect
+ * @package        block_metatiles
  * @author        Dustin Neß <dustin.ness@th-luebeck.de>
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -10,7 +10,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
 
-    'block/ildmetaselect:editmeta' => array(
+    'block/metatiles:editmeta' => array(
         'riskbitmask' => RISK_SPAM | RISK_CONFIG,
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
@@ -22,7 +22,7 @@ $capabilities = array(
         )
     ),
 
-    'block/ildmetaselect:myaddinstance' => array(
+    'block/metatiles:myaddinstance' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes' => array(
@@ -33,7 +33,7 @@ $capabilities = array(
 
     ),
 
-    'block/ildmetaselect:addinstance' => array(
+    'block/metatiles:addinstance' => array(
         'riskbitmask' => RISK_SPAM | RISK_CONFIG,
 
         'captype' => 'write',

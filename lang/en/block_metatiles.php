@@ -1,6 +1,6 @@
 <?php
 
-$string['pluginname'] = 'Course Overview';
+$string['pluginname'] = 'Meta tiles';
 
 $string['proctime_name'] = 'Workload';
 $string['proctime_all'] = 'All  Workload';

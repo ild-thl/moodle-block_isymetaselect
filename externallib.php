@@ -15,15 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* @package    ildmetaselect
+* @package    metatiles
 * @author     Markus Strehling <markus.strehling@oncampus.de>
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
 
 require_once($CFG->libdir . "/externallib.php");
-require_once($CFG->dirroot . '/blocks/ildmetaselect/locallib.php');
+require_once($CFG->dirroot . '/blocks/metatiles/locallib.php');
 
-class blocks_ildmetaselect_external extends external_api {
+class blocks_metatiles_external extends external_api {
 
     /**
      * Returns description of method parameters
