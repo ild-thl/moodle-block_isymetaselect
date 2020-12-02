@@ -92,11 +92,9 @@ function get_metacourses($coursestodisplay, $context)
                 $render_data->subject = $subject;
                 $render_data->processingtime = $data->processingtime;
                 $render_data->link_detailpage = $data->noindexcourse == 0;
-                if ($data->starttime > $to_midnight) {
-                    $render_data->starttime = $starttime;
-                }
+                
 
-                $render_data->lecturer_detail = get_string('lecturer_detail', 'block_metatiles');
+                // $render_data->lecturer_detail = get_string('lecturer_detail', 'block_metatiles');
                 $render_data->university_detail = get_string('university_detail', 'block_metatiles');
                 $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_metatiles');
                 $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_metatiles');
@@ -104,6 +102,27 @@ function get_metacourses($coursestodisplay, $context)
                 $render_data->hours = get_string('hours', 'block_metatiles');
                 $render_data->starttime_detail = get_string('starttime_detail', 'block_metatiles');
 
+
+
+
+                $render_data->lecturer_type = 'Autor/in';
+                if(explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') {
+                    $render_data->lecturer_type = 'Dozent/in';
+                }
+                
+                $render_data->starttime = 'Flexibel';
+                
+                if(explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') {
+                    if ($data->starttime > $to_midnight) {
+                        $render_data->starttime = $starttime;
+                    } else {
+                        $render_data->starttime = 'begonnen (' . $starttime . ')';
+                    }
+                }
+                
+                $display = $OUTPUT->render_from_template("block_metatiles/detailpage", $render_data);
+
+  
                 $string .= $OUTPUT->render_from_template("block_metatiles/get_metacourse", $render_data);
             }
         }

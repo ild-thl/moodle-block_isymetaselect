@@ -107,7 +107,6 @@ preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=
     $videocode = $getdb->videocode;
 }
 
-
 $teasertext = '';
 $learninggoals = '';
 $gliederung = '';
@@ -257,18 +256,21 @@ $render_data->certificate = $getdb->certificateofachievement;
 $render_data->license =  $license;
 $render_data->taglist = $taglist;
 $render_data->coursetitle = $getdb->coursetitle;
-$render_data->edit_string = $edit_string;
+if(isset($edit_string)) {
+    $render_data->edit_string = $edit_string;
+}
 $render_data->lecturer = $getdb->lecturer;
 $render_data->uni = $uni;
 $render_data->language = $language;
 $render_data->subject = $subject;
 $render_data->processingtime = $getdb->processingtime;
-$render_data->starttime = $starttime;
+
 $render_data->started = $started;
 $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
-$render_data->altpic = $fileurl_di;
-
+if(isset($fileurl_di)) {
+    $render_data->altpic = $fileurl_di;
+}
 $render_data->lecturer_detail = get_string('lecturer_detail', 'block_metatiles');
 $render_data->university_detail = get_string('university_detail', 'block_metatiles');
 $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_metatiles');
@@ -288,6 +290,19 @@ $render_data->h_target_group = get_string('h_target_group', 'block_metatiles');
 $render_data->h_confirmation = get_string('h_confirmation', 'block_metatiles');
 $render_data->licensetitle = get_string('license', 'block_metatiles');
 
+$render_data->emptyteaser = 'emptyteaser';
+
+$render_data->lecturer_type = 'Autor/in';
+
+if(explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') {
+    $render_data->lecturer_type = 'Dozent/in';
+}
+
+$render_data->starttime = 'Flexibel';
+
+if(explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') {
+    $render_data->starttime = $starttime;
+}
 
 $display = $OUTPUT->render_from_template("block_metatiles/detailpage", $render_data);
 

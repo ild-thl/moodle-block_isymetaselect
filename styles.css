@@ -612,6 +612,7 @@ font-size: 18px;
 
 	.lecturer_container {
 		display: flex;
+		margin-bottom: 1rem;
 	}
 
 	.lecturer_text {
@@ -845,4 +846,24 @@ div.metatile-img div.icon-coming-soon {
 
 .block_metatiles #fitem_id_search .d-inline {
 	display: none !important;
+}
+
+.emptyteaser {
+	display: none;
+}
+
+.md-teaservideo .mediaplugin,
+.md-teaservideo .mediaplugin video {
+	width: inherit;
+	padding-top: 0;
+}
+
+.md-teaservideo .mediaplugin > div,
+.md-teaservideo .mediaplugin video > div {
+	max-width: 100% !important;
+	padding-top: 0;
+}
+
+.md-teaservideo .text_to_html {
+	padding-top: 0;
 }

@@ -46,10 +46,10 @@ $string['metatweet'] = 'tweeten';
 
 $string['noresultsfound'] = 'Keine Ergebnisse gefunden.';
 
-$string['h_awaits'] = 'Was erwartet Sie in diesem Kurs?';
-$string['h_learn'] = 'Was können Sie in diesem Kurs lernen?';
+$string['h_awaits'] = 'Was erwartet Dich in diesem Kurs?';
+$string['h_learn'] = 'Was kannst Du in diesem Kurs lernen?';
 $string['h_outline'] = 'Gliederung';
-$string['h_further_auth'] = 'Weitere Autoren*innen';
+$string['h_further_auth'] = 'Dozent*innen/Autoren*innen';
 $string['h_target_group'] = 'Zielgruppe';
 $string['h_confirmation'] = 'Teilnahmebestätigung';
 $string['license'] = 'Lizenz';
