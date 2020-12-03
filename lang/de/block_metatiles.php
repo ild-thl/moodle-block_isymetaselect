@@ -33,7 +33,7 @@ $string['lecturer_detail'] = 'Dozent/in'; // vorher: Anbieter*innen
 $string['university_detail'] = 'Zielgruppe'; // vorher: Anbietende Hochschule
 $string['courselanguage_detail'] = 'Kurssprache';
 $string['subjectarea_detail'] = 'Format';
-$string['avgworkload_detail'] = 'Durchschn. Arbeitsaufwand';
+$string['avgworkload_detail'] = 'Arbeitsaufwand';
 $string['starttime_detail'] = 'Kursbeginn';
 
 $string['hours'] = 'Stunden';
