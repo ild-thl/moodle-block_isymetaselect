@@ -17,7 +17,7 @@
   {{!                                                                                                                                 
     @template block/ocmyproducts                                                                                                        
 
-    detalpage of metatiles
+    detalpage of ildmetaselect
                                                                                                                                     
     Classes required for JS:                                                                                                        
     * none                                                                                                                        
@@ -120,16 +120,13 @@
 					<td>{{{subjectarea_detail}}}:</td> <!-- jetzt: Format -->
 					<td>{{subject}}</td>
           <!--{{#started}}<td class="hide-small"><strong class="free">{{{free}}}</strong></td>{{/started}}-->
+                    <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
+  
+          				<!-- {{^started}}
+				
+        
 
-{{#is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
-          {{/is_enrolled}}
-          {{^is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
-          {{/is_enrolled}}
-
-          		<!--		{{^started}}
-
+          
 					<td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
 					{{#is_enrolled}}
             <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
@@ -141,17 +138,38 @@
         {{/started}} -->
           
 				</tr>
+				<!--<tr>-->
+					
+					
+
+         
+
+        <!--</tr>
+				{{^started}}-->
+				
+       <!-- <tr>
+
+          
+					<td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
+					{{#is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
+          {{/is_enrolled}}
+          {{^is_enrolled}}
+            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
+          {{/is_enrolled}}
+				</tr>
+        {{/started}}-->
 			</table>
 		</div>
 	</div>
 
 	<div class="meta-share">
-    <div class="meta-share-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{{url}}}">{{# str}} metashare, block_metatiles {{/ str}}</a></div>
-		<div class="meta-share-twitter"><a href="https://twitter.com/intent/tweet?url={{{url}}}">{{# str}} metatweet, block_metatiles {{/ str}}</a></div>
-		<div class="meta-share-whatsapp"><a href="whatsapp://send?text={{{url}}}">{{# str}} metashare, block_metatiles {{/ str}}</a></div>
-		<div class="meta-share-linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;summary=&amp;url={{{url}}}">{{# str}} metashare, block_metatiles {{/ str}}</a></div>
-		<div class="meta-share-xing"><a href="https://www.xing.com/social_plugins/share?url={{{url}}}">{{# str}} metashare, block_metatiles {{/ str}}</a></div>
-		<div class="meta-share-mail"><a href="mailto:?subject={{coursetitle}}&amp;body={{{url}}}">{{# str}} metashare, block_metatiles {{/ str}}</a></div>
+    <div class="meta-share-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-twitter"><a href="https://twitter.com/intent/tweet?url={{{url}}}">{{# str}} metatweet, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-whatsapp"><a href="whatsapp://send?text={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;summary=&amp;url={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-xing"><a href="https://www.xing.com/social_plugins/share?url={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-mail"><a href="mailto:?subject={{coursetitle}}&amp;body={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
 	</div>
 
 	<div class="metadetail-body">
@@ -226,12 +244,10 @@
       {{{license}}}
     </div>
     {{/license}}
-
+    
 		<div class="md-tags">
-        {{#taglist}}
-      <span class="metatag"><a href="{{url}}">{{tag}}</a></span>
-       {{/taglist}}
+{{#taglist}}      <span class="metatag"><a href="{{url}}">{{tag}}</a></span>{{/taglist}}
     </div>
-   
+    
 	</div>
 </div>

@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package        block_metatiles
+ * @package        block_ildmetaselect
  * @author         Dustin Neß <dustin.ness@th-luebeck.de>
  * @author         Markus Strehling (modified) <markus.strehling@oncampus.de>
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -12,8 +12,8 @@ function get_metacourses($coursestodisplay, $context)
     global $DB, $CFG, $OUTPUT;
 
     $lang_list = [
-        get_string('german', 'block_metatiles'),
-        get_string('english', 'block_metatiles'),
+        get_string('german', 'block_ildmetaselect'),
+        get_string('english', 'block_ildmetaselect'),
     ];
 
 
@@ -58,13 +58,13 @@ function get_metacourses($coursestodisplay, $context)
                 $to_midnight = strtotime('today midnight');
                 $starttime = date('d.m.y', $data->starttime);
 
-                $url = $CFG->wwwroot . '/blocks/metatiles/detailpage.php?id=' . $data->courseid;
-                //$files = $fs->get_area_files($context->id, 'local_metatiles', 'overviewimage', $data->overviewimage);
+                $url = $CFG->wwwroot . '/blocks/ildmetaselect/detailpage.php?id=' . $data->courseid;
+                //$files = $fs->get_area_files($context->id, 'local_ildmeta', 'overviewimage', $data->overviewimage);
                 $coursecontext = context_course::instance($data->courseid);
-                $files = $fs->get_area_files($coursecontext->id, 'local_metatiles', 'overviewimage', 0);
+                $files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
 
 
-                $getdb = $DB->get_record('metatiles', array('courseid' => $data->courseid));
+                $getdb = $DB->get_record('ildmeta', array('courseid' => $data->courseid));
 
                 $language = $lang_list[$getdb->courselanguage];
 
@@ -94,13 +94,13 @@ function get_metacourses($coursestodisplay, $context)
                 $render_data->link_detailpage = $data->noindexcourse == 0;
                 
 
-                // $render_data->lecturer_detail = get_string('lecturer_detail', 'block_metatiles');
-                $render_data->university_detail = get_string('university_detail', 'block_metatiles');
-                $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_metatiles');
-                $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_metatiles');
-                $render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_metatiles');
-                $render_data->hours = get_string('hours', 'block_metatiles');
-                $render_data->starttime_detail = get_string('starttime_detail', 'block_metatiles');
+                // $render_data->lecturer_detail = get_string('lecturer_detail', 'block_ildmetaselect');
+                $render_data->university_detail = get_string('university_detail', 'block_ildmetaselect');
+                $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
+                $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
+                $render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
+                $render_data->hours = get_string('hours', 'block_ildmetaselect');
+                $render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
 
 
 
@@ -120,14 +120,13 @@ function get_metacourses($coursestodisplay, $context)
                     }
                 }
                 
-                $display = $OUTPUT->render_from_template("block_metatiles/detailpage", $render_data);
+                $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
 
-  
-                $string .= $OUTPUT->render_from_template("block_metatiles/get_metacourse", $render_data);
+                $string .= $OUTPUT->render_from_template("block_ildmetaselect/get_metacourse", $render_data);
             }
         }
     } else {
-        $string .= '<span class="nocoursefound">' . get_string('noresultsfound', 'block_metatiles') . '</span>';
+        $string .= '<span class="nocoursefound">' . get_string('noresultsfound', 'block_ildmetaselect') . '</span>';
     }
     $string .= '</div>';
 

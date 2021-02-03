@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package		block_metatiles
+ * @package		block_ildmetaselect
  * @author		Dustin Neß <dustin.ness@th-luebeck.de>
  * @license		http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

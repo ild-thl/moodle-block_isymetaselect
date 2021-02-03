@@ -1,9 +1,3 @@
-.block_metatiles .content {
-	width: inherit;
-}
-#block-region-side-post .block.block_metatiles .content{
-	padding-bottom: 40px;
-}
 .metatile td {
     width: 50%;
 }
@@ -15,9 +9,9 @@
 }
 
 .metatile {
-	background-color: #f0f0f0;
-	/*color: #666;*/
-    border-right: 15px solid #1c3d76;
+	background: #fff;
+	border-right: 15px solid #1c3d76;
+	box-shadow: 0 2px 4px rgba(0,0,0,.08);
     margin-bottom: 10px;
     padding-top: 20px;
     width: 100%;
@@ -26,6 +20,7 @@
 
 .metatile h2 {
 	text-align: left !important;
+	font-weight: 500;
 }
 
 .metatile {
@@ -54,13 +49,15 @@
 .metatile-content {
 	padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 10px;
+	padding-right: 10px;
+	padding-left: 20px;
+	background: #fff;
 	display: grid;
-	min-height: 170px;
+	min-height: 200px;
 }
 
 .metatile h2 {
-	font-size: 16px;
+	font-size: 14px;
     line-height: 18px;
     text-align: left;
 }
@@ -71,16 +68,19 @@
 
 .metatile-img {
 	background-color: #e2e2e2;
-	width: 190px;
-    min-height: 190px;
+	width: 200px;
+    min-height: 200px;
     background-size: cover;
-    margin: 0 auto;
+	margin: 0 auto;
+	border: 2px solid #fff;
+	clear: left;
 }
+
 
 @media(min-width: 700px) {
 	.metatile-img {
-	float: left;
-	margin-right: 20px;
+		float: left;
+	
 	}
 }
 
@@ -103,39 +103,39 @@
 }
 
 .iconlecturer:before {
-    background-image: url([[pix:block_metatiles|gly-4-user]]);
+    background-image: url([[pix:block_ildmetaselect|gly-4-user]]);
 }
 
 .iconuni:before {
-    background-image: url([[pix:block_metatiles|gly-90-building]]);
+    background-image: url([[pix:block_ildmetaselect|gly-90-building]]);
 }
 
 .iconcourselanguage:before {
-    background-image: url([[pix:block_metatiles|gly-245-conversation]]);
+    background-image: url([[pix:block_ildmetaselect|gly-245-conversation]]);
 }
 
 .iconsubject:before {
-    background-image: url([[pix:block_metatiles|gly-508-cluster]]);
+    background-image: url([[pix:block_ildmetaselect|gly-508-cluster]]);
 }
 
 .iconprocessingtime:before {
-    background-image: url([[pix:block_metatiles|gly-55-clock]]);
+    background-image: url([[pix:block_ildmetaselect|gly-55-clock]]);
 }
 
 .iconstarttime:before {
-    background-image: url([[pix:block_metatiles|gly-592-person-running]]);
+    background-image: url([[pix:block_ildmetaselect|gly-592-person-running]]);
 }
 
-.block_metatiles .action-menu {
+.block_ildmetaselect .action-menu {
 	position: absolute;
     top: 10px;
     right: 10px;
 }
-.block_metatiles {
+.block_ildmetaselect {
 	position: relative;
 }
 /*
-.block_metatiles:before {
+.block_ildmetaselect:before {
 	content: "loading...";
     position: absolute;
     width: 100%;
@@ -147,17 +147,17 @@
 }
 */
 
-.block_metatiles .card-body {
+.block_ildmetaselect .card-body {
 	padding: 0;
 }
 
-.block_metatiles .card-title {
+.block_ildmetaselect .card-title {
 	padding: 1.25rem;
     display: block !important;
     margin-bottom: 0;
 }
 
-.block_metatiles .card-text {
+.block_ildmetaselect .card-text {
 	margin-top: 0 !important;
 }
 
@@ -214,10 +214,6 @@
 	width: 100%;
 }
 
-.metadetail-header-infos tr td:nth-child(even) {
- /*   padding-left: 20px;*/
-}
-
 /* Einspaltige Version */
 
 @media (min-width: 800px) {
@@ -239,7 +235,7 @@
     flex-wrap: wrap;
 }
 
-.metadetail-body div {
+.metadetail-body > div {
 	    padding-top: 20px;
 }
 
@@ -263,6 +259,16 @@
 .md-morelecturer,
 .md-tags {
 	flex: 100%;
+}
+
+.md-teaservideo .mediaplugin,
+.md-teaservideo .mediaplugin video {
+    width: inherit;
+}
+
+.md-teaservideo .mediaplugin > div,
+.md-teaservideo .mediaplugin video > div {
+    max-width: 100% !important;
 }
 
 @media (min-width: 800px) {
@@ -289,6 +295,10 @@
 }
 
 @media(max-width: 800px) {
+
+.metadetail-header {
+	background: #102d5d !important; /* temp */
+}
 
 .metadetail-header-infos {
     margin-left: 0;
@@ -383,27 +393,27 @@
 }
 
 .meta-share-facebook a:before {
-	background-image: url([[pix:block_metatiles|glyphicons-social-31-facebook]]);
+	background-image: url([[pix:block_ildmetaselect|glyphicons-social-31-facebook]]);
 }
 
 .meta-share-twitter a:before {
-	background-image: url([[pix:block_metatiles|glyphicons-social-32-twitter]]);
+	background-image: url([[pix:block_ildmetaselect|glyphicons-social-32-twitter]]);
 }
 
 .meta-share-whatsapp a:before {
-    background-image: url([[pix:block_metatiles|glyphicons-social-62-whatsapp]]);
+    background-image: url([[pix:block_ildmetaselect|glyphicons-social-62-whatsapp]]);
 }
 
 .meta-share-linkedin a:before {
-	background-image: url([[pix:block_metatiles|glyphicons-social-18-linked-in]]);
+	background-image: url([[pix:block_ildmetaselect|glyphicons-social-18-linked-in]]);
 }
 
 .meta-share-xing a:before {
-	background-image: url([[pix:block_metatiles|glyphicons-social-13-xing]]);
+	background-image: url([[pix:block_ildmetaselect|glyphicons-social-13-xing]]);
 }
 
 .meta-share-mail a:before {
-	background-image: url([[pix:block_metatiles|glyphicons-social-14-e-mail-envelope]]);
+	background-image: url([[pix:block_ildmetaselect|glyphicons-social-14-e-mail-envelope]]);
 }
 
 @media(min-width: 700px) {
@@ -439,30 +449,30 @@
 }
 
 
-.block_metatiles {
+.block_ildmetaselect {
 	max-width: 900px;
 	    margin-top: 20px;
 	margin: 0 auto;
 }
 
-.block_metatiles .fitemtitle {
+.block_ildmetaselect .fitemtitle {
 	display: none !important; /* leider !important */
 }
 
-.block_metatiles .fselect {
+.block_ildmetaselect .fselect {
 	margin-left: 0 !important; /* leider !important */
 }
 
-.block_metatiles select {
+.block_ildmetaselect select {
 	width: 100% !important;
 	margin-left: 0 !important; /* leider !important */
 }
 
-.block_metatiles fieldset>div {
+.block_ildmetaselect fieldset>div {
 	display: flex;
 }
 
-.block_metatiles .fitem {
+.block_ildmetaselect .fitem {
 	    flex: calc(100% / 3) !important;
 }
 
@@ -485,15 +495,15 @@ font-size: 18px;
 	background-size: cover;
 }
 
-.block_metatiles {
+.block_ildmetaselect {
 	margin-top: 20px !important;
 }
 
 @media(max-width: 700px) {
-	.block_metatiles .fitem_fselect {
+	.block_ildmetaselect .fitem_fselect {
 	    flex: 100% !important;
 	}
-	.block_metatiles fieldset>div {
+	.block_ildmetaselect fieldset>div {
     	display: block;
     	padding: 10px;
 	}
@@ -510,16 +520,16 @@ font-size: 18px;
 }
 
 @media(min-width: 700px) {
-	.block_metatiles .fitem {
+	.block_ildmetaselect .fitem {
 		margin-right: 10px;
 	}
 
-	.block_metatiles .fitem:last-child {
+	.block_ildmetaselect .fitem:last-child {
 		margin-right: 0;
 	}
 }
 
-.block_metatiles #fitem_id_submitbutton {
+.block_ildmetaselect #fitem_id_submitbutton {
     background-color: transparent;
     padding: 0;
     border: none;
@@ -527,57 +537,57 @@ font-size: 18px;
     flex: 0 !important;
 }
 
-.block_metatiles .fsubmit {
+.block_ildmetaselect .fsubmit {
 	margin-left: 0 !important;
 }
-.block_metatiles .fbutton {
+.block_ildmetaselect .fbutton {
 	margin-left: 0 !important;
 }
 
-.block_metatiles .ftext {
+.block_ildmetaselect .ftext {
     margin: 0 !important;
     flex: 0 !important;
 }
 
-.block_metatiles #id_search {
+.block_ildmetaselect #id_search {
 	padding-bottom: 7px;
     padding-top: 7px;
 }
 
-.block_metatiles #fitem_id_search {
+.block_ildmetaselect #fitem_id_search {
     margin: 0;
     flex: 0 !important;
 }
 
-.block_metatiles .id_submitbutton {
+.block_ildmetaselect .id_submitbutton {
 	margin-bottom: 0;
 }
 
-.block_metatiles #mform1  fieldset > div {
+.block_ildmetaselect #mform1  fieldset > div {
 	float: right;
 	clear: both;
 }
 
 @media(max-width: 700px) {
 
-.block_metatiles #mform1 fieldset > div {
+.block_ildmetaselect #mform1 fieldset > div {
 	float: none;
 }
 
-	.block_metatiles #fitem_id_search {
+	.block_ildmetaselect #fitem_id_search {
 		width: calc(100% - 15px);
 	}
 
-.block_metatiles #id_search {
+.block_ildmetaselect #id_search {
 	width: 100%;
 }
 
 
-	.block_metatiles .fsubmit {
+	.block_ildmetaselect .fsubmit {
 		padding: 0 !important;
 	}
 
-	.block_metatiles #id_submitbutton {
+	.block_ildmetaselect #id_submitbutton {
 		width: 100%;
     	margin: 0 !important;
 	}
@@ -592,6 +602,10 @@ font-size: 18px;
 .metadetail-header .btn:hover {
 	background-color: #cee8ff !important;
 	color: #003f74 !important;
+}
+
+.lecturer_container {
+	margin-bottom: 1rem;
 }
 
 .lecturer_imgcontainer {
@@ -612,7 +626,6 @@ font-size: 18px;
 
 	.lecturer_container {
 		display: flex;
-		margin-bottom: 1rem;
 	}
 
 	.lecturer_text {
@@ -633,12 +646,8 @@ font-size: 18px;
 }
 
 @media(max-width: 930px) {
-	.block_metatiles {
+	.block_ildmetaselect {
 		margin: 0 10px;
-	}
-
-	.metatile {
-
 	}
 
 	.metatile:nth-child(even) {
@@ -667,11 +676,11 @@ div.metatile-img div.icon-coming-soon {
 	z-index: 10;
 	left:-57px;
 	top: -10px;
-	background: url([[pix:block_metatiles|coming_soon]]);
+	background: url([[pix:block_ildmetaselect|coming_soon]]);
 	background-size: cover;
 }
 
-#page-block-metatiles-detailpage div.metatile-img div.icon-coming-soon{
+#page-block-ildmetaselect-detailpage div.metatile-img div.icon-coming-soon{
 	left:-50px;
 	top: -40px;
 }
@@ -686,9 +695,9 @@ div.metatile-img div.icon-coming-soon {
 
 /* Bug fixes Moodle Update 3.8 */
 
-.block_metatiles.card {border:0px; margin-top:0px !important;}
-.block_metatiles .card-title {font-size:30px; padding:0 0 10px 0;}
-.block_metatiles .mform {
+.block_ildmetaselect.card {border:0px; margin-top:0px !important;}
+.block_ildmetaselect .card-title {font-size:30px; padding:0 0 10px 0;}
+.block_ildmetaselect .mform {
 	margin-bottom:10px;
 	display:flex;
 	flex-direction: row;
@@ -696,33 +705,61 @@ div.metatile-img div.icon-coming-soon {
 	font-size:14px;
 	justify-content:flex-end;
 }
-.block_metatiles .mform .fitem .col-md-3 {display:none;}
-.block_metatiles .mform .form-group {margin:0px !important;}
-.block_metatiles .mform .col-md-9 {display:block; flex:unset; max-width:100%; padding:5px 0px 5px 5px; width:auto;}
-.block_metatiles .mform #fitem_id_search .col-md-9 {width:auto;}
-.block_metatiles .mform #fitem_id_search {flex:0 !important;}	
-.block_metatiles #id_search {width:250px;}
+.block_ildmetaselect .mform .fitem .col-md-3 {display:none !important;}
+.block_ildmetaselect .mform .form-group {margin:0px !important;}
+.block_ildmetaselect .mform .col-md-9 {display:block; flex:unset; max-width:100%; padding:5px 0px 5px 5px; width:auto;}
+.block_ildmetaselect .mform #fitem_id_search .col-md-9 {width:auto;}
+.block_ildmetaselect .mform #fitem_id_search {flex:0 !important;}	
+.block_ildmetaselect #id_search {width:250px;}
 @media (max-width:767px) {
-	.block_metatiles .mform {flex-wrap:wrap;}
+	.block_ildmetaselect .mform {flex-wrap:wrap;}
 }
 
 /* Metadetailseite */
-#page-blocks-metatiles-detailpage #page-wrapper {
+#page-blocks-ildmetaselect-detailpage #page-wrapper {
 	height:auto;
 }
-#page-blocks-metatiles-detailpage #page-wrapper #page {
+#page-blocks-ildmetaselect-detailpage #page-wrapper #page {
 	position:relative;
 }
-#page-blocks-metatiles-detailpage .page-header-headings {display:none;}
-#page-blocks-metatiles-detailpage #region-main {max-width:1200px; margin:0px auto 20px auto;}
+#page-blocks-ildmetaselect-detailpage .page-header-headings {display:none;}
+#page-blocks-ildmetaselect-detailpage #region-main {max-width:1200px; margin:0px auto 20px auto;}
 
+.emptyteaser {
+    display: none;
+}
 
+/* temp */
+/* .block_ildmetaselect .mform:nth-child(2) {
+	display: none;
+} */
 
-/*temp copy paste */
+.eupopup-body a {
+	color: #fff;
+}
 
-/* metaselect fixes */
+.metatile:hover .imgmetatile-img {
+	transform: skew(3deg, 0deg) scale(1.02);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
 
-.block_metatiles .card-title {
+.metaedit {
+	color: #fff;
+    position: relative;
+}
+
+.metaedit i {
+	color: #102d5d;
+	position: absolute;
+    left: 5px;
+    top: 8px;
+}
+
+.metadetail-body a {
+    color: #D4004B;
+}
+
+.block_ildmetaselect .card-title {
 	display: none !important;
 }
 
@@ -755,29 +792,27 @@ div.metatile-img div.icon-coming-soon {
 }
 
 .metatile {
-	width: 100% !important; 
+	width: 100% !important;
 }
 
-.block_metatiles select,
-.block_metatiles input {
+.block_ildmetaselect select,
+.block_ildmetaselect input {
     font-size: 14px;
 }
 
 .metatile h2 {
-	color: #101010;
+	color: #102d5d;
 }
 
 .metatile-img {
-	transition: 0.03s;
-	min-height: 184px;
-	width: 184px;
-	min-width: 184px;
 	background-color: #102d5d;
+	transition: 0.05s;
 }
 
 .metatile:hover .metatile-img {
-	transform: scale(1.02);
-	transition: 0.03s;
+	transform: skewX(-4deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+	transition: 0.3s;
 }
 
 .metatileicon:before {
@@ -789,7 +824,7 @@ div.metatile-img div.icon-coming-soon {
 	padding-left: 0;
 }
 
-.block_metatiles .fitem {
+.block_ildmetaselect .fitem {
     flex: inherit !important;
 }
 
@@ -797,37 +832,38 @@ div.metatile-img div.icon-coming-soon {
     font-weight: 600;
 }
 
-@media (max-width: 768px) { 
-	.block_metatiles select {
-		width: 100% !important;
-		margin-left: 0 !important;
+@media(max-width: 576px) {
+
+	.block_ildmetaselect select {
+		width: 100%!important;
+		margin-left: 0!important;
 	}
 
-	.block_metatiles .fitem {
+	.block_ildmetaselect .fitem {
 		flex: 100% !important;
 	}
 
-	.block_metatiles .felement {
+	.block_ildmetaselect .felement {
 		width: 100% !important;
 		padding: 0 0 5px 0 !important;
 	}
 
-	.block_metatiles [type="submit"] {
+	.block_ildmetaselect [type="submit"] {
 		width: 100%;
 		flex: none !important;
 	}
 
-	.block_metatiles #fitem_id_submitbutton,
-	.block_metatiles .mform #fitem_id_search {
+	.block_ildmetaselect #fitem_id_submitbutton,
+	.block_ildmetaselect .mform #fitem_id_search {
 		flex: 100% !important;
 	}
 
-	.block_metatiles #id_search {
+	.block_ildmetaselect #id_search {
 		width: 100%;
 	}
 
 	.metadetail-header {
-		background: #102d5d;
+		
 		border-bottom: 0;
 	}
 
@@ -840,30 +876,9 @@ div.metatile-img div.icon-coming-soon {
 	}
 }
 
-#page-site-index #page-header h1 {
-	display: none; /*temp*/
-}
-
-.block_metatiles #fitem_id_search .d-inline {
-	display: none !important;
-}
-
-.emptyteaser {
-	display: none;
-}
-
-.md-teaservideo .mediaplugin,
-.md-teaservideo .mediaplugin video {
+.block_ildmetaselect .content {
 	width: inherit;
-	padding-top: 0;
 }
-
-.md-teaservideo .mediaplugin > div,
-.md-teaservideo .mediaplugin video > div {
-	max-width: 100% !important;
-	padding-top: 0;
-}
-
-.md-teaservideo .text_to_html {
-	padding-top: 0;
+#block-region-side-post .block.block_ildmetaselect .content{
+	padding-bottom: 40px;
 }

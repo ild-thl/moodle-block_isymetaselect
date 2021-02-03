@@ -12,7 +12,7 @@
  * @param array $options additional options affecting the file serving
  * @return bool false if the file not found, just send the file otherwise and do not return anything
  */
-function block_metatiles_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
+function block_ildmetaselect_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
     // Check the contextlevel is as expected - if your plugin is a block, this becomes CONTEXT_BLOCK, etc.
     if ($context->contextlevel != CONTEXT_MODULE) {
         return false; 
@@ -47,7 +47,7 @@ foreach ($array as $key) {
  
     // Retrieve the file from the Files API.
     $fs = get_file_storage();
-    $file = $fs->get_file($context->id, 'local_metatiles', $filearea, $itemid, $filepath, $filename);
+    $file = $fs->get_file($context->id, 'local_ildmeta', $filearea, $itemid, $filepath, $filename);
     if (!$file) {
         return false; // The file does not exist.
     }

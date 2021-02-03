@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* @package    metatiles
+* @package    ildmetaselect
 * @author     Markus Strehling <markus.strehling@oncampus.de>
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
@@ -141,7 +141,7 @@ function select_prepare($select){
     $tosearch->starttime = starttime_to_sql($fromform->starttime);
 
     $query = "
-			SELECT * FROM mdl_metatiles
+			SELECT * FROM mdl_ildmeta
 			WHERE
 			university LIKE '$tosearch->university'
 			AND subjectarea LIKE '$tosearch->subjectarea'
@@ -173,9 +173,10 @@ function get_courses_records_time($fromform, $past){
     $to_midnight = strtotime('today midnight');
 
     $query = "
-        SELECT * FROM {metatiles}
+        SELECT * FROM {ildmeta}
             WHERE
                 subjectarea LIKE '$tosearch->subjectarea'
+                AND university LIKE '$tosearch->university'
                 AND courselanguage LIKE '$tosearch->courselanguage'
                 AND processingtime $tosearch->processingtime
                 AND starttime $tosearch->starttime
@@ -232,8 +233,8 @@ function get_filtered_university_list($records){
         }
     }
 
-    array_unshift($filtered, '1=>'.get_string('university_all','block_metatiles'));
-    array_unshift($filtered, '0=>'.get_string('university','block_metatiles'));
+    array_unshift($filtered, '1=>'.get_string('university_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('university','block_ildmetaselect'));
 
     return $filtered;
 }
@@ -253,8 +254,8 @@ function get_university_list($input){
             $filtered[$key] = "$key=>$value";
         }
     }
-    array_unshift($filtered, '1=>'.get_string('university_all','block_metatiles'));
-    array_unshift($filtered, '0=>'.get_string('university','block_metatiles'));
+    array_unshift($filtered, '1=>'.get_string('university_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('university','block_ildmetaselect'));
 
     return $filtered;
 }
@@ -276,8 +277,8 @@ function get_filtered_subjectarea_list($records){
         }
     }
 
-    array_unshift($filtered, '1=>'.get_string('subjectarea_all','block_metatiles'));
-    array_unshift($filtered, '0=>'.get_string('subjectarea','block_metatiles'));
+    array_unshift($filtered, '1=>'.get_string('subjectarea_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('subjectarea','block_ildmetaselect'));
 
     return $filtered;
 }
@@ -298,8 +299,8 @@ function get_subjectarea_list($input){
         }
     }
 
-    array_unshift($filtered, '1=>'.get_string('subjectarea_all','block_metatiles'));
-    array_unshift($filtered, '0=>'.get_string('subjectarea','block_metatiles'));
+    array_unshift($filtered, '1=>'.get_string('subjectarea_all','block_ildmetaselect'));
+    array_unshift($filtered, '0=>'.get_string('subjectarea','block_ildmetaselect'));
     
     return $filtered;
 }
@@ -308,15 +309,15 @@ function get_filtered_processingtime_list($records){
     global $DB;
 
     $processingtime_list = [
-        'upto15' => get_string('proctime_upto15','block_metatiles'),
-        'between16and20' => get_string('proctime_between16and20','block_metatiles'),
-        'between21and25' => get_string('proctime_between21and25','block_metatiles'),
-        'morethan25' => get_string('proctime_morethan25','block_metatiles')
+        'upto15' => get_string('proctime_upto15','block_ildmetaselect'),
+        'between16and20' => get_string('proctime_between16and20','block_ildmetaselect'),
+        'between21and25' => get_string('proctime_between21and25','block_ildmetaselect'),
+        'morethan25' => get_string('proctime_morethan25','block_ildmetaselect')
     ];
 
     $filtered = array();
-    $filtered['-'] =  "-=>" . get_string('proctime_name','block_metatiles');
-    $filtered['all'] = 'all=>' . get_string('proctime_all','block_metatiles');
+    $filtered['-'] =  "-=>" . get_string('proctime_name','block_ildmetaselect');
+    $filtered['all'] = 'all=>' . get_string('proctime_all','block_ildmetaselect');
 
     foreach($processingtime_list as $key => $value){
         foreach($records as $record){
@@ -331,12 +332,12 @@ function get_filtered_processingtime_list($records){
 
 function get_processingtime_list($input){
     $processingtime_list = [
-        '-' => get_string('proctime_name','block_metatiles'),
-        'all' => get_string('proctime_all','block_metatiles'),
-        'upto15' => get_string('proctime_upto15','block_metatiles'),
-        'between16and20' => get_string('proctime_between16and20','block_metatiles'),
-        'between21and25' => get_string('proctime_between21and25','block_metatiles'),
-        'morethan25' => get_string('proctime_morethan25','block_metatiles')
+        '-' => get_string('proctime_name','block_ildmetaselect'),
+        'all' => get_string('proctime_all','block_ildmetaselect'),
+        'upto15' => get_string('proctime_upto15','block_ildmetaselect'),
+        'between16and20' => get_string('proctime_between16and20','block_ildmetaselect'),
+        'between21and25' => get_string('proctime_between21and25','block_ildmetaselect'),
+        'morethan25' => get_string('proctime_morethan25','block_ildmetaselect')
     ];
 
     $data = copy_to_data($input);
@@ -356,16 +357,16 @@ function get_filtered_starttime_list($records){
     global $DB;
 
     $starttime_list = [
-        'current' => get_string('starttime_current','block_metatiles'),
-        'less2weeks' => get_string('starttime_less2weeks','block_metatiles'),
-        'between3and4weeks' => get_string('starttime_between3and4weeks','block_metatiles'),
-        'between5and6weeks' => get_string('starttime_between5and6weeks','block_metatiles'),
-        'between7and8weeks' => get_string('starttime_between7and8weeks', 'block_metatiles')
+        'current' => get_string('starttime_current','block_ildmetaselect'),
+        'less2weeks' => get_string('starttime_less2weeks','block_ildmetaselect'),
+        'between3and4weeks' => get_string('starttime_between3and4weeks','block_ildmetaselect'),
+        'between5and6weeks' => get_string('starttime_between5and6weeks','block_ildmetaselect'),
+        'between7and8weeks' => get_string('starttime_between7and8weeks', 'block_ildmetaselect')
     ];
 
     $filtered = array();
-    $filtered['-'] =  "-=>" . get_string('starttime_name','block_metatiles');
-    $filtered['all'] = 'all=>' . get_string('starttime_all','block_metatiles');
+    $filtered['-'] =  "-=>" . get_string('starttime_name','block_ildmetaselect');
+    $filtered['all'] = 'all=>' . get_string('starttime_all','block_ildmetaselect');
 
     foreach($starttime_list as $key => $value){
         foreach($records as $record){
@@ -381,13 +382,13 @@ function get_filtered_starttime_list($records){
 
 function get_starttime_list($input){
     $starttime_list = [
-        '-' => get_string('starttime_name','block_metatiles'),
-        'all' => get_string('starttime_all','block_metatiles'),
-        'current' => get_string('starttime_current','block_metatiles'),
-        'less2weeks' => get_string('starttime_less2weeks','block_metatiles'),
-        'between3and4weeks' => get_string('starttime_between3and4weeks','block_metatiles'),
-        'between5and6weeks' => get_string('starttime_between5and6weeks','block_metatiles'),
-        'between7and8weeks' => get_string('starttime_between7and8weeks', 'block_metatiles')
+        '-' => get_string('starttime_name','block_ildmetaselect'),
+        'all' => get_string('starttime_all','block_ildmetaselect'),
+        'current' => get_string('starttime_current','block_ildmetaselect'),
+        'less2weeks' => get_string('starttime_less2weeks','block_ildmetaselect'),
+        'between3and4weeks' => get_string('starttime_between3and4weeks','block_ildmetaselect'),
+        'between5and6weeks' => get_string('starttime_between5and6weeks','block_ildmetaselect'),
+        'between7and8weeks' => get_string('starttime_between7and8weeks', 'block_ildmetaselect')
     ];
 
     $data = copy_to_data($input);
@@ -407,13 +408,13 @@ function get_filtered_lang_list($records){
     global $DB;
 
     $lang_list = [
-        get_string('german','block_metatiles'),
-        get_string('english','block_metatiles')
+        get_string('german','block_ildmetaselect'),
+        get_string('english','block_ildmetaselect')
     ];
 
     $filtered = array();
-    $filtered[] = '0=>'.get_string('courselanguage','block_metatiles');
-    $filtered[] = '1=>'.get_string('courselanguage_all','block_metatiles');
+    $filtered[] = '0=>'.get_string('courselanguage','block_ildmetaselect');
+    $filtered[] = '1=>'.get_string('courselanguage_all','block_ildmetaselect');
 
     foreach($lang_list as $key => $value){
         foreach($records as $record){
