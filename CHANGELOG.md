@@ -6,3 +6,4 @@
 - Edit cog for course page
 - Styles
 - Licenses for course page
+- compressed styles a bit

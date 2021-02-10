@@ -119,9 +119,12 @@ $learninggoals = '';
 $gliederung = '';
 $detailslecturer = '';
 $detailsmorelecturer = '';
+$detailssponsor = '';
+$detailsmoresponsor = '';
 $certificate = '';
 $targetgroup = '';
 $license = '';
+// $sponsor = '';
 
 /*
 $tosearch->university = ($fromform->university == 0) ? '%' : $fromform->university-1;
@@ -256,6 +259,70 @@ if (isset($authors_array)) {
 }
 
 
+
+/* Sponsors */
+
+$imgtblspons = 'ildmeta_sponsors';
+$image_count2 = $DB->count_records($imgtblspons);
+
+for ($i = 1; $i < $image_count2; $i++) {
+
+    $spons_text = $DB->get_records($imgtblspons, ['courseid' => $courseid, 'name' => 'detailssponsor_link_' . $i]);
+    $spons_img = $DB->get_records($imgtblspons, ['courseid' => $courseid, 'name' => 'detailssponsor_image_' . $i]);
+
+        foreach ($spons_text as $item) {
+            if ($item->value == null) {
+                break 2;
+            }
+
+            $sponsor_array[$i][] = $item->value;
+        }
+
+        foreach ($spons_img as $item) {
+            
+            $spons_fs = get_file_storage();
+            $fileurl_sponsor = '';
+            $spons_context = context_system::instance();
+			$coursecontext = context_course::instance($courseid);
+			$sponsor_files = $spons_fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailssponsor_image_' . $i, 0);
+
+            foreach ($sponsor_files as $file) {
+                $fileurl_sponsor = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(), $file->get_itemid(), $file->get_filepath(), $file->get_filename());
+            }
+
+            $sponsor_array[$i][] = $fileurl_sponsor; 
+        }
+}
+
+$allsponsors = array();
+if (isset($sponsor_array)) {
+    
+    // var_dump($sponsor_array);
+    foreach ($sponsor_array as $sponsor => $data) {
+        $class = '';
+        //if empty or url broken
+        if(empty($data[1]) || strpos($data[1], '/.')) {
+            $class = 'sponsor-noimg';
+        }
+        // print_r($data[2]); die();
+        $allsponsors[] = array('classspons' => $class, 'imgspons' => $data[1], 'divspons' => $data[0]);
+
+
+    }
+}
+
+// print_r($allsponsors); die();
+
+
+
+
+
+
+
+
+
+
+
 /*
  * START is_enrolled verification
  * let's check, if a user is enrolled
@@ -288,6 +355,15 @@ $render_data->alllecturers = $alllecturers;
 $render_data->alllecturers_notempty = !empty($alllecturers);
 $render_data->allauthors = $allauthors;
 $render_data->allauthors_notempty = !empty($allauthors);
+
+
+$render_data->allsponsors = $allsponsors;
+$render_data->allsponsors_notempty = !empty($allsponsors);
+
+// print_r($render_data->allsponsors); die();
+
+// var_dump($allsponsors); die();
+// $render_data->sponsor = $sponsor;
 $render_data->detailsmorelecturer = $getdb->detailsmorelecturer;
 $render_data->targetgroup = $getdb->targetgroup;
 $render_data->certificate = $getdb->certificateofachievement;
@@ -351,7 +427,7 @@ $render_data->starttime = 'Flexibel';
 if(explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') {
     $render_data->starttime = $starttime;
 }
-
+// print_r($allsponsors); die();
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
 
 //$mform->display();

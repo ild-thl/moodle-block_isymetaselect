@@ -244,6 +244,32 @@
       {{{license}}}
     </div>
     {{/license}}
+
+
+
+
+
+    {{#allsponsors_notempty}}
+      
+          <div class="md-sponsors">
+          {{#allsponsors}}
+            <div class="sponsor_container">
+              <div class="sponsor_imgcontainer {{classspons}}">
+                <a href="{{{divspons}}}"><img src="{{imgspons}}"/></a>
+              </div>
+            </div>
+          {{/allsponsors}}
+          </div>
+        
+
+    {{/allsponsors_notempty}}
+
+
+
+
+
+
+ 
     
 		<div class="md-tags">
 {{#taglist}}      <span class="metatag"><a href="{{url}}">{{tag}}</a></span>{{/taglist}}
