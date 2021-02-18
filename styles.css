@@ -797,3 +797,45 @@ div.metatile-img div.icon-coming-soon {
     padding-bottom: 40px
 }
 
+/* sponsors */
+.md-sponsors {
+    text-align: center;
+}
+
+.md-sponsors .sponsor_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.md-sponsors .sponsor_container::after {
+    content: "";
+    flex: auto;
+}
+
+.md-sponsors .sponsor_imgcontainer {
+    max-width: calc(100% / 2);
+    padding: 0 1rem;
+}
+
+@media(min-width: 700px) {
+    .md-sponsors .sponsor_imgcontainer {
+        max-width: calc(100% / 3);
+    }
+}
+
+@media(min-width: 900px) {
+    .md-sponsors .sponsor_imgcontainer {
+        max-width: calc(100% / 5);
+    }
+
+    .md-sponsors .sponsor_container::after {
+        flex: inherit;
+    }
+}
+
+
+.md-sponsors .sponsor_imgcontainer img {
+    width: 100%;
+}

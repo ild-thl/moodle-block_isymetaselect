@@ -204,28 +204,41 @@
       {{{gliederung}}}
     </div>
     {{/gliederung}}
+
     {{#alllecturers_notempty}}
 		<div class="md-lecturer">
     <h2>{{{lecturer_detail}}}</h2>
     {{/alllecturers_notempty}}
+
     {{#alllecturers}}
       <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
-    </div>
     {{/alllecturers}}
+
+    {{#alllecturers_notempty}}
+    </div>
+    {{/alllecturers_notempty}}
+
+
     {{#allauthors_notempty}}
     <div class="md-lecturer">
       <h2>{{{h_further_auth}}}</h2>
     {{/allauthors_notempty}}
+
     {{#allauthors}}
       <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
-    </div>
     {{/allauthors}}
+
+{{#allauthors_notempty}}
+    </div>
+    {{/allauthors_notempty}}
+
     {{#detailsmorelecturer}}
 		<div class="md-morelecturer">
       <h2>{{{h_further_auth}}}</h2>
       {{{detailsmorelecturer}}}
     </div>
     {{/detailsmorelecturer}}
+
     <!--{{#targetgroup}}
 		<div class="md-targetgroup">
       <h2>{{{h_target_group}}}</h2>
@@ -238,6 +251,26 @@
       {{{certificate}}}
     </div>
     {{/certificate}}
+
+
+    {{#allsponsors_notempty}}
+      
+          <div class="md-sponsors">
+          <h2>Förderung</h2>
+          <div class="sponsor_container">
+          {{#allsponsors}}
+            
+              <div class="sponsor_imgcontainer {{classspons}}">
+                <a href="{{{divspons}}}"><img src="{{imgspons}}"/></a>
+              </div>
+            
+          {{/allsponsors}}
+          </div>
+          </div>
+        
+
+    {{/allsponsors_notempty}}
+
     {{#license}}
 		<div class="md-license">
       <h2>{{{licensetitle}}}</h2>
@@ -249,20 +282,6 @@
 
 
 
-    {{#allsponsors_notempty}}
-      
-          <div class="md-sponsors">
-          {{#allsponsors}}
-            <div class="sponsor_container">
-              <div class="sponsor_imgcontainer {{classspons}}">
-                <a href="{{{divspons}}}"><img src="{{imgspons}}"/></a>
-              </div>
-            </div>
-          {{/allsponsors}}
-          </div>
-        
-
-    {{/allsponsors_notempty}}
 
 
 
