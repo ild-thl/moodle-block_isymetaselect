@@ -263,7 +263,7 @@ if (isset($authors_array)) {
 /* Sponsors */
 
 $imgtblspons = 'ildmeta_sponsors';
-$image_count2 = $DB->count_records($imgtblspons);
+$image_count2 = $DB->count_records($imgtblspons) / 2;
 
 for ($i = 1; $i < $image_count2; $i++) {
 
@@ -299,29 +299,22 @@ if (isset($sponsor_array)) {
     
     // var_dump($sponsor_array);
     foreach ($sponsor_array as $sponsor => $data) {
-        $class = '';
+        $class2 = '';
+        $imgspons = '';
         //if empty or url broken
         if(empty($data[1]) || strpos($data[1], '/.')) {
-            $class = 'sponsor-noimg';
+            $class2 = 'sponsor-noimg';
+        } else {
+            $imgspons = $data[1];
         }
         // print_r($data[2]); die();
-        $allsponsors[] = array('classspons' => $class, 'imgspons' => $data[1], 'divspons' => $data[0]);
+        $allsponsors[] = array('classspons' => $class2, 'imgspons' => $imgspons, 'divspons' => $data[0]);
 
 
     }
 }
 
 // print_r($allsponsors); die();
-
-
-
-
-
-
-
-
-
-
 
 /*
  * START is_enrolled verification
