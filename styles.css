@@ -65,7 +65,7 @@
     }
 }
 
-.metatileicon {
+/* .metatileicon {
     padding-left: 25px
 }
 
@@ -77,10 +77,10 @@
     background-repeat: no-repeat;
     left: 0;
     background-size: 79%;
-    background-position-y: 1px
+    background-position-y: 1px */
 }
 
-.iconlecturer:before {
+/* .iconlecturer:before {
     background-image: url([[pix:block_ildmetaselect|gly-4-user]])
 }
 
@@ -102,7 +102,7 @@
 
 .iconstarttime:before {
     background-image: url([[pix:block_ildmetaselect|gly-592-person-running]])
-}
+} */
 
 .block_ildmetaselect .action-menu {
     position: absolute;
@@ -660,11 +660,6 @@ div.metatile-img div.icon-coming-soon {
     color: #fff
 }
 
-.metatile:hover .imgmetatile-img {
-    transform: skew(3deg,0deg) scale(1.02);
-    box-shadow: 0 2px 4px rgba(0,0,0,.08)
-}
-
 .metaedit {
     position: relative
 }
@@ -690,12 +685,13 @@ div.metatile-img div.icon-coming-soon {
 }
 
 .metadetail-header h2 {
-    color: #2c2b43
+    color: #2c2b43;
+    font-weight: 400;
 }
 
 .metadetail-header {
     background: #fff;
-    color: #2c2b43;
+    color: #4e4e4e;
     border-bottom: 10px solid #102d5d
 }
 

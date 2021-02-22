@@ -77,6 +77,12 @@
                                                                                                                                     
   }}
 
+
+
+		
+
+
+
   <div class="metadetail-container">
 	<div class="metadetail-header">
 		<div class="metadetail-header-image metatile-img" style="background-image:url('{{fileurl}}');">
@@ -89,27 +95,27 @@
 			<table>
       
         <tr>
-					<td>Zielgruppe:</td> <!-- jetzt: Zielgruppe -->
+					<td><i class="icon fa fa-bullseye fa-fw"></i>Zielgruppe:</td> <!-- jetzt: Zielgruppe -->
 					<td>Studierende</td>
 				</tr>
 
         <tr>
-					<td>Programm:</td>
+					<td><i class="icon fa fa-list-alt fa-fw"></i>Programm:</td>
 					<td>{{{uni}}}</td>
 				</tr>
 
 				<tr>
-					<td>{{{lecturer_type}}}:</td> <!-- alt: {{{lecturer_detail}}}-->
+					<td><i class="icon fa fa-user-circle fa-fw"></i>{{{lecturer_type}}}:</td> <!-- alt: {{{lecturer_detail}}}-->
 					<td>{{{lecturer}}}</td>
 				</tr>
 				
         <tr>
-          <td>{{{avgworkload_detail}}}:</td>
+          <td><i class="icon fa fa-tasks fa-fw"></i>{{{avgworkload_detail}}}:</td>
 					<td>≈ {{processingtime}} {{{hours}}}</td>
         </tr>
 
         <tr>
-          <td>{{{starttime_detail}}}:</td>
+          <td><i class="icon fa fa-calendar-check-o fa-fw"></i>{{{starttime_detail}}}:</td>
 					<td>{{starttime}}</td>
           {{^started}}
           <td class="hide-small"><strong class="free">{{{free}}}</strong></td>
@@ -117,7 +123,7 @@
         </tr>
 
 				<tr>
-					<td>{{{subjectarea_detail}}}:</td> <!-- jetzt: Format -->
+					<td><i class="icon fa fa-cubes fa-fw"></i>{{{subjectarea_detail}}}:</td> <!-- jetzt: Format -->
 					<td>{{subject}}</td>
           <!--{{#started}}<td class="hide-small"><strong class="free">{{{free}}}</strong></td>{{/started}}-->
                     <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
