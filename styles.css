@@ -865,3 +865,7 @@ div.metatile-img div.icon-coming-soon {
     border: 0;
     border-bottom-right-radius: 0;
 }
+
+.md-sponsors {
+	flex: 100%;
+}
