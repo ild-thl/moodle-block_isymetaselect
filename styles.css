@@ -1,7 +1,7 @@
 .metatile-container {
 	display: block;
 	margin: 0 auto;
-	max-width: 900px
+	max-width: 1200px
 }
 
 .metatile {
@@ -45,7 +45,7 @@
 }
 
 .metatile-content {
-    padding: 10px 10px 10px 20px;
+    padding:  1rem .5rem .5rem .5rem;;
     background: #fff;
     display: grid;
     min-height: 200px
@@ -61,14 +61,15 @@
     background-size: cover;
     margin: 0 auto;
     border: 2px solid #fff;
+    border-bottom: 0;
     clear: left
 }
 
-@media (min-width:700px) {
+/* @media (min-width:700px) {
     .metatile-img {
         float: left
     }
-}
+} */
 
 /* .metatileicon {
     padding-left: 25px
@@ -380,7 +381,7 @@
 }
 
 .block_ildmetaselect {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto
 }
 
@@ -691,7 +692,7 @@ div.metatile-img div.icon-coming-soon {
 
 .metatile {
     font-size: 14px;
-    border-right: 10px solid #102d5d
+    border: 1px solid #102d5d21;
 }
 
 .metadetail-header h2 {
@@ -860,12 +861,34 @@ div.metatile-img div.icon-coming-soon {
 }
 
 .metatile-img {
-    border-top-right-radius: 5%;
     box-shadow: 10px 10px 0px #102d5d1a;
-    border: 0;
-    border-bottom-right-radius: 0;
+    margin-top: .5rem;
 }
 
 .md-sponsors {
 	flex: 100%;
+}
+
+.metatile-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1rem;
+}
+
+@media(max-width: 1300px) {
+    .metatile-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media(max-width: 960px) {
+    .metatile-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width: 740px) {
+    .metatile-grid {
+        grid-template-columns: 1fr;
+    }
 }

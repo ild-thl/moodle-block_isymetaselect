@@ -19,7 +19,7 @@ function get_metacourses($coursestodisplay, $context)
 
     $string = '';
 
-    $string .= '<div class="metatile-container">';
+    $string .= '<div class="metatile-container"><div class="metatile-grid">';
 
     $fs = get_file_storage();
 
@@ -128,7 +128,7 @@ function get_metacourses($coursestodisplay, $context)
     } else {
         $string .= '<span class="nocoursefound">' . get_string('noresultsfound', 'block_ildmetaselect') . '</span>';
     }
-    $string .= '</div>';
+    $string .= '</div></div>';
 
     return $string;
 }
