@@ -2,7 +2,7 @@
 
 ## 2021-03-21/dn
 ### Added
-- Grid
+- Grid layout
   
 ## 2021-02-03/dn
 ### Added

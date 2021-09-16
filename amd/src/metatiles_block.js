@@ -15,24 +15,24 @@
     var run = false;
 
     function set_filter(response){
-        var university_list = JSON.parse(response.university);
-        var subjectarea_list = JSON.parse(response.subjectarea);
+        var meta2_list = JSON.parse(response.meta2);
+        var meta6_list = JSON.parse(response.meta6);
         var courselanguage_list = JSON.parse(response.courselanguage);
-        var processingtime_list = JSON.parse(response.processingtime);
-        var starttime_list = JSON.parse(response.starttime);
+        var meta4_list = JSON.parse(response.meta4);
+        var meta5_list = JSON.parse(response.meta5);
 
-        var subjectarea = $('select[name=subjectarea]');
-        var university = $('select[name=university]');
+        var meta6 = $('select[name=meta6]');
+        var meta2 = $('select[name=meta2]');
         var courselanguage = $('select[name=courselanguage]');
-        var processingtime = $('select[name=processingtime]');
-        var starttime = $('select[name=starttime]');
+        var meta4 = $('select[name=meta4]');
+        var meta5 = $('select[name=meta5]');
 
-        //console.log(response.university);
+        //console.log(response.meta2);
 
-        recreate_select(university , university_list, university.find('option:selected').text());
-        recreate_select(subjectarea , subjectarea_list, subjectarea.find('option:selected').text());
-        recreate_select(processingtime , processingtime_list, processingtime.find('option:selected').text());
-        recreate_select(starttime , starttime_list, starttime.find('option:selected').text());
+        recreate_select(meta2 , meta2_list, meta2.find('option:selected').text());
+        recreate_select(meta6 , meta6_list, meta6.find('option:selected').text());
+        recreate_select(meta4 , meta4_list, meta4.find('option:selected').text());
+        recreate_select(meta5 , meta5_list, meta5.find('option:selected').text());
         recreate_select(courselanguage , courselanguage_list, courselanguage.find('option:selected').text());
 
         return;
@@ -59,36 +59,36 @@
     }
 
     function call_get_filter(){
-        var subjectarea = $('select[name=subjectarea]').val();
-        var university = $('select[name=university]').val();
+        var meta6 = $('select[name=meta6]').val();
+        var meta2 = $('select[name=meta2]').val();
         var courselanguage = $('select[name=courselanguage]').val();
-        var processingtime = $('select[name=processingtime]').val();
-        var starttime = $('select[name=starttime]').val();
+        var meta4 = $('select[name=meta4]').val();
+        var meta5 = $('select[name=meta5]').val();
 
-        if(subjectarea === null){
-            subjectarea = 0;
+        if(meta6 === null){
+            meta6 = 0;
         }
-        if(university === null){
-            university = 0;
+        if(meta2 === null){
+            meta2 = 0;
         }
         if(courselanguage === null){
             courselanguage = 0;
         }
-        if(processingtime === null){
-            processingtime = "-";
+        if(meta4 === null){
+            meta4 = "-";
         }
-        if(starttime === null){
-            starttime = "-";
+        if(meta5 === null){
+            meta5 = "-";
         }
 
         var promises = ajax.call([
             { methodname: 'blocks_metatiles_getfilter',
             args: {
-                subjectarea: subjectarea,
-                university: university,
+                meta6: meta6,
+                meta2: meta2,
                 courselanguage: courselanguage,
-                processingtime: processingtime,
-                starttime: starttime
+                meta4: meta4,
+                meta5: meta5
                 }
             }
         ]);
@@ -105,19 +105,19 @@
             }
             run = true;
 
-            $('select[name=subjectarea]').change(function(){
+            $('select[name=meta6]').change(function(){
                 call_get_filter();
             });
-            $('select[name=university]').change(function(){
+            $('select[name=meta2]').change(function(){
                 call_get_filter();
             });
             $('select[name=courselanguage]').change(function(){
                 call_get_filter();
             });
-            $('select[name=processingtime]').change(function(){
+            $('select[name=meta4]').change(function(){
                 call_get_filter();
             });
-            $('select[name=starttime]').change(function(){
+            $('select[name=meta5]').change(function(){
                 call_get_filter();
             });
         }

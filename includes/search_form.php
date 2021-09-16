@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package		block_ildmetaselect
+ * @package		block_isymetaselect
  * @author		Dustin Neß <dustin.ness@th-luebeck.de>
  * @license		http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -21,7 +21,7 @@ class search_form extends moodleform {
 		$sform->addElement('text', 'search', 'Suche');
 		$sform->setType('search', PARAM_RAW);
 
-		$sform->addElement('submit', 'submitbutton', get_string('search'));
+		$sform->addElement('submit', 'submitbutton', get_string('button_search', 'block_isymetaselect'));
 	}
 
 }

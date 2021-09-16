@@ -1,0 +1,38 @@
+<div class="metatile">
+	{{#link_coursedetails}}
+	<a href="{{{url}}}">
+	{{/link_coursedetails}}
+		<div class="metatile-img" style="background-image:url({{{fileurl}}});"></div>
+		<div class="metatile-content">
+			<h2>{{{coursetitle}}}</h2>
+			<table class="metatile-table">
+				<tr>
+					<td><i class="icon fa fa-bullseye fa-fw"></i>{{meta1_name}}:</td> <!-- Zielgruppe -->
+					<td>Studierende</td><!-- vorher: {{{uni}}} -->
+				</tr>
+				<tr>
+					<td><i class="icon fa fa-list-alt fa-fw"></i>{{meta2_name}}:</td> <!-- Thema -->
+					<td>{{{uni}}}</td>
+				</tr>
+				<tr>
+					<td><i class="icon fa fa-user-circle fa-fw"></i>{{meta3_name}}:</td> <!-- Dozent/in -->
+					<td>{{{meta3}}}</td>
+				</tr>
+				<tr>
+					<td><i class="icon fa fa-tasks fa-fw"></i>{{meta4_name}}:</td> <!-- Durchschn. Arbeitsaufwand -->
+					<td>≈ {{{meta4}}} {{{hours}}}</td>
+				</tr>
+				<tr>
+					<td><i class="icon fa fa-calendar-check-o fa-fw"></i>{{meta5_name}}:</td> <!-- Kursbeginn -->
+					<td>{{{meta5}}}</td>
+				</tr>
+				<tr>
+					<td><i class="icon fa fa-cubes fa-fw"></i>{{{meta6_name}}}:</td> <!-- Format -->
+					<td>{{{subject}}}</td>
+				</tr>
+			</table>
+		</div>
+	{{#link_coursedetails}}
+	</a>
+	{{/link_coursedetails}}
+</div>

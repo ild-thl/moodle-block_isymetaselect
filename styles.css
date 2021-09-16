@@ -87,49 +87,49 @@
 /* } */
 
 /* .iconlecturer:before {
-    background-image: url([[pix:block_ildmetaselect|gly-4-user]])
+    background-image: url([[pix:block_isymetaselect|gly-4-user]])
 }
 
 .iconuni:before {
-    background-image: url([[pix:block_ildmetaselect|gly-90-building]])
+    background-image: url([[pix:block_isymetaselect|gly-90-building]])
 }
 
 .iconcourselanguage:before {
-    background-image: url([[pix:block_ildmetaselect|gly-245-conversation]])
+    background-image: url([[pix:block_isymetaselect|gly-245-conversation]])
 }
 
 .iconsubject:before {
-    background-image: url([[pix:block_ildmetaselect|gly-508-cluster]])
+    background-image: url([[pix:block_isymetaselect|gly-508-cluster]])
 }
 
-.iconprocessingtime:before {
-    background-image: url([[pix:block_ildmetaselect|gly-55-clock]])
+.iconmeta4:before {
+    background-image: url([[pix:block_isymetaselect|gly-55-clock]])
 }
 
-.iconstarttime:before {
-    background-image: url([[pix:block_ildmetaselect|gly-592-person-running]])
+.iconmeta5:before {
+    background-image: url([[pix:block_isymetaselect|gly-592-person-running]])
 } */
 
-.block_ildmetaselect .action-menu {
+.block_isymetaselect .action-menu {
     position: absolute;
     top: 10px;
     right: 10px
 }
 
-#page-blocks-ildmetaselect-detailpage #page-wrapper #page,.block_ildmetaselect,.metatileicon {
+#page-blocks-isymetaselect-pagecoursedetails #page-wrapper #page,.block_isymetaselect,.metatileicon {
     position: relative
 }
 
-.block_ildmetaselect .card-body {
+.block_isymetaselect .card-body {
     padding: 0
 }
 
-.block_ildmetaselect .card-title {
+.block_isymetaselect .card-title {
     padding: 1.25rem;
     margin-bottom: 0
 }
 
-.block_ildmetaselect .card-text {
+.block_isymetaselect .card-text {
     margin-top: 0!important
 }
 
@@ -326,27 +326,27 @@
 }
 
 .meta-share-facebook a:before {
-    background-image: url([[pix:block_ildmetaselect|glyphicons-social-31-facebook]])
+    background-image: url([[pix:block_isymetaselect|glyphicons-social-31-facebook]])
 }
 
 .meta-share-twitter a:before {
-    background-image: url([[pix:block_ildmetaselect|glyphicons-social-32-twitter]])
+    background-image: url([[pix:block_isymetaselect|glyphicons-social-32-twitter]])
 }
 
 .meta-share-whatsapp a:before {
-    background-image: url([[pix:block_ildmetaselect|glyphicons-social-62-whatsapp]])
+    background-image: url([[pix:block_isymetaselect|glyphicons-social-62-whatsapp]])
 }
 
 .meta-share-linkedin a:before {
-    background-image: url([[pix:block_ildmetaselect|glyphicons-social-18-linked-in]])
+    background-image: url([[pix:block_isymetaselect|glyphicons-social-18-linked-in]])
 }
 
 .meta-share-xing a:before {
-    background-image: url([[pix:block_ildmetaselect|glyphicons-social-13-xing]])
+    background-image: url([[pix:block_isymetaselect|glyphicons-social-13-xing]])
 }
 
 .meta-share-mail a:before {
-    background-image: url([[pix:block_ildmetaselect|glyphicons-social-14-e-mail-envelope]])
+    background-image: url([[pix:block_isymetaselect|glyphicons-social-14-e-mail-envelope]])
 }
 
 @media (min-width:700px) {
@@ -380,29 +380,29 @@
     }
 }
 
-.block_ildmetaselect {
+.block_isymetaselect {
     max-width: 1200px;
     margin: 0 auto
 }
 
-.block_ildmetaselect .fitemtitle,.block_ildmetaselect .mform .fitem .col-md-3 {
+.block_isymetaselect .fitemtitle,.block_isymetaselect .mform .fitem .col-md-3 {
     display: none!important
 }
 
-.block_ildmetaselect .fselect {
+.block_isymetaselect .fselect {
     margin-left: 0!important
 }
 
-.block_ildmetaselect select {
+.block_isymetaselect select {
     width: 100%!important;
     margin-left: 0!important
 }
 
-.block_ildmetaselect fieldset>div {
+.block_isymetaselect fieldset>div {
     display: flex
 }
 
-.block_ildmetaselect .fitem {
+.block_isymetaselect .fitem {
     flex: calc(100%/3)!important
 }
 
@@ -425,16 +425,16 @@
     background-size: cover
 }
 
-.block_ildmetaselect {
+.block_isymetaselect {
     margin-top: 20px!important
 }
 
 @media (max-width:700px) {
-    .block_ildmetaselect .fitem_fselect {
+    .block_isymetaselect .fitem_fselect {
         flex: 100%!important
     }
 
-    .block_ildmetaselect fieldset>div {
+    .block_isymetaselect fieldset>div {
         display: block;
         padding: 10px
     }
@@ -446,16 +446,16 @@
 }
 
 @media (min-width:700px) {
-    .block_ildmetaselect .fitem {
+    .block_isymetaselect .fitem {
         margin-right: 10px
     }
 
-    .block_ildmetaselect .fitem:last-child {
+    .block_isymetaselect .fitem:last-child {
         margin-right: 0
     }
 }
 
-.block_ildmetaselect #fitem_id_submitbutton {
+.block_isymetaselect #fitem_id_submitbutton {
     background-color: transparent;
     padding: 0;
     border: 0;
@@ -463,52 +463,52 @@
     flex: 0!important
 }
 
-.block_ildmetaselect .fbutton,.block_ildmetaselect .fsubmit {
+.block_isymetaselect .fbutton,.block_isymetaselect .fsubmit {
     margin-left: 0!important
 }
 
-.block_ildmetaselect .ftext {
+.block_isymetaselect .ftext {
     margin: 0!important;
     flex: 0!important
 }
 
-.block_ildmetaselect #id_search {
+.block_isymetaselect #id_search {
     padding-bottom: 7px;
     padding-top: 7px
 }
 
-.block_ildmetaselect #fitem_id_search {
+.block_isymetaselect #fitem_id_search {
     margin: 0;
     flex: 0!important
 }
 
-.block_ildmetaselect .id_submitbutton {
+.block_isymetaselect .id_submitbutton {
     margin-bottom: 0
 }
 
-.block_ildmetaselect #mform1 fieldset>div {
+.block_isymetaselect #mform1 fieldset>div {
     float: right;
     clear: both
 }
 
 @media (max-width:700px) {
-    .block_ildmetaselect #mform1 fieldset>div {
+    .block_isymetaselect #mform1 fieldset>div {
         float: none
     }
 
-    .block_ildmetaselect #fitem_id_search {
+    .block_isymetaselect #fitem_id_search {
         width: calc(100% - 15px)
     }
 
-    .block_ildmetaselect #id_search {
+    .block_isymetaselect #id_search {
         width: 100%
     }
 
-    .block_ildmetaselect .fsubmit {
+    .block_isymetaselect .fsubmit {
         padding: 0!important
     }
 
-    .block_ildmetaselect #id_submitbutton {
+    .block_isymetaselect #id_submitbutton {
         width: 100%;
         margin: 0!important
     }
@@ -559,7 +559,7 @@
 }
 
 @media (max-width:930px) {
-    .block_ildmetaselect {
+    .block_isymetaselect {
         margin: 0 10px
     }
 
@@ -589,11 +589,11 @@ div.metatile-img div.icon-coming-soon {
     z-index: 10;
     left: -57px;
     top: -10px;
-    background: url([[pix:block_ildmetaselect|coming_soon]]);
+    background: url([[pix:block_isymetaselect|coming_soon]]);
     background-size: cover
 }
 
-#page-block-ildmetaselect-detailpage div.metatile-img div.icon-coming-soon {
+#page-block-isymetaselect-pagecoursedetails div.metatile-img div.icon-coming-soon {
     left: -50px;
     top: -40px
 }
@@ -605,17 +605,17 @@ div.metatile-img div.icon-coming-soon {
     }
 }
 
-.block_ildmetaselect.card {
+.block_isymetaselect.card {
     border: 0;
     margin-top: 0!important
 }
 
-.block_ildmetaselect .card-title {
+.block_isymetaselect .card-title {
     font-size: 30px;
     padding: 0 0 10px
 }
 
-.block_ildmetaselect .mform {
+.block_isymetaselect .mform {
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
@@ -624,11 +624,11 @@ div.metatile-img div.icon-coming-soon {
     justify-content: flex-end
 }
 
-.block_ildmetaselect .mform .form-group {
+.block_isymetaselect .mform .form-group {
     margin: 0!important
 }
 
-.block_ildmetaselect .mform .col-md-9 {
+.block_isymetaselect .mform .col-md-9 {
     display: block;
     flex: unset;
     max-width: 100%;
@@ -636,33 +636,33 @@ div.metatile-img div.icon-coming-soon {
     width: auto
 }
 
-.block_ildmetaselect .mform #fitem_id_search .col-md-9 {
+.block_isymetaselect .mform #fitem_id_search .col-md-9 {
     width: auto
 }
 
-.block_ildmetaselect .mform #fitem_id_search {
+.block_isymetaselect .mform #fitem_id_search {
     flex: 0!important
 }
 
-.block_ildmetaselect #id_search {
+.block_isymetaselect #id_search {
     width: 250px
 }
 
 @media (max-width:767px) {
-    .block_ildmetaselect .mform {
+    .block_isymetaselect .mform {
         flex-wrap: wrap
     }
 }
 
-#page-blocks-ildmetaselect-detailpage #page-wrapper {
+#page-blocks-isymetaselect-pagecoursedetails #page-wrapper {
     height: auto
 }
 
-#page-blocks-ildmetaselect-detailpage .page-header-headings,.emptyteaser {
+#page-blocks-isymetaselect-pagecoursedetails .page-header-headings,.emptyteaser {
     display: none
 }
 
-#page-blocks-ildmetaselect-detailpage #region-main {
+#page-blocks-isymetaselect-pagecoursedetails #region-main {
     max-width: 1200px;
     margin: 0 auto 20px
 }
@@ -686,7 +686,7 @@ div.metatile-img div.icon-coming-soon {
     color: #d4004b
 }
 
-.block_ildmetaselect .card-title {
+.block_isymetaselect .card-title {
     display: none!important
 }
 
@@ -715,7 +715,7 @@ div.metatile-img div.icon-coming-soon {
     display: none
 }
 
-#fitem_id_subjectarea .felement {
+#fitem_id_meta6 .felement {
     padding-left: 0
 }
 
@@ -723,7 +723,7 @@ div.metatile-img div.icon-coming-soon {
     width: 100%!important
 }
 
-.block_ildmetaselect input,.block_ildmetaselect select {
+.block_isymetaselect input,.block_isymetaselect select {
     font-size: 14px
 }
 
@@ -739,12 +739,12 @@ div.metatile-img div.icon-coming-soon {
     top: 3px
 }
 
-#fitem_id_university .felement {
+#fitem_id_meta2 .felement {
     padding-right: 5px;
     padding-left: 0
 }
 
-.block_ildmetaselect .fitem {
+.block_isymetaselect .fitem {
     flex: inherit!important
 }
 
@@ -753,26 +753,26 @@ div.metatile-img div.icon-coming-soon {
 }
  
 @media (max-width:576px) {
-    .block_ildmetaselect select {
+    .block_isymetaselect select {
         width: 100%!important;
         margin-left: 0!important
     }
 
-    .block_ildmetaselect #fitem_id_submitbutton,.block_ildmetaselect .fitem,.block_ildmetaselect .mform #fitem_id_search {
+    .block_isymetaselect #fitem_id_submitbutton,.block_isymetaselect .fitem,.block_isymetaselect .mform #fitem_id_search {
         flex: 100%!important
     }
 
-    .block_ildmetaselect .felement {
+    .block_isymetaselect .felement {
         width: 100%!important;
         padding: 0 0 5px!important
     }
 
-    .block_ildmetaselect [type=submit] {
+    .block_isymetaselect [type=submit] {
         width: 100%;
         flex: none!important
     }
 
-    .block_ildmetaselect #id_search {
+    .block_isymetaselect #id_search {
         width: 100%
     }
 
@@ -789,11 +789,11 @@ div.metatile-img div.icon-coming-soon {
     }
 }
 
-.block_ildmetaselect .content {
+.block_isymetaselect .content {
     width: inherit
 }
 
-#block-region-side-post .block.block_ildmetaselect .content {
+#block-region-side-post .block.block_isymetaselect .content {
     padding-bottom: 40px
 }
 
@@ -861,7 +861,7 @@ div.metatile-img div.icon-coming-soon {
 }
 
 .metatile-img {
-    box-shadow: 10px 10px 0px #102d5d1a;
+    /* box-shadow: 10px 10px 0px #102d5d1a; */
     margin-top: .5rem;
 }
 
@@ -891,4 +891,9 @@ div.metatile-img div.icon-coming-soon {
     .metatile-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* temporary */
+.block_isymetaselect form[id*='mform2'] {
+    display: none;
 }
