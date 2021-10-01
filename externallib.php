@@ -15,15 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* @package    isymetaselect
+* @package    ildmetaselect
 * @author     Markus Strehling <markus.strehling@oncampus.de>
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
 
 require_once($CFG->libdir . "/externallib.php");
-require_once($CFG->dirroot . '/blocks/isymetaselect/locallib.php');
+require_once($CFG->dirroot . '/blocks/ildmetaselect/locallib.php');
 
-class blocks_isymetaselect_external extends external_api {
+class blocks_ildmetaselect_external extends external_api {
 
     /**
      * Returns description of method parameters
@@ -32,46 +32,45 @@ class blocks_isymetaselect_external extends external_api {
     public static function get_filter_parameters(){
         return new external_function_parameters(
             array(
-                'meta6' => new external_value(PARAM_INT, 'rating value'),
-                'meta2' => new external_value(PARAM_INT, 'rating value'),
+                'subjectarea' => new external_value(PARAM_INT, 'rating value'),
+                'university' => new external_value(PARAM_INT, 'rating value'),
                 'courselanguage' => new external_value(PARAM_INT, 'rating value'),
-                'meta4' => new external_value(PARAM_TEXT, 'rating value'),
-                'meta5' => new external_value(PARAM_TEXT, 'rating value'),
+                'processingtime' => new external_value(PARAM_TEXT, 'rating value'),
+                'starttime' => new external_value(PARAM_TEXT, 'rating value'),
             )
         );
     }
 
-    public static function get_filter($meta6, $meta2, $courselanguage, $meta4, $meta5) {
+    public static function get_filter($subjectarea, $university, $courselanguage, $processingtime, $starttime){
 
         global $DB, $CFG;
 
-        $params = self::validate_parameters(
-            self::get_filter_parameters(), 
-            [
-                'meta6' => $meta6,
-                'meta2' => $meta2,
+        $params = self::validate_parameters(self::get_filter_parameters(), 
+            array(
+                'subjectarea' => $subjectarea,
+                'university' => $university,
                 'courselanguage' => $courselanguage,
-                'meta4' => $meta4,
-                'meta5' => $meta5,
-            ]
+                'processingtime' => $processingtime,
+                'starttime' => $starttime,
+            )
         );
 
         $data = new stdClass();
-        $data->meta6 = $meta6;
-        $data->meta2 = $meta2;
+        $data->subjectarea = $subjectarea;
+        $data->university = $university;
         $data->courselanguage = $courselanguage;
-        $data->meta4 = $meta4;
-        $data->meta5 = $meta5;
+        $data->processingtime = $processingtime;
+        $data->starttime = $starttime;
 
         $return = array();
         
         $records = get_courses_records($data);
 
-        $return['meta6'] = json_encode(get_filtered_meta6_list($records));
-        $return['meta2'] = json_encode(get_filtered_meta2_list($records));
+        $return['subjectarea'] = json_encode(get_filtered_subjectarea_list($records));
+        $return['university'] = json_encode(get_filtered_university_list($records));
         $return['courselanguage'] = json_encode(get_filtered_lang_list($records));
-        $return['meta4'] = json_encode(get_filtered_meta4_list($records));
-        $return['meta5'] = json_encode(get_filtered_meta5_list($records));
+        $return['processingtime'] = json_encode(get_filtered_processingtime_list($records));
+        $return['starttime'] = json_encode(get_filtered_starttime_list($records));
         $return['debug'] = json_encode($data);
 
         return $return;
@@ -84,11 +83,11 @@ class blocks_isymetaselect_external extends external_api {
     public static function get_filter_returns(){
         return new external_function_parameters(
             array(
-                'meta6' => new external_value(PARAM_TEXT, 'rating value'),
-                'meta2' => new external_value(PARAM_TEXT, 'rating value'),
+                'subjectarea' => new external_value(PARAM_TEXT, 'rating value'),
+                'university' => new external_value(PARAM_TEXT, 'rating value'),
                 'courselanguage' => new external_value(PARAM_TEXT, 'rating value'),
-                'meta4' => new external_value(PARAM_TEXT, 'rating value'),
-                'meta5' => new external_value(PARAM_TEXT, 'rating value'),
+                'processingtime' => new external_value(PARAM_TEXT, 'rating value'),
+                'starttime' => new external_value(PARAM_TEXT, 'rating value'),
                 'debug' => new external_value(PARAM_RAW, 'rating value'),
             )
         );

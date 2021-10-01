@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package        block_isymetaselect
+ * @package        block_ildmetaselect
  * @author         Dustin Neß <dustin.ness@th-luebeck.de>
  * @author         Markus Strehling (modified) <markus.strehling@oncampus.de>
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -10,14 +10,12 @@
 require_once('../../config.php');
 require_once('lib.php');
 
-$comp = 'block_isymetaselect';
-
-$tbl = 'isymeta';
+$tbl = 'ildmeta';
 $courseid = required_param('id', PARAM_INT);
 $getdb = $DB->get_record($tbl, array('courseid' => $courseid));
 
-$url = new moodle_url('/blocks/isymetaselect/detailpage.php?id='.$courseid);
-$url_edit = new moodle_url('/local/isymeta/pages/isymeta.php?courseid='.$courseid);
+$url = new moodle_url('/blocks/ildmetaselect/detailpage.php?id='.$courseid);
+$url_edit = new moodle_url('/local/ildmeta/pages/ildmeta.php?courseid='.$courseid);
 
 $context = context_system::instance();
 
@@ -27,57 +25,36 @@ $PAGE->set_url($url);
 $PAGE->set_title($getdb->coursetitle);
 $PAGE->set_heading($getdb->coursetitle);
 
-$meta2s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_targetgroups'));
-$meta2s_en = $DB->get_record('user_info_field', array('shortname' => 'isymeta_en_targetgroups'));
-$meta6s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_formats'));
-$meta6s_en = $DB->get_record('user_info_field', array('shortname' => 'isymeta_en_formats'));
+$universities = $DB->get_record('user_info_field', array('shortname' => 'targetgroups')); // vorher: universities
+$subjectareas = $DB->get_record('user_info_field', array('shortname' => 'formats')); // vorher: subjectareas
 
-// $fileurl = '';
 switch(current_language()){
     case 'de':
-        $meta2vals = explode("\n", $meta2s->param1);
-        $meta6val = explode("\n", $meta6s->param1)[$getdb->meta6];
+        $unis = explode("\n", $universities->param1);
+        $subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
         break;
     case 'en':
-        $meta2vals = explode("\n", $meta2s_en->param1);
-        $meta6val = explode("\n", $meta6s_en->param1)[$getdb->meta6];
+        $unis = explode("\n", $universities->param2);
+        $subject = explode("\n", $subjectareas->param2)[$getdb->subjectarea];
         break;
     default:
-        $meta2vals = explode("\n", $meta2s->param1);
-        $meta6val = explode("\n", $meta6s->param1)[$getdb->meta6];
+        $unis = explode("\n", $universities->param1);
+        $subject = explode("\n", $subjectareas->param1)[$getdb->subjectarea];
         break;
 }
-$meta2val = "";
-foreach(explode(",", $getdb->meta2) as $meta2val_select){
-    $meta2val .= "<span>" . $meta2vals[$meta2val_select] . "</span>";
+$uni = "";
+foreach(explode(",", $getdb->university) as $uni_select){
+    $uni .= "<span>" . $unis[$uni_select] . "</span></br>";
 }
 
-
-// print_r($meta2val);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$meta5 = date('d.m.y', $getdb->meta5);
-$started = $getdb->meta5 < time();
+$starttime = date('d.m.y', $getdb->starttime);
+$started = $getdb->starttime < time();
 
 $fs = get_file_storage();
 $fileurl = '';
 $context = context_system::instance();
 $coursecontext = context_course::instance($courseid);
-$files = $fs->get_area_files($coursecontext->id, 'local_isymeta', 'overviewimage', 0);
+$files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
 
 foreach ($files as $file) {
 	if ($file->get_filename() !== '.') {
@@ -93,7 +70,7 @@ foreach ($files as $file) {
     }
 }
 
-$files = $fs->get_area_files($coursecontext->id, 'local_isymeta', 'detailimage', 0);
+$files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailimage', 0);
 foreach ($files as $file) {
 	if ($file->get_filename() !== '.') {
         $fileurl_di = moodle_url::make_pluginfile_url(
@@ -116,7 +93,7 @@ if ($getdb->videocode != null) {
 /* Regex stolen from https://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id */ 
 preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $getdb->videocode, $ytcode);
     $videocode = $getdb->videocode;
-    $video = '<nolink><iframe width="100%" height="315" src="https://www.youtube.com/embed/' . $videocode . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></nolink>';
+    $video = '<iframe width="100%" height="315" src="https://www.youtube.com/embed/' . $videocode . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 }
 
 
@@ -186,7 +163,7 @@ if ($getdb->tags != null) {
     }
 }
 
-$imgtbl = 'isymeta_additional';
+$imgtbl = 'ildmeta_additional';
 $image_count = $DB->count_records($imgtbl) / 3; // divide by 3 because 3 rows are generated per entry
 $db_metadd = $DB->get_records($imgtbl, ['courseid' => $courseid]);
 
@@ -217,7 +194,7 @@ for ($i = 1; $i <= $image_count; $i++) {
             $fileurl_lecturer = '';
             $lect_context = context_system::instance();
 			$coursecontext = context_course::instance($courseid);
-			$lecturer_files = $lect_fs->get_area_files($coursecontext->id, 'local_isymeta', 'detailslecturer_image_' . $i, 0);
+			$lecturer_files = $lect_fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailslecturer_image_' . $i, 0);
 
             foreach ($lecturer_files as $file) {
                 $fileurl_lecturer = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(), $file->get_itemid(), $file->get_filepath(), $file->get_filename());
@@ -237,7 +214,7 @@ for ($i = 1; $i <= $image_count; $i++) {
 $alllecturers = array();
 if (isset($lecturer_array)) {
    
-    foreach ($lecturer_array as $lecturer_array_item => $data) {
+    foreach ($lecturer_array as $lecturer => $data) {
         $class = '';
 
         //if empty or url broken
@@ -253,7 +230,6 @@ $allauthors = array();
 if (isset($authors_array)) {
     foreach ($authors_array as $author => $data) {
         $class = '';
-        
         //if empty or url broken
         if(empty($data[1]) || strpos($data[1], '/.') !== false) {
             $class = 'lecturer-noimg';
@@ -262,9 +238,12 @@ if (isset($authors_array)) {
     }
 }
 
+// print_r($allauthors);
+
+
 /* Sponsors */
 
-$imgtblspons = 'isymeta_sponsors';
+$imgtblspons = 'ildmeta_sponsors';
 $image_count2 = $DB->count_records($imgtblspons) / 2;
 
 for ($i = 1; $i <= $image_count2; $i++) {
@@ -285,7 +264,7 @@ for ($i = 1; $i <= $image_count2; $i++) {
             $fileurl_sponsor = '';
             $spons_context = context_system::instance();
 			$coursecontext = context_course::instance($courseid);
-			$sponsor_files = $spons_fs->get_area_files($coursecontext->id, 'local_isymeta', 'detailssponsor_image_' . $i, 0);
+			$sponsor_files = $spons_fs->get_area_files($coursecontext->id, 'local_ildmeta', 'detailssponsor_image_' . $i, 0);
 
             foreach ($sponsor_files as $file) {
                 $fileurl_sponsor = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(), $file->get_itemid(), $file->get_filepath(), $file->get_filename());
@@ -356,69 +335,56 @@ $render_data->license =  $license;
 $render_data->taglist = $taglist;
 $render_data->coursetitle = $getdb->coursetitle;
 if(isset($edit_string)) $render_data->edit_string = $edit_string;
-$render_data->meta3 = $getdb->meta3; // Dozent/in
-$render_data->uni = $meta2val;
+$render_data->lecturer = $getdb->lecturer;
+$render_data->uni = $uni;
 $render_data->language = $language;
-
-$render_data->subject = $meta6val;
-$render_data->meta4 = $getdb->meta4;
+$render_data->subject = $subject;
+$render_data->processingtime = $getdb->processingtime;
 $render_data->started = $started;
 $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
 if(isset($fileurl_di)) $render_data->altpic = $fileurl_di;
-
-$render_data->meta1_name = get_string('meta1_name', $comp);
-$render_data->meta2_name = get_string('meta2_name', $comp);
-$render_data->meta3_name = get_string('meta3_name', $comp);
-$render_data->meta4_name = get_string('meta4_name', $comp);
-$render_data->meta5_name = get_string('meta5_name', $comp);
-$render_data->meta6_name = get_string('meta6_name', $comp);
-
-
-// $render_data->lecturer_detail = get_string('lecturer_detail');
-// $render_data->meta2_detail = get_string('meta2_name');
-$render_data->courselanguage_detail = get_string('filter_courselanguage', $comp);
-// $render_data->meta6_detail = get_string('meta6_name');
-$render_data->avgworkload_detail = get_string('meta4_name', $comp);
-// $render_data->meta5_detail = get_string('meta5_name');
-$render_data->hours = get_string('hours', $comp);
-$render_data->free = get_string('free', $comp);
-$render_data->enrol = get_string('enrol', $comp);
-$render_data->tocourse = get_string('tocourse', $comp);
-$render_data->h_awaits = get_string('h_awaits', $comp);
-$render_data->h_learn = get_string('h_learn', $comp);
-$render_data->h_outline = get_string('h_outline', $comp);
-$render_data->h_further_auth = get_string('h_further_auth', $comp);
-$render_data->h_target_group = get_string('h_target_group', $comp);
-$render_data->h_confirmation = get_string('h_confirmation', $comp);
-$render_data->h_sponsors = get_string('h_sponsors', $comp);
-$render_data->licensetitle = get_string('h_license', $comp);
+$render_data->lecturer_detail = get_string('lecturer_detail', 'block_ildmetaselect');
+$render_data->university_detail = get_string('university_detail', 'block_ildmetaselect');
+$render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
+$render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
+$render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
+$render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
+$render_data->hours = get_string('hours', 'block_ildmetaselect');
+$render_data->free = get_string('free', 'block_ildmetaselect');
+$render_data->enrol = get_string('enrol', 'block_ildmetaselect');
+$render_data->tocourse = get_string('tocourse', 'block_ildmetaselect');
+$render_data->h_awaits = get_string('h_awaits', 'block_ildmetaselect');
+$render_data->h_learn = get_string('h_learn', 'block_ildmetaselect');
+$render_data->h_outline = get_string('h_outline', 'block_ildmetaselect');
+$render_data->h_further_auth = get_string('h_further_auth', 'block_ildmetaselect');
+$render_data->h_target_group = get_string('h_target_group', 'block_ildmetaselect');
+$render_data->h_confirmation = get_string('h_confirmation', 'block_ildmetaselect');
+$render_data->licensetitle = get_string('license', 'block_ildmetaselect');
 $render_data->emptyteaser = 'emptyteaser';
 $render_data->lecturer_type = 'Autor/in';
 $render_data->edit_string = '';
-$render_data->meta5 = (explode("\n", $meta6s->param1)[$getdb->meta6] == 'Betreuter Kurs') ? $meta5 : 'Flexibel';
+$render_data->starttime = (explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') ? $starttime : 'Flexibel';
 
 // Add edit cog if allowed
-if (has_capability('local/isymeta:allowaccess', $coursecontext)) {
+if (has_capability('local/ildmeta:allowaccess', $coursecontext)) {
     $render_data->edit_string = '<a href="' . $url_edit . '" class="metaedit"><i class="icon fa fa-cog fa-fw"></i></a>';
 }
 
-if(explode("\n", $meta6s->param1)[$getdb->meta6] == 'Betreuter Kurs') {
+if(explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') {
     $render_data->lecturer_type = 'Dozent/in';
-} else {
-    $render_data->lecturer_type = 'Dozent/inNONE';
 }
 
-// $render_data->meta5 = 'Flexibel';
+// $render_data->starttime = 'Flexibel';
 
-// if(explode("\n", $meta6s->param1)[$getdb->meta6] == 'Betreuter Kurs') {
-//     $render_data->meta5 = $meta5;
+// if(explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs') {
+//     $render_data->starttime = $starttime;
 // }
 
 
-// explode("\n", $meta6s->param1)[$getdb->meta6] == 'Betreuter Kurs' ? $render_data->meta5 = $meta5 : $render_data->meta5 = 'Flexibel';
+// explode("\n", $subjectareas->param1)[$getdb->subjectarea] == 'Betreuter Kurs' ? $render_data->starttime = $starttime : $render_data->starttime = 'Flexibel';
 
-$display = $OUTPUT->render_from_template("block_isymetaselect/detailpage", $render_data);
+$display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
 
 echo $display;
 
