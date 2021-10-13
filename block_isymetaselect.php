@@ -12,14 +12,20 @@ require_once 'locallib.php';
 require_once 'includes/filter_form.php';
 require_once 'includes/search_form.php';
 require_once 'includes/get_tiles.php';
+require_once 'classes/metastring.php';
 
 class block_isymetaselect extends block_base {
 
     public $searchresults;
 
     public function init() {
-        global $PAGE;
+        global $PAGE, $DB;
+        // echo "<br><br>";
+        // $metastring = new Metastring();
+
         
+        // echo $metastring->get(0);
+
         $this->title = get_string('pluginname', 'block_isymetaselect');
     }
 

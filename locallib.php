@@ -264,6 +264,7 @@ function get_filtered_meta6_list($records) {
     global $DB;
 
     $meta6s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_formats')); // vorher: meta6s
+
     $meta6_list =  explode("\n", $meta6s->param1);
 
     $filtered = array();

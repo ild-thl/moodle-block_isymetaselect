@@ -7,19 +7,24 @@
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once('../../config.php');
-require_once('lib.php');
+require_once '../../config.php';
+require_once 'lib.php';
+require_once 'classes/metastring.php';
 
 $comp = 'block_isymetaselect';
 
 $tbl = 'isymeta';
 $courseid = required_param('id', PARAM_INT);
-$getdb = $DB->get_record($tbl, array('courseid' => $courseid));
 
+$getdb = $DB->get_record($tbl, array('courseid' => $courseid));
 $url = new moodle_url('/blocks/isymetaselect/detailpage.php?id='.$courseid);
 $url_edit = new moodle_url('/local/isymeta/pages/isymeta.php?courseid='.$courseid);
 
 $context = context_system::instance();
+
+
+$metastring = new Metastring();
+echo '<br><br>' . $metastring->get(0);
 
 $PAGE->set_pagelayout('admin');
 $PAGE->set_context($context);

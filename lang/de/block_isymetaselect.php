@@ -1,5 +1,5 @@
 <?php
-$string['pluginname'] = 'iSy Meta';
+$string['pluginname'] = 'iSyMeta Select';
 $string['button_search'] = 'Filtern';
 $string['button_reset'] = 'Zurücksetzen';
 $string['hours'] = 'Stunden';
