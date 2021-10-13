@@ -18,6 +18,8 @@ function get_tiles($coursestodisplay, $context)
         get_string('filter_german', $comp),
         get_string('filter_english', $comp),
     ];
+//1PSfaPvSDA!
+    $metastring = new Metastring();
 
     $string = '';
     // $string .= $a[0];
@@ -98,30 +100,14 @@ function get_tiles($coursestodisplay, $context)
                 $render_data->meta4 = $data->meta4;
                 $render_data->link_coursedetails = $data->noindexcourse == 0;
                 
-
-
-
-
                 // Meta strings
-                $userfield_isymeta_de = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de'));
-
-                if(isset($userfield_isymeta_de)) {
-                    $userfield_metas = explode("\n", $userfield_isymeta_de->param1);
-                    
-                    $render_data->meta1_name = $userfield_metas[0];
-                    $render_data->meta2_name = $userfield_metas[1];
-                    $render_data->meta3_name = $userfield_metas[2];
-                    $render_data->meta4_name = $userfield_metas[3];
-                    $render_data->meta5_name = $userfield_metas[4];
-                    $render_data->meta6_name = $userfield_metas[5];
-                } else {
-                    $render_data->meta1_name = get_string('meta1_name', $comp); // target group
-                    $render_data->meta2_name = get_string('meta2_name', $comp); // program
-                    $render_data->meta3_name = get_string('meta3_name', $comp); // lecturer
-                    $render_data->meta4_name = get_string('meta4_name', $comp); // worktime
-                    $render_data->meta5_name = get_string('meta5_name', $comp); // course start
-                    $render_data->meta6_name = get_string('meta6_name', $comp); // format
-                }
+                $render_data->meta1_name = $metastring->get(0);
+                $render_data->meta2_name = $metastring->get(1);
+                $render_data->meta3_name = $metastring->get(2);
+                $render_data->meta4_name = $metastring->get(3);
+                $render_data->meta5_name = $metastring->get(4);
+                $render_data->meta6_name = $metastring->get(5);
+                
 
                 $render_data->courselanguage_detail = get_string('filter_courselanguage', $comp);
                 $render_data->hours = get_string('hours', $comp);

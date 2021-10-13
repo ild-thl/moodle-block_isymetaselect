@@ -22,9 +22,8 @@ $url_edit = new moodle_url('/local/isymeta/pages/isymeta.php?courseid='.$coursei
 
 $context = context_system::instance();
 
-
+// Admin setting meta strings
 $metastring = new Metastring();
-echo '<br><br>' . $metastring->get(0);
 
 $PAGE->set_pagelayout('admin');
 $PAGE->set_context($context);
@@ -37,7 +36,7 @@ $meta2s_en = $DB->get_record('user_info_field', array('shortname' => 'isymeta_en
 $meta6s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_formats'));
 $meta6s_en = $DB->get_record('user_info_field', array('shortname' => 'isymeta_en_formats'));
 
-// $fileurl = '';
+
 switch(current_language()){
     case 'de':
         $meta2vals = explode("\n", $meta2s->param1);
@@ -58,7 +57,7 @@ foreach(explode(",", $getdb->meta2) as $meta2val_select){
 }
 
 
-// print_r($meta2val);
+
 
 
 
@@ -372,12 +371,12 @@ $render_data->fileurl = $fileurl;
 $render_data->is_enrolled = $is_enrolled;
 if(isset($fileurl_di)) $render_data->altpic = $fileurl_di;
 
-$render_data->meta1_name = get_string('meta1_name', $comp);
-$render_data->meta2_name = get_string('meta2_name', $comp);
-$render_data->meta3_name = get_string('meta3_name', $comp);
-$render_data->meta4_name = get_string('meta4_name', $comp);
-$render_data->meta5_name = get_string('meta5_name', $comp);
-$render_data->meta6_name = get_string('meta6_name', $comp);
+$render_data->meta1_name = $metastring->get(0);
+$render_data->meta2_name = $metastring->get(1);
+$render_data->meta3_name = $metastring->get(2);
+$render_data->meta4_name = $metastring->get(3);
+$render_data->meta5_name = $metastring->get(4);
+$render_data->meta6_name = $metastring->get(5);
 
 
 // $render_data->lecturer_detail = get_string('lecturer_detail');

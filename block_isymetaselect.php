@@ -20,11 +20,9 @@ class block_isymetaselect extends block_base {
 
     public function init() {
         global $PAGE, $DB;
-        // echo "<br><br>";
-        // $metastring = new Metastring();
 
-        
-        // echo $metastring->get(0);
+        $metastring = new Metastring();
+
 
         $this->title = get_string('pluginname', 'block_isymetaselect');
     }

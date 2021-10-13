@@ -19,14 +19,14 @@ class Metastring {
     }
 
     // returns string based on prefered user language and given array position
-    public function get($string) {
+    public function get($arr_pos) {
         global $USER;
         
         if($USER->lang == 'de' || $USER->lang == 'de_du') {
-            return $this->meta_de[$string];
+            return $this->meta_de[$arr_pos];
 
         } else {
-            return $this->meta_en[$string];
+            return $this->meta_en[$arr_pos];
         }
     }
 }
