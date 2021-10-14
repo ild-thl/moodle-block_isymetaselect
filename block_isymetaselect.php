@@ -13,6 +13,7 @@ require_once 'includes/filter_form.php';
 require_once 'includes/search_form.php';
 require_once 'includes/get_tiles.php';
 require_once 'classes/metastring.php';
+require_once 'classes/metaselection.php';
 
 class block_isymetaselect extends block_base {
 
@@ -23,6 +24,11 @@ class block_isymetaselect extends block_base {
 
         $metastring = new Metastring();
 
+
+        echo '<br><br>';
+        $metaselection = new Metaselection('meta1');
+
+        // echo $metaselection;
 
         $this->title = get_string('pluginname', 'block_isymetaselect');
     }

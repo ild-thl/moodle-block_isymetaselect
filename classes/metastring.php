@@ -21,10 +21,11 @@ class Metastring {
     // returns string based on prefered user language and given array position
     public function get($arr_pos) {
         global $USER;
-        
+
+        if(!isset($USER->lang)) return $this->meta_de[$arr_pos]; // default language for guests
+
         if($USER->lang == 'de' || $USER->lang == 'de_du') {
             return $this->meta_de[$arr_pos];
-
         } else {
             return $this->meta_en[$arr_pos];
         }
