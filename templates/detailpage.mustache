@@ -85,86 +85,38 @@
 
   <div class="metadetail-container">
 	<div class="metadetail-header">
-		<div class="metadetail-header-image metatile-img" style="background-image:url('{{fileurl}}');">
+		<div class="metadetail-header-image metatile-img" style="background-image:url('{{overviewimage}}');">
     {{^started}}
       <div class="icon-coming-soon"></div>
     {{/started}}
 		</div>
 		<div class="metadetail-header-infos">
 			<h2>{{{coursetitle}}} {{{edit_string}}}</h2>
-			<table>
-      
-        <tr>
-					<td><i class="icon fa fa-bullseye fa-fw"></i>{{meta1_name}}:</td> <!-- jetzt: Zielgruppe -->
-					<td>Studierende</td>
-				</tr>
-
-        <tr>
-					<td><i class="icon fa fa-list-alt fa-fw"></i>{{meta2_name}}:</td>
-					<td>{{{uni}}}</td>
-				</tr>
-
+      <table class="metatile-table">
 				<tr>
-					<td><i class="icon fa fa-user-circle fa-fw"></i>{{meta3_name}}:</td> <!-- alt: {{{lecturer_detail}}}-->
+					<td><i class="icon fa fa-bullseye fa-fw"></i>{{meta1_name}}:</td>
+					<td>{{meta1}}</td>
+				</tr>
+				<tr>
+					<td><i class="icon fa fa-list-alt fa-fw"></i>{{meta2_name}}:</td>
+					<td>{{{meta2}}}</td>
+				</tr>
+				<tr>
+					<td><i class="icon fa fa-user-circle fa-fw"></i>{{meta3_name}}:</td>
 					<td>{{{meta3}}}</td>
 				</tr>
-				
-        <tr>
-          <td><i class="icon fa fa-tasks fa-fw"></i>{{meta4_name}}:</td>
-					<td>≈ {{meta4}} {{{hours}}}</td>
-        </tr>
-
-        <tr>
-          <td><i class="icon fa fa-calendar-check-o fa-fw"></i>{{meta5_name}}:</td>
-					<td>{{meta5}}</td>
-          {{^started}}
-          <td class="hide-small"><strong class="free">{{{free}}}</strong></td>
-          {{/started}}
-        </tr>
-
 				<tr>
-					<td><i class="icon fa fa-cubes fa-fw"></i>{{meta6_name}}:</td> <!-- jetzt: Format -->
-					<td>{{subject}}</td>
-          <!--{{#started}}<td class="hide-small"><strong class="free">{{{free}}}</strong></td>{{/started}}-->
-                    <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
-  
-          				<!-- {{^started}}
-				
-        
-
-          
-					<td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
-					{{#is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
-          {{/is_enrolled}}
-          {{^is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
-          {{/is_enrolled}}
-				
-        {{/started}} -->
-          
+					<td><i class="icon fa fa-tasks fa-fw"></i>{{meta4_name}}:</td>
+					<td>≈ {{{meta4}}} {{{hours}}}</td>
 				</tr>
-				<!--<tr>-->
-					
-					
-
-         
-
-        <!--</tr>
-				{{^started}}-->
-				
-       <!-- <tr>
-
-          
-					<td class="hide-desktop"><strong class="free">{{{free}}}</strong></td>
-					{{#is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{tocourse}}}</a></td>
-          {{/is_enrolled}}
-          {{^is_enrolled}}
-            <td class="hide-small"><a class="btn btn-sign" href="{{{url}}}">{{{enrol}}}</a></td>
-          {{/is_enrolled}}
+				<tr>
+					<td><i class="icon fa fa-calendar-check-o fa-fw"></i>{{meta5_name}}:</td>
+					<td>{{{meta5}}}</td>
 				</tr>
-        {{/started}}-->
+				<tr>
+					<td><i class="icon fa fa-cubes fa-fw"></i>{{{meta6_name}}}:</td>
+					<td>{{{meta6}}}</td>
+				</tr>
 			</table>
 		</div>
 	</div>
@@ -194,7 +146,7 @@
     {{/videocode}}
     {{^videocode}}
     <div class="md-teaservideo {{emptyteaser}}">
-      <img src="{{altpic}}">
+      <img src="{{detailimage}}">
       </div>
     {{/videocode}}
     
@@ -210,6 +162,7 @@
       {{{gliederung}}}
     </div>
     {{/gliederung}}
+
 
     {{#alllecturers_notempty}}
 		<div class="md-lecturer">
@@ -245,19 +198,19 @@
     </div>
     {{/detailsmorelecturer}}
 
-    <!--{{#targetgroup}}
+    {{#targetgroup}}
 		<div class="md-targetgroup">
       <h2>{{{h_target_group}}}</h2>
       {{{targetgroup}}}
     </div>
-    {{/targetgroup}}-->
+    {{/targetgroup}}
+
     {{#certificate}}
 		<div class="md-certificateofachievement">
       <h2>{{{h_confirmation}}}</h2>
       {{{certificate}}}
     </div>
     {{/certificate}}
-
 
     {{#allsponsors_notempty}}
       
@@ -277,6 +230,8 @@
 
     {{/allsponsors_notempty}}
 
+
+
     {{#license}}
 		<div class="md-license">
       <h2>{{{licensetitle}}}</h2>
@@ -284,17 +239,6 @@
     </div>
     {{/license}}
 
-
-
-
-
-
-
-
-
-
-
- 
     
 		<div class="md-tags">
 {{#taglist}}      <span class="metatag"><a href="{{url}}">{{tag}}</a></span>{{/taglist}}

@@ -20,40 +20,40 @@ class filter_form extends moodleform {
 		$comp = 'block_isymetaselect';
 		$mform->disable_form_change_checker();
 
-		$meta2_list = $this->_customdata['meta2_list'];
-		$meta6_list = $this->_customdata['meta6_list'];
-		$lang_list =  $this->_customdata['lang_list'];
-		$meta4_list =  $this->_customdata['meta4_list'];
-		$meta5_list =  $this->_customdata['meta5_list'];
+		// $meta2_list = $this->_customdata['meta2_list'];
+		// $meta6_list = $this->_customdata['meta6_list'];
+		// $lang_list =  $this->_customdata['lang_list'];
+		// $meta4_list =  $this->_customdata['meta4_list'];
+		// $meta5_list =  $this->_customdata['meta5_list'];
 
 		$data = $this->_customdata['data'];
 
 		// jetzt: Programm
-		$meta2 = $mform->createElement('select', 'meta2', '', [], []);
-	    $mform->setType('meta2', PARAM_RAW);
+		// $meta2 = $mform->createElement('select', 'meta2', '', [], []);
+	    // $mform->setType('meta2', PARAM_RAW);
 
-		foreach ($meta2_list as $value => $label) {
-			$attributes = array();
-			if ($value === 0) {
-				$attributes['disabled'] = 'disabled';
-				$attributes['selected'] = 'selected';
-			}
-			$meta2->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
-		}
-		$mform->addElement($meta2);
+		// foreach ($meta2_list as $value => $label) {
+		// 	$attributes = array();
+		// 	if ($value === 0) {
+		// 		$attributes['disabled'] = 'disabled';
+		// 		$attributes['selected'] = 'selected';
+		// 	}
+		// 	$meta2->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
+		// }
+		// $mform->addElement($meta2);
 
-	    $meta6 = $mform->createElement('select', 'meta6', '', [], []);
-	    $mform->setType('meta6', PARAM_RAW);
+	    // $meta6 = $mform->createElement('select', 'meta6', '', [], []);
+	    // $mform->setType('meta6', PARAM_RAW);
 
-		foreach ($meta6_list as $value => $label) {
-			$attributes = array();
-			if ($value === 0) {
-				$attributes['disabled'] = 'disabled';
-				$attributes['selected'] = 'selected';
-			}
-			$meta6->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
-		}
-		$mform->addElement($meta6);
+		// foreach ($meta6_list as $value => $label) {
+		// 	$attributes = array();
+		// 	if ($value === 0) {
+		// 		$attributes['disabled'] = 'disabled';
+		// 		$attributes['selected'] = 'selected';
+		// 	}
+		// 	$meta6->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
+		// }
+		// $mform->addElement($meta6);
 
 	    // $courselanguage = $mform->createElement('select', 'courselanguage', '', [], array());
 	    // $mform->setType('courselanguage', PARAM_RAW);
@@ -69,20 +69,20 @@ class filter_form extends moodleform {
 		// $mform->addElement($courselanguage);
 
 
-	    $meta4 = $mform->createElement('select', 'meta4', '', [], []);
-	    $mform->setType('meta4', PARAM_RAW);
+	    // $meta4 = $mform->createElement('select', 'meta4', '', [], []);
+	    // $mform->setType('meta4', PARAM_RAW);
 
 
-		foreach ($meta4_list as $value => $label) {
-		       $attributes = array();
-				if ($value === '-') {
-					$attributes['disabled'] = 'disabled';
-					$attributes['selected'] = 'selected';
-				}
-				$meta4->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
-			}
+		// foreach ($meta4_list as $value => $label) {
+		//        $attributes = array();
+		// 		if ($value === '-') {
+		// 			$attributes['disabled'] = 'disabled';
+		// 			$attributes['selected'] = 'selected';
+		// 		}
+		// 		$meta4->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
+		// 	}
 
-		$mform->addElement($meta4);
+		// $mform->addElement($meta4);
 
 	    // $meta5 = $mform->createElement('select', 'meta5', '', [], array());
 	    // $mform->setType('meta5', PARAM_RAW);

@@ -293,7 +293,7 @@
 .meta-share a:before {
     content: "";
     position: absolute;
-    top: 6px;
+    top: 4px;
     left: -24px;
     width: 18px;
     height: 18px;
@@ -658,9 +658,9 @@ div.metatile-img div.icon-coming-soon {
     height: auto
 }
 
-#page-blocks-isymetaselect-pagecoursedetails .page-header-headings,.emptyteaser {
+/* #page-blocks-isymetaselect-pagecoursedetails .page-header-headings,.emptyteaser {
     display: none
-}
+} */
 
 #page-blocks-isymetaselect-pagecoursedetails #region-main {
     max-width: 1200px;
@@ -715,9 +715,9 @@ div.metatile-img div.icon-coming-soon {
     display: none
 }
 
-#fitem_id_meta6 .felement {
+/* #fitem_id_meta6 .felement {
     padding-left: 0
-}
+} */
 
 .metatile {
     width: 100%!important
@@ -739,10 +739,10 @@ div.metatile-img div.icon-coming-soon {
     top: 3px
 }
 
-#fitem_id_meta2 .felement {
+/* #fitem_id_meta2 .felement {
     padding-right: 5px;
     padding-left: 0
-}
+} */
 
 .block_isymetaselect .fitem {
     flex: inherit!important
@@ -871,7 +871,7 @@ div.metatile-img div.icon-coming-soon {
 
 .metatile-grid {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 1rem;
 }
 

@@ -25,8 +25,8 @@ class block_isymetaselect extends block_base {
         $metastring = new Metastring();
 
 
-        echo '<br><br>';
-        $metaselection = new Metaselection('meta1');
+        // echo '<br><br>';
+        $metaselection = new Metaselection();
 
         // echo $metaselection;
 
@@ -45,25 +45,25 @@ class block_isymetaselect extends block_base {
 
         global $DB;
 
-        $meta2s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_targetgroups')); // vorher: universities
-        $meta2 = explode("\n", $meta2s->param1);
-        $meta2_query = '';
+        // $meta2s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_targetgroups')); // vorher: universities
+        // $meta2 = explode("\n", $meta2s->param1);
+        // $meta2_query = '';
 
-        foreach ($meta2 as $key => $part) {
-            if (stripos($part, $searchterm) !== false) {
-                $meta2_query .= "OR meta2 LIKE '$key' ";
-            }
-        }
+        // foreach ($meta2 as $key => $part) {
+        //     if (stripos($part, $searchterm) !== false) {
+        //         $meta2_query .= "OR meta2 LIKE '$key' ";
+        //     }
+        // }
 
-        $meta6s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_formats')); // vorher: meta6s
-        $meta6 = explode("\n", $meta6s->param1);
-        $meta6_query = '';
+        // $meta6s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_formats')); // vorher: meta6s
+        // $meta6 = explode("\n", $meta6s->param1);
+        // $meta6_query = '';
 
-        foreach ($meta6 as $key => $part) {
-            if (stripos($part, $searchterm) !== false) {
-                $meta6_query .= "OR meta6 LIKE '%$key%' ";
-            }
-        }
+        // foreach ($meta6 as $key => $part) {
+        //     if (stripos($part, $searchterm) !== false) {
+        //         $meta6_query .= "OR meta6 LIKE '%$key%' ";
+        //     }
+        // }
 
         //Zu durchsuchende Bereiche: Kurstitel, Tags, Kursbeschreibungstext, Metainfos, Vorname + Nachname weiterer Autoren
         $searchquery = "SELECT * FROM mdl_isymeta
@@ -75,8 +75,8 @@ class block_isymetaselect extends block_base {
 							$meta2_query
 							$meta6_query
 							OR courselanguage LIKE :courselanguage
-							OR detailslecturer LIKE :detailslecturer
-                            OR detailsmorelecturer LIKE :detailsmorelecturer)";
+							OR detailssponsor LIKE :detailssponsor
+                            OR detailssponsor LIKE :detailsmoresponsor)";
         $to_midnight = strtotime('today midnight');
         $searchquery_past = $searchquery . " AND meta5 <= $to_midnight ORDER BY meta5 DESC, coursetitle ASC";
         $searchquery_future = $searchquery . " AND meta5 > $to_midnight ORDER BY meta5 ASC, coursetitle ASC";
@@ -86,6 +86,8 @@ class block_isymetaselect extends block_base {
           'teasertext' => '%' . $searchterm . '%',
           'meta3' => '%' . $searchterm . '%',
           'courselanguage' => '%' . $searchterm . '%',
+          'detailsponsor' => '%' . $searchterm . '%',
+          'detailsmoresponsor' => '%' . $searchterm . '%',
           'detailslecturer' => '%' . $searchterm . '%',
           'detailsmorelecturer' => '%' . $searchterm . '%',
         );
@@ -128,11 +130,11 @@ class block_isymetaselect extends block_base {
         $records = get_courses_records($data);
 
         $customdata = array();
-        $customdata['meta2_list'] = get_filtered_meta2_list($records);
-        $customdata['meta6_list'] = get_filtered_meta6_list($records);
-        $customdata['meta4_list'] = get_filtered_meta4_list($records);
-        $customdata['meta5_list'] = get_filtered_meta5_list($records);
-        $customdata['lang_list'] = get_filtered_lang_list($records);
+        // $customdata['meta2_list'] = get_filtered_meta2_list($records);
+        // $customdata['meta6_list'] = get_filtered_meta6_list($records);
+        // $customdata['meta4_list'] = get_filtered_meta4_list($records);
+        // $customdata['meta5_list'] = get_filtered_meta5_list($records);
+        // $customdata['lang_list'] = get_filtered_lang_list($records);
         $customdata['data'] = $data;
         
         $mform = new filter_form($PAGE->url->out(false), $customdata);

@@ -18,8 +18,9 @@ function get_tiles($coursestodisplay, $context)
         get_string('filter_german', $comp),
         get_string('filter_english', $comp),
     ];
-//1PSfaPvSDA!
+
     $metastring = new Metastring();
+    $metaselection = new Metaselection();
 
     $string = '';
     // $string .= $a[0];
@@ -35,34 +36,9 @@ function get_tiles($coursestodisplay, $context)
 
                 if ($data->noindexcourse == 1) continue; // hide course when index setting is 'no'
 
-                $meta2s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_targetgroups'));
-                $meta2s_en = $DB->get_record('user_info_field', array('shortname' => 'isymeta_en_targetgroups'));
-                $meta6s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_formats'));
-                $meta6s_en = $DB->get_record('user_info_field', array('shortname' => 'isymeta_en_formats'));
-
-                $fileurl = '';
-                switch(current_language()){
-                    case 'de':
-                        $meta2vals = explode("\n", $meta2s->param1);
-                        $meta6val = explode("\n", $meta6s->param1)[$data->meta6];
-                        break;
-                    case 'en':
-                        $meta2vals = explode("\n", $meta2s_en->param1);
-                        $meta6val = explode("\n", $meta6s_en->param1)[$data->meta6];
-                        break;
-                    default:
-                        $meta2vals = explode("\n", $meta2s->param1);
-                        $meta6val = explode("\n", $meta6s->param1)[$data->meta6];
-                        break;
-                }
-                $meta2val = "";
-                foreach(explode(",", $data->meta2) as $meta2val_select){
-                    $meta2val .= "<span>" . $meta2vals[$meta2val_select] . "</span>";
-                }
-                
                 //if meta5 < today then echo "fortlaufend" instead of date
                 //get today midnight
-                $to_midnight = strtotime('today midnight');
+                
                 $meta5 = date('d.m.y', $data->meta5);
 
                 $url = $CFG->wwwroot . '/blocks/isymetaselect/coursedetails.php?id=' . $data->courseid;
@@ -73,7 +49,7 @@ function get_tiles($coursestodisplay, $context)
 
                 $getdb = $DB->get_record('isymeta', array('courseid' => $data->courseid));
 
-                $language = $lang_list[$getdb->courselanguage];
+                // $language = $lang_list[$getdb->courselanguage];
 
                 foreach ($files as $file) {
                     //if ($file->get_itemid() == $data->overviewimage && $file->get_filename() !== '.') {
@@ -91,39 +67,41 @@ function get_tiles($coursestodisplay, $context)
 
                 $render_data = new stdClass();
                 $render_data->url = $url;
-                $render_data->fileurl = $fileurl;
+                $render_data->fileurl = $fileurl ?? '';
                 $render_data->coursetitle = $data->coursetitle;
-                $render_data->meta3 = $data->meta3; // Dozent*in
-                $render_data->uni = $meta2val;
-                $render_data->language = $language;
-                $render_data->subject = $meta6val;
-                $render_data->meta4 = $data->meta4;
-                $render_data->link_coursedetails = $data->noindexcourse == 0;
-                
-                // Meta strings
+
+                // Meta 1 - Standard: Zielgruppe
                 $render_data->meta1_name = $metastring->get(0);
+                $render_data->meta1 = $metaselection->get_meta(1)[$data->meta1];
+
+                // Meta 2 - Standard: Programm
                 $render_data->meta2_name = $metastring->get(1);
+                $render_data->meta2 = $metaselection->get_meta(2)[$data->meta2];
+
+                // Meta 3 - Standard: Autor*in
                 $render_data->meta3_name = $metastring->get(2);
-                $render_data->meta4_name = $metastring->get(3);
-                $render_data->meta5_name = $metastring->get(4);
-                $render_data->meta6_name = $metastring->get(5);
-                
 
-                $render_data->courselanguage_detail = get_string('filter_courselanguage', $comp);
-                $render_data->hours = get_string('hours', $comp);
-                $render_data->button_search = get_string('button_search', $comp);
-                $render_data->button_reset = get_string('button_reset', $comp);
-
-                // determine if author or lecturer string
-                $render_data->lecturer_type = 'Autor/in';
-
-                if (explode("\n", $meta6s->param1)[$getdb->meta6] == 'Betreuter Kurs') {
-                    $render_data->lecturer_type = 'Dozent/in';
+                if($metastring->get(2) === 'Autor/in' || $metastring->get(2) === 'Autor*in') { // if not changed string (or * variant) switch author types
+                    if($data->supervised == '1') {
+                        $render_data->meta3_name = 'Dozent*in';
+                    } else {
+                        $render_data->meta3_name = $metastring->get(2);
+                    }
                 }
                 
-                $render_data->meta5 = 'Flexibel';
-                
-                if (explode("\n", $meta6s->param1)[$getdb->meta6] == 'Betreuter Kurs') {
+                $render_data->meta3 = $data->meta3;
+
+                // Meta 4 - Standard: Arbeitsaufwand
+                $render_data->meta4_name = $metastring->get(3); 
+                $render_data->meta4 = $data->meta4;
+
+                // Meta 5 - Standard: Kursbeginn
+                $to_midnight = strtotime('today midnight');
+                $render_data->meta5_name = $metastring->get(4);
+                $render_data->meta5 = 'flexibel';
+                $render_data->hours = get_string('hours', $comp);
+
+                if($data->supervised == '1') {
                     if ($data->meta5 > $to_midnight) {
                         $render_data->meta5 = $meta5;
                     } else {
@@ -131,6 +109,21 @@ function get_tiles($coursestodisplay, $context)
                     }
                 }
                 
+                // Meta 6 - Standard: Format
+                $render_data->meta6_name = $metastring->get(5);
+                $render_data->meta6 = $metaselection->get_meta(6)[$data->meta6];
+                
+                // $render_data->language = $language;
+                
+                
+                $render_data->link_coursedetails = $data->noindexcourse == 0;
+
+        
+                $render_data->courselanguage_detail = get_string('filter_courselanguage', $comp);
+                
+                $render_data->button_search = get_string('button_search', $comp);
+                $render_data->button_reset = get_string('button_reset', $comp);
+
                 // $display = $OUTPUT->render_from_template("block_isymetaselect/coursedetails", $render_data);
 
                 $string .= $OUTPUT->render_from_template("block_isymetaselect/tile", $render_data);

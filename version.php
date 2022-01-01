@@ -9,5 +9,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_isymetaselect';
-$plugin->version = 2021083007;
+$plugin->version = 2021121501;
 $plugin->requires  = 2018120300;

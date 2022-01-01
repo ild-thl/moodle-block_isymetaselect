@@ -67,11 +67,11 @@ class blocks_isymetaselect_external extends external_api {
         
         $records = get_courses_records($data);
 
-        $return['meta6'] = json_encode(get_filtered_meta6_list($records));
-        $return['meta2'] = json_encode(get_filtered_meta2_list($records));
-        $return['courselanguage'] = json_encode(get_filtered_lang_list($records));
-        $return['meta4'] = json_encode(get_filtered_meta4_list($records));
-        $return['meta5'] = json_encode(get_filtered_meta5_list($records));
+        // $return['meta6'] = json_encode(get_filtered_meta6_list($records));
+        // $return['meta2'] = json_encode(get_filtered_meta2_list($records));
+        // $return['courselanguage'] = json_encode(get_filtered_lang_list($records));
+        // $return['meta4'] = json_encode(get_filtered_meta4_list($records));
+        // $return['meta5'] = json_encode(get_filtered_meta5_list($records));
         $return['debug'] = json_encode($data);
 
         return $return;

@@ -20,9 +20,9 @@ function block_isymetaselect_pluginfile($course, $cm, $context, $filearea, $args
  
  $array = [
     'attachement',
-    'detailslecturer_image_1',
-    'detailslecturer_image_2',
-    'detailslecturer_image_3',
+    'detailssponsor_image_1',
+    'detailssponsor_image_2',
+    'detailssponsor_image_3',
  ];
  $comp = 'block_isymetaselect';
 foreach ($array as $key) {

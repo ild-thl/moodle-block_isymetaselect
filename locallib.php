@@ -215,9 +215,10 @@ function exist_courses_records($fromform) {
 
 function get_filtered_meta2_list($records) {
     global $DB;
-
-    $meta2s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_targetgroups')); // vorher: universities
-    $meta2_list = explode("\n", $meta2s->param1);
+    $metaselection = new Metaselection();
+    // $meta2s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_targetgroups')); // vorher: universities
+    $meta2s_list = $metaselection->get_meta_array();
+    // $meta2_list = explode("\n", $meta2s->param1);
 
     $filtered = array();
 

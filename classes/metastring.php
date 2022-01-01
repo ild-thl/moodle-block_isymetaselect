@@ -2,7 +2,8 @@
 
 class Metastring {
 
-    private array $meta_de, $meta_en;
+    private $meta_de;
+    private $meta_en;
 
     public function __construct() {
         global $DB;
