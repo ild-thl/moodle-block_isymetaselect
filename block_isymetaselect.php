@@ -22,19 +22,15 @@ class block_isymetaselect extends block_base {
     public function init() {
         global $PAGE, $DB;
 
-        $metastring = new Metastring();
-
-
-        // echo '<br><br>';
-        $metaselection = new Metaselection();
-
-        // echo $metaselection;
+        $metastring = new Metastring(); // classes/metastring.php -> gets the correct string based on lang
+        $metaselection = new Metaselection(); // classes/metaselection.php -> gets the string of the meta the admin defined
 
         $this->title = get_string('pluginname', 'block_isymetaselect');
     }
 
     public function hide_header() { return false; }
 
+    // helper
     function array_search_partial($arr, $keyword) {
         foreach ($arr as $index => $string) {
             if (strpos($string, $keyword) !== false) return $index;
@@ -44,26 +40,6 @@ class block_isymetaselect extends block_base {
     public function searchterm($searchterm) {
 
         global $DB;
-
-        // $meta2s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_targetgroups')); // vorher: universities
-        // $meta2 = explode("\n", $meta2s->param1);
-        // $meta2_query = '';
-
-        // foreach ($meta2 as $key => $part) {
-        //     if (stripos($part, $searchterm) !== false) {
-        //         $meta2_query .= "OR meta2 LIKE '$key' ";
-        //     }
-        // }
-
-        // $meta6s = $DB->get_record('user_info_field', array('shortname' => 'isymeta_de_formats')); // vorher: meta6s
-        // $meta6 = explode("\n", $meta6s->param1);
-        // $meta6_query = '';
-
-        // foreach ($meta6 as $key => $part) {
-        //     if (stripos($part, $searchterm) !== false) {
-        //         $meta6_query .= "OR meta6 LIKE '%$key%' ";
-        //     }
-        // }
 
         //Zu durchsuchende Bereiche: Kurstitel, Tags, Kursbeschreibungstext, Metainfos, Vorname + Nachname weiterer Autoren
         $searchquery = "SELECT * FROM mdl_isymeta
@@ -101,7 +77,7 @@ class block_isymetaselect extends block_base {
         global $USER, $PAGE, $CFG, $DB;
 
         $table = 'isymeta';
-        $result = '';
+        $result = ''; // page content HTML
         $context = context_system::instance();
         $this->content = new stdClass();
         $sform = new search_form($PAGE->url);
@@ -113,13 +89,12 @@ class block_isymetaselect extends block_base {
             $this->searchterm($searchparam);
         }
 
-
-// Meta search form
+        // Meta search form
         if ($fromsform = $sform->get_data()) {
             $this->searchterm($fromsform->search);
         }
 
-// Meta select form
+        // Meta select form
         $data = new stdClass();
         $data->courselanguage = optional_param('courselanguage', 1, PARAM_INT);
         $data->meta6 = optional_param('meta6', 1, PARAM_INT);
@@ -146,7 +121,7 @@ class block_isymetaselect extends block_base {
         } else if ($fromform = $mform->get_data()) {
             if(isset($fromform->search) && $fromform->search !== '') {
                 $this->searchterm($fromform->search);
-                $result .= get_tiles($this->searchresults, $context);
+                $result .= get_tiles($this->searchresults, $context); // add found tiles to page HTML ($result)
             } else {
                 $coursestodisplay = get_courses_records($data);
                 $result .= get_tiles($coursestodisplay, $context);

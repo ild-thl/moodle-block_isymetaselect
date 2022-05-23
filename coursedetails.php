@@ -12,6 +12,8 @@ require_once 'lib.php';
 require_once 'classes/metastring.php';
 require_once 'classes/metaselection.php';
 
+/* Rendering og course detail page */
+
 $comp = 'block_isymetaselect';
 $tbl = 'isymeta';
 $courseid = required_param('id', PARAM_INT);
@@ -27,8 +29,8 @@ $PAGE->set_title($data->coursetitle);
 $PAGE->set_heading($data->coursetitle);
 
 // Helpers
-$metastring = new Metastring();
-$metaselection = new Metaselection();
+$metastring = new Metastring(); // classes/metastring.php -> gets the correct string based on lang
+$metaselection = new Metaselection(); // classes/metaselection.php -> gets the string of the meta the admin defined
 $fs = get_file_storage();
 
 $context = context_system::instance();
@@ -43,8 +45,8 @@ $targetgroup = '';
 $learninggoals = '';
 $gliederung = '';
 $certificate = '';
-// print_r($data);
 
+// tags
 $rawtags = $data->tags;
 $tags = null;
 $tagarray = explode(',', $rawtags);
@@ -60,15 +62,15 @@ if ($data->tags != null) {
     Lecturers
 */ 
 
-$imgtbl = 'isymeta_additional';
+$imgtbl = 'isymeta_additional'; // isymeta_additional serves the lectureres
 $image_count = $DB->count_records($imgtbl) / 3; // divide by 3 because 3 rows are generated per entry
 $db_metadd = $DB->get_records($imgtbl, ['courseid' => $courseid]);
 
 for ($i = 1; $i <= $image_count; $i++) {
 
-    $lect_text = $DB->get_records($imgtbl, ['courseid' => $courseid, 'name' => 'detailslecturer_editor_' . $i]);
-    $lect_img = $DB->get_records($imgtbl, ['courseid' => $courseid, 'name' => 'detailslecturer_image_' . $i]);
-    $lect_type = $DB->get_records($imgtbl, ['courseid' => $courseid, 'name' => 'lecturer_type_' . $i]);
+    $lect_text = $DB->get_records($imgtbl, ['courseid' => $courseid, 'name' => 'detailslecturer_editor_' . $i]); // from textarea
+    $lect_img = $DB->get_records($imgtbl, ['courseid' => $courseid, 'name' => 'detailslecturer_image_' . $i]); // from image upload form
+    $lect_type = $DB->get_records($imgtbl, ['courseid' => $courseid, 'name' => 'lecturer_type_' . $i]); // from author or lecturer selection
 
     foreach ($lect_type as $type) {
 
@@ -127,6 +129,7 @@ $allauthors = array();
 if (isset($authors_array)) {
     foreach ($authors_array as $author => $data2) {
         $class = '';
+
         //if empty or url broken
         if(empty($data2[1]) || strpos($data2[1], '/.') !== false) {
             $class = 'lecturer-noimg';
@@ -284,6 +287,7 @@ $license_text = 'Lizenziert unter';
 if ($data->license != null) {
     $license_sn = $licenses[$data->license + 1]->shortname;
 
+    // we need to manually add this licenses as moodles built in ones are either not complete or not that markup we need
     switch ($license_sn) {
         case 'unknown':
             $license = '';
@@ -353,6 +357,7 @@ $render_data->detailimage = $detailimage ?? '';
 $context_course = context_course::instance($courseid);
 $is_enrolled = false;
 
+// for determining of button variant in meta header
 if (isset($USER->id)) {
     $is_enrolled = is_enrolled($context_course, $USER->id, '', true);
 }

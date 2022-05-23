@@ -130,6 +130,7 @@ function get_tiles($coursestodisplay, $context)
             }
         }
     } else {
+        // no courses found
         $string .= '<span class="nocoursefound">' . get_string('noresultsfound', $comp) . '</span>';
     }
     $string .= '</div></div>';
