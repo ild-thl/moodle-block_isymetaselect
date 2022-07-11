@@ -17,7 +17,7 @@ $capabilities = array(
         'archetypes' => array(
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW,
-            'kursmanager' => CAP_ALLOW,
+            #'kursmanager' => CAP_ALLOW,
             'coursecreator' => CAP_ALLOW
         )
     ),
@@ -27,7 +27,7 @@ $capabilities = array(
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes' => array(
             'user' => CAP_ALLOW,
-            'kursmanager' => CAP_ALLOW,
+            #'kursmanager' => CAP_ALLOW,
             'coursecreator' => CAP_ALLOW
         )
 
@@ -41,7 +41,7 @@ $capabilities = array(
         'archetypes' => array(
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW,
-            'kursmanager' => CAP_ALLOW,
+            #'kursmanager' => CAP_ALLOW,
             'coursecreator' => CAP_ALLOW
         ),
     ),

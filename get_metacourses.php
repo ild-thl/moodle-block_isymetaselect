@@ -1,14 +1,32 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
+ * Function that generates a list of coursedata for a set of courses that are indexed by the local_ildmeta plugin.
  *
- * @package        block_ildmetaselect
- * @author         Dustin Neß <dustin.ness@th-luebeck.de>
- * @author         Markus Strehling (modified) <markus.strehling@oncampus.de>
- * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     block_ildmetaselect
+ * @author      Dustin Neß <dustin.ness@th-luebeck.de>
+ * @author      Markus Strehling (modified) <markus.strehling@oncampus.de>
+ * @copyright   2022 ILD TH Lübeck <dev.ild@th-luebeck.de>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-function get_metacourses($coursestodisplay, $context)
-{
+use local_ildmeta\manager;
+
+function get_metacourses($coursestodisplay, $context) {
     global $DB, $CFG, $OUTPUT;
 
     $lang_list = [
@@ -28,31 +46,19 @@ function get_metacourses($coursestodisplay, $context)
         foreach ($coursestodisplay as $data) {
             if ($coursecheck = $DB->get_record('course', array('id' => $data->courseid))) {
 
-                if ($data->noindexcourse == 1) continue; // hide course when index setting is 'no'
+                if ($data->noindexcourse == 1) {
+                    continue;
+                } // Hide course when index setting is 'no'.
 
-                $universities = $DB->get_record('user_info_field', array('shortname' => 'universities'));
-                $subjectareas = $DB->get_record('user_info_field', array('shortname' => 'subjectareas'));
-
+                // Get subjectarea vocabulary from ildmeta_vocabulary.
+                $providers = manager::get_providers();
+                $vocabulary = $DB->get_record('ildmeta_vocabulary', array('title' => 'subjectarea'), '*', MUST_EXIST);
+                $subjectareas = manager::filter_vocabulary_lang($vocabulary, current_language());
+                $subject = $subjectareas[$data->subjectarea];
                 $fileurl = '';
-                switch(current_language()){
-                    case 'de':
-                        $unis = explode("\n", $universities->param1);
-                        $subject = explode("\n", $subjectareas->param1)[$data->subjectarea];
-                        break;
-                    case 'en':
-                        $unis = explode("\n", $universities->param2);
-                        $subject = explode("\n", $subjectareas->param2)[$data->subjectarea];
-                        break;
-                    default:
-                        $unis = explode("\n", $universities->param1);
-                        $subject = explode("\n", $subjectareas->param1)[$data->subjectarea];
-                        break;
-                }
-                $uni = "";
-                foreach(explode(",", $data->university) as $uni_select){
-                    $uni .= "<span>" . $unis[$uni_select] . "</span>";
-                }
-                
+
+                $uni = "<span>" . $providers[$data->provider]['name'] . "</span>";
+
                 //if starttime < today then echo "fortlaufend" instead of date
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
@@ -61,24 +67,30 @@ function get_metacourses($coursestodisplay, $context)
                 $url = $CFG->wwwroot . '/blocks/ildmetaselect/detailpage.php?id=' . $data->courseid;
                 //$files = $fs->get_area_files($context->id, 'local_ildmeta', 'overviewimage', $data->overviewimage);
                 $coursecontext = context_course::instance($data->courseid);
-                $files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
-
 
                 $getdb = $DB->get_record('ildmeta', array('courseid' => $data->courseid));
 
                 $language = $lang_list[$getdb->courselanguage];
 
+                // Get url of overview image.
+                // If no custom image ist set in ildmeta, then use the course image instead.
+                if (isset($getdb->overviewimage)) {
+                    $files = $fs->get_area_files($coursecontext->id, 'local_ildmeta', 'overviewimage', 0);
+                } else {
+                    $files = $fs->get_area_files($coursecontext->id, 'course', 'overviewfiles', 0);
+                }
                 foreach ($files as $file) {
-                    //if ($file->get_itemid() == $data->overviewimage && $file->get_filename() !== '.') {
-                    if ($file->get_itemid() == 0 && $file->get_filename() !== '.') {
+                    if ($file->is_valid_image()) {
                         $fileurl = moodle_url::make_pluginfile_url(
                             $file->get_contextid(),
                             $file->get_component(),
                             $file->get_filearea(),
-                            $file->get_itemid(),
+                            isset($getdb->overviewimage) ? $file->get_itemid() : null,
                             $file->get_filepath(),
-                            $file->get_filename()
+                            $file->get_filename(),
+                            false
                         );
+                        break;
                     }
                 }
 
@@ -97,7 +109,7 @@ function get_metacourses($coursestodisplay, $context)
                 }
 
                 $render_data->lecturer_detail = get_string('lecturer_detail', 'block_ildmetaselect');
-                $render_data->university_detail = get_string('university_detail', 'block_ildmetaselect');
+                $render_data->provider_detail = get_string('provider_detail', 'block_ildmetaselect');
                 $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
                 $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
                 $render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');

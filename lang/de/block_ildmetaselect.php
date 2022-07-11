@@ -1,6 +1,6 @@
 <?php
 
-$string['pluginname'] = 'Course Overview';
+$string['pluginname'] = 'ISy Course Overview';
 
 $string['proctime_name'] = 'Bearbeitungszeit';
 $string['proctime_all'] = 'Alle Bearbeitungszeiten';
@@ -20,17 +20,17 @@ $string['starttime_between7and8weeks'] = 'In 7-8 Wochen';
 $string['courselanguage'] = 'Kurssprache';
 $string['courselanguage_all'] = 'Alle Kurssprachen';
 
-$string['university'] = 'Universität';
-$string['university_all'] = 'Alle Universitäten';
+$string['provider'] = 'Institution';
+$string['provider_all'] = 'Alle Institutionen';
 
 $string['subjectarea'] = 'Wissensgebiet';
 $string['subjectarea_all'] = 'Alle Wissensgebiete';
 
-$string['german'] = 'German';
-$string['english'] = 'English';
+$string['german'] = 'Deutsch';
+$string['english'] = 'Englisch';
 
-$string['lecturer_detail'] = 'Anbieter*innen';
-$string['university_detail'] = 'Anbietende Hochschule';
+$string['lecturer_detail'] = 'Autor*innen';
+$string['provider_detail'] = 'Anbietende Hochschule';
 $string['courselanguage_detail'] = 'Kurssprache';
 $string['subjectarea_detail'] = 'Wissensgebiet';
 $string['avgworkload_detail'] = 'Durchschnittlicher Arbeitsaufwand';
@@ -41,6 +41,9 @@ $string['free'] = 'Kostenfrei';
 $string['enrol'] = 'Einschreiben';
 $string['tocourse'] = 'zum Kurs';
 
+$string['metashare'] = 'teilen';
+$string['metatweet'] = 'tweeten';
+
 $string['noresultsfound'] = 'Keine Ergebnisse gefunden.';
 
 $string['h_awaits'] = 'Was erwartet Sie in diesem Kurs?';
@@ -50,3 +53,5 @@ $string['h_further_auth'] = 'Weitere Autoren*innen';
 $string['h_target_group'] = 'Zielgruppe';
 $string['h_confirmation'] = 'Teilnahmebestätigung';
 $string['license'] = 'Lizenz';
+
+$string['filter'] = 'Filtern';

@@ -7,6 +7,7 @@ $functions = array(
         'description' => 'send feedback',
         'type' => 'write',
         'ajax' => true,
+        'loginrequired' => false,
     )
 );
 

@@ -1,30 +1,30 @@
-{{!                                                                                                                                 
-    This file is part of Moodle - http://moodle.org/                                                                                
-                                                                                                                                    
-    Moodle is free software: you can redistribute it and/or modify                                                                  
-    it under the terms of the GNU General Public License as published by                                                            
-    the Free Software Foundation, either version 3 of the License, or                                                               
-    (at your option) any later version.                                                                                             
-                                                                                                                                    
-    Moodle is distributed in the hope that it will be useful,                                                                       
-    but WITHOUT ANY WARRANTY; without even the implied warranty of                                                                  
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                                                                   
-    GNU General Public License for more details.                                                                                    
-                                                                                                                                    
-    You should have received a copy of the GNU General Public License                                                               
-    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.                                                                 
-  }}                                                                                                                                  
-  {{!                                                                                                                                 
-    @template block/ocmyproducts                                                                                                        
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+  }}
+  {{!
+    @template block/ocmyproducts
 
     detalpage of ildmetaselect
-                                                                                                                                    
-    Classes required for JS:                                                                                                        
-    * none                                                                                                                        
-                                                                                                                                    
-    Data attributes required for JS:                                                                                                
-    * none                                                                                                                
-                                                                                                                                    
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
     Context variables required for this template:
     * url
     * teasertext
@@ -56,7 +56,7 @@
     * allauthors_notempty
 
     * lecturer_detail
-    * university_detail
+    * provider_detail
     * courselanguages_detail
     * subjectarea_detail
     * avgworkload_detail
@@ -74,7 +74,7 @@
     * h_target_group
     * h_confirmation
     * license
-                                                                                                                                    
+
   }}
 
   <div class="metadetail-container">
@@ -92,7 +92,7 @@
 					<td>{{{lecturer}}}</td>
 				</tr>
 				<tr>
-					<td>{{{university_detail}}}:</td>
+					<td>{{{provider_detail}}}:</td>
 					<td>{{{uni}}}</td>
 				</tr>
 				<tr>
@@ -141,12 +141,12 @@
 	</div>
 
 	<div class="meta-share">
-		<div class="meta-share-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{{url}}}">teilen</a></div>
-		<div class="meta-share-twitter"><a href="https://twitter.com/intent/tweet?url={{{url}}}">tweeten</a></div>
-		<div class="meta-share-whatsapp"><a href="whatsapp://send?text={{{url}}}">teilen</a></div>
-		<div class="meta-share-linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;summary=&amp;url={{{url}}}">teilen</a></div>
-		<div class="meta-share-xing"><a href="https://www.xing.com/social_plugins/share?url={{{url}}}">teilen</a></div>
-		<div class="meta-share-mail"><a href="mailto:?subject={{coursetitle}}&amp;body={{{url}}}">teilen</a></div>
+        <div class="meta-share-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-twitter"><a href="https://twitter.com/intent/tweet?url={{{url}}}">{{# str}} metatweet, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-whatsapp"><a href="whatsapp://send?text={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;summary=&amp;url={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-xing"><a href="https://www.xing.com/social_plugins/share?url={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
+		<div class="meta-share-mail"><a href="mailto:?subject={{coursetitle}}&amp;body={{{url}}}">{{# str}} metashare, block_ildmetaselect {{/ str}}</a></div>
 	</div>
 
 	<div class="metadetail-body">
@@ -165,62 +165,62 @@
       <img src="{{altpic}}"></img>
     {{/videocode}}
     </div>
-		<div class="md-learninggoals">
     {{#learninggoals}}
+		<div class="md-learninggoals">
       <h2>{{{h_learn}}}</h2>
       {{{learninggoals}}}
-    {{/learninggoals}}
     </div>
-		<div class="md-structure">
+    {{/learninggoals}}
     {{#gliederung}}
+		<div class="md-structure">
       <h2>{{{h_outline}}}</h2>
       {{{gliederung}}}
-    {{/gliederung}}
     </div>
-		<div class="md-lecturer">
+    {{/gliederung}}
     {{#alllecturers_notempty}}
+		<div class="md-lecturer">
     <h2>{{{lecturer_detail}}}</h2>
     {{/alllecturers_notempty}}
     {{#alllecturers}}
       <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
-    {{/alllecturers}}
     </div>
-    	<div class="md-lecturer">
-      {{#allauthors_notempty}}
-        <h2>{{{h_further_auth}}}</h2>
-      {{/allauthors_notempty}}
-      {{#allauthors}}
-        <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
-      {{/allauthors}}
-      </div>
-		<div class="md-morelecturer">
+    {{/alllecturers}}
+    {{#allauthors_notempty}}
+    <div class="md-lecturer">
+      <h2>{{{h_further_auth}}}</h2>
+    {{/allauthors_notempty}}
+    {{#allauthors}}
+      <div class="lecturer_container"><div class="lecturer_imgcontainer {{class}}"><img src="{{img}}"/></div><div class="lecturer_text">{{{div}}}</div></div>
+    </div>
+    {{/allauthors}}
     {{#detailsmorelecturer}}
+		<div class="md-morelecturer">
       <h2>{{{h_further_auth}}}</h2>
       {{{detailsmorelecturer}}}
-    {{/detailsmorelecturer}}
     </div>
-		<div class="md-targetgroup">
+    {{/detailsmorelecturer}}
     {{#targetgroup}}
+		<div class="md-targetgroup">
       <h2>{{{h_target_group}}}</h2>
       {{{targetgroup}}}
-    {{/targetgroup}}
     </div>
-		<div class="md-certificateofachievement">
+    {{/targetgroup}}
     {{#certificate}}
+		<div class="md-certificateofachievement">
       <h2>{{{h_confirmation}}}</h2>
       {{{certificate}}}
+    </div>
     {{/certificate}}
-    </div>
-		<div class="md-license">
     {{#license}}
-      <h2>{{{license}}}</h2>
+		<div class="md-license">
+      <h2>{{{licensetitle}}}</h2>
       {{{license}}}
+    </div>
     {{/license}}
-    </div>
-		<div class="md-tags">
     {{#taglist}}
+		<div class="md-tags">
       <span class="metatag"><a href="{{url}}">{{tag}}</a></span>
-    {{/taglist}}
     </div>
+    {{/taglist}}
 	</div>
 </div>

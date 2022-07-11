@@ -15,13 +15,20 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* @package    ildmetaselect
-* @author     Markus Strehling <markus.strehling@oncampus.de>
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ * @package    ildmetaselect
+ * @author     Markus Strehling <markus.strehling@oncampus.de>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
-require_once($CFG->libdir . "/externallib.php");
-require_once($CFG->dirroot . '/blocks/ildmetaselect/locallib.php');
+
+//require_once($CFG->libdir . "/externallib.php");
+//require_once($CFG->dirroot . '/blocks/ildmetaselect/locallib.php');
+
+// New import try
+require_once('externallib.php');
+require_once('locallib.php');
+
+//global $CFG;
 
 class blocks_ildmetaselect_external extends external_api {
 
@@ -29,11 +36,11 @@ class blocks_ildmetaselect_external extends external_api {
      * Returns description of method parameters
      * @return external_function_parameters
      */
-    public static function get_filter_parameters(){
+    public static function get_filter_parameters() {
         return new external_function_parameters(
             array(
                 'subjectarea' => new external_value(PARAM_INT, 'rating value'),
-                'university' => new external_value(PARAM_INT, 'rating value'),
+                'provider' => new external_value(PARAM_INT, 'rating value'),
                 'courselanguage' => new external_value(PARAM_INT, 'rating value'),
                 'processingtime' => new external_value(PARAM_TEXT, 'rating value'),
                 'starttime' => new external_value(PARAM_TEXT, 'rating value'),
@@ -41,14 +48,15 @@ class blocks_ildmetaselect_external extends external_api {
         );
     }
 
-    public static function get_filter($subjectarea, $university, $courselanguage, $processingtime, $starttime){
+    public static function get_filter($subjectarea, $provider, $courselanguage, $processingtime, $starttime) {
 
         global $DB, $CFG;
 
-        $params = self::validate_parameters(self::get_filter_parameters(), 
+        $params = self::validate_parameters(
+            self::get_filter_parameters(),
             array(
                 'subjectarea' => $subjectarea,
-                'university' => $university,
+                'provider' => $provider,
                 'courselanguage' => $courselanguage,
                 'processingtime' => $processingtime,
                 'starttime' => $starttime,
@@ -57,17 +65,17 @@ class blocks_ildmetaselect_external extends external_api {
 
         $data = new stdClass();
         $data->subjectarea = $subjectarea;
-        $data->university = $university;
+        $data->provider = $provider;
         $data->courselanguage = $courselanguage;
         $data->processingtime = $processingtime;
         $data->starttime = $starttime;
 
         $return = array();
-        
+
         $records = get_courses_records($data);
 
         $return['subjectarea'] = json_encode(get_filtered_subjectarea_list($records));
-        $return['university'] = json_encode(get_filtered_university_list($records));
+        $return['provider'] = json_encode(get_filtered_provider_list($records));
         $return['courselanguage'] = json_encode(get_filtered_lang_list($records));
         $return['processingtime'] = json_encode(get_filtered_processingtime_list($records));
         $return['starttime'] = json_encode(get_filtered_starttime_list($records));
@@ -80,11 +88,11 @@ class blocks_ildmetaselect_external extends external_api {
      * Returns description of method result value
      * @return external_value
      */
-    public static function get_filter_returns(){
+    public static function get_filter_returns() {
         return new external_function_parameters(
             array(
                 'subjectarea' => new external_value(PARAM_TEXT, 'rating value'),
-                'university' => new external_value(PARAM_TEXT, 'rating value'),
+                'provider' => new external_value(PARAM_TEXT, 'rating value'),
                 'courselanguage' => new external_value(PARAM_TEXT, 'rating value'),
                 'processingtime' => new external_value(PARAM_TEXT, 'rating value'),
                 'starttime' => new external_value(PARAM_TEXT, 'rating value'),
@@ -92,5 +100,4 @@ class blocks_ildmetaselect_external extends external_api {
             )
         );
     }
-
 }

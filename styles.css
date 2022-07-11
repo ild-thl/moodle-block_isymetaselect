@@ -48,6 +48,7 @@
 .metatile a,
 .metatile a:hover {
 	color: #666 !important;
+	text-decoration: none;
 }
 
 .metatile-content {
@@ -59,7 +60,7 @@
 }
 
 .metatile h2 {
-	font-size: 14px;
+	font-size: 16px;
     line-height: 18px;
     text-align: left;
 }
@@ -97,31 +98,32 @@
     background-repeat: no-repeat;
     left: 0;
     background-size: 79%;
-    background-position-y: 1px;
+	background-position-y: 1px;
+	top: 5px;
 }
 
 .iconlecturer:before {
-    background-image: url([[pix:theme|gly-4-user]]);
+    background-image: url([[pix:block_ildmetaselect|gly-4-user]]);
 }
 
 .iconuni:before {
-    background-image: url([[pix:theme|gly-90-building]]);
+    background-image: url([[pix:block_ildmetaselect|gly-90-building]]);
 }
 
 .iconcourselanguage:before {
-    background-image: url([[pix:theme|gly-245-conversation]]);
+    background-image: url([[pix:block_ildmetaselect|gly-245-conversation]]);
 }
 
 .iconsubject:before {
-    background-image: url([[pix:theme|gly-508-cluster]]);
+    background-image: url([[pix:block_ildmetaselect|gly-508-cluster]]);
 }
 
 .iconprocessingtime:before {
-    background-image: url([[pix:theme|gly-55-clock]]);
+    background-image: url([[pix:block_ildmetaselect|gly-55-clock]]);
 }
 
 .iconstarttime:before {
-    background-image: url([[pix:theme|gly-592-person-running]]);
+    background-image: url([[pix:block_ildmetaselect|gly-592-person-running]]);
 }
 
 .block_ildmetaselect .action-menu {
@@ -261,7 +263,9 @@
 .md-morelecturer,
 .md-tags {
 	flex: 100%;
+	margin-bottom:20px;
 }
+.md-tags {margin-bottom:5px;}
 
 @media (min-width: 800px) {
 	.md-teasertext,
@@ -528,6 +532,9 @@ font-size: 18px;
 .block_ildmetaselect .fsubmit {
 	margin-left: 0 !important;
 }
+.block_ildmetaselect .fbutton {
+	margin-left: 0 !important;
+}
 
 .block_ildmetaselect .ftext {
     margin: 0 !important;
@@ -588,7 +595,9 @@ font-size: 18px;
 	backgorund-color: #cee8ff !important;
 	color: #003f74 !important;
 }
-
+.lecturer_container {
+	margin-bottom:20px;
+}
 .lecturer_imgcontainer {
 	padding-top: 0 !important;
 }
@@ -675,4 +684,73 @@ div.metatile-img div.icon-coming-soon {
 		left: 0px;
 		top: 0px;
 	}
+}
+
+
+/* Bug fixes Moodle Update 3.8 */
+
+.block_ildmetaselect.card {border:0px; margin-top:0px !important;}
+.block_ildmetaselect .card-title {font-size:30px; padding:0 0 10px 0;}
+.block_ildmetaselect .mform {
+	margin-bottom:10px;
+	display:flex;
+	flex-direction: row;
+	flex-wrap:nowrap;
+	font-size:14px;
+	justify-content:flex-end;
+}
+.block_ildmetaselect .mform .fitem .col-md-3 {display:none;}
+.block_ildmetaselect .mform .form-group {margin:0px !important;}
+.block_ildmetaselect .mform .col-md-9 {display:block; flex:unset; max-width:100%; padding:5px 0px 5px 5px; width:auto;}
+.block_ildmetaselect .mform #fitem_id_search .col-md-9 {width:auto;}
+.block_ildmetaselect .mform #fitem_id_search {flex:0 !important;}	
+.block_ildmetaselect #id_search {width:250px;}
+@media (max-width:767px) {
+	.block_ildmetaselect .mform {flex-wrap:wrap;}
+}
+
+/* Metadetailseite */
+#page-blocks-ildmetaselect-detailpage #page-wrapper {
+	height:auto;
+}
+#page-blocks-ildmetaselect-detailpage #page-wrapper #page {
+	position:relative;
+}
+#page-blocks-ildmetaselect-detailpage .page-header-headings {display:none;}
+#page-blocks-ildmetaselect-detailpage #region-main {max-width:1200px; margin:0px auto 20px auto;}
+
+
+/* Anpassung Skylierung Youtube-Videos */
+#page-blocks-ildmetaselect-detailpage .md-teaservideo .mediaplugin_youtube {
+	position: relative;
+	height: 0;
+	padding: 0;
+	padding-bottom: 56.25% !important;
+	overflow: hidden;
+	width: auto;
+}
+#page-blocks-ildmetaselect-detailpage .md-teaservideo .mediaplugin_youtube iframe {
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	border: 0;
+    position: absolute;
+}
+
+.md-teaservideo .text_to_html {
+	padding-top: .5rem;
+}
+
+.md-teaservideo div {
+	padding-top: 0;
+}
+
+.mediaplugin.mediaplugin_videojs {
+	width: inherit;
+}
+
+.mediaplugin.mediaplugin_videojs>div {
+	max-width: 100% !important;
 }
