@@ -96,7 +96,8 @@ foreach ($files as $file) {
     }
 }
 
-$url = $CFG->wwwroot . '/course/view.php?id=' . $courseid;
+// Set ÚRL of course. SingleSignOn enabled.
+$url = new \moodle_url('/course/view.php', array('id' => $courseid, 'saml' => 'on'));
 
 $video = '';
 if ($getdb->videocode != null) {
