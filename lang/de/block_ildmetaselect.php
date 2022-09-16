@@ -2,6 +2,8 @@
 
 $string['pluginname'] = 'ISy Course Overview';
 
+$string['blocktitle'] = 'Kursübersicht';
+
 $string['proctime_name'] = 'Bearbeitungszeit';
 $string['proctime_all'] = 'Alle Bearbeitungszeiten';
 $string['proctime_upto15'] = 'Bis 15 Stunden';

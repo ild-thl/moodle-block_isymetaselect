@@ -2,6 +2,8 @@
 
 $string['pluginname'] = 'ISy Course Overview';
 
+$string['blocktitle'] = 'Course Overview';
+
 $string['proctime_name'] = 'Workload';
 $string['proctime_all'] = 'All  Workload';
 $string['proctime_upto15'] = 'Up to 15 Hours';

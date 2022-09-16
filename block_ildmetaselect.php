@@ -41,7 +41,7 @@ class block_ildmetaselect extends block_base {
 
     public function init() {
         global $PAGE;
-        $this->title = get_string('pluginname', 'block_ildmetaselect');
+        $this->title = get_string('blocktitle', 'block_ildmetaselect');
     }
 
     public function hide_header() {

@@ -26,5 +26,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_ildmetaselect';
-$plugin->version = 2022070519;
+$plugin->version = 2022091616;
 $plugin->requires  = 2018120300;
