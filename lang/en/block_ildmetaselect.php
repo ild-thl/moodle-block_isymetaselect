@@ -2,8 +2,6 @@
 
 $string['pluginname'] = 'ISy Course Overview';
 
-$string['blocktitle'] = 'Course Overview';
-
 $string['proctime_name'] = 'Workload';
 $string['proctime_all'] = 'All  Workload';
 $string['proctime_upto15'] = 'Up to 15 Hours';
@@ -57,3 +55,8 @@ $string['h_confirmation'] = 'Confirmation of participation';
 $string['license'] = 'License';
 
 $string['filter'] = 'Filter';
+
+// ADDED tinjohn 20220920
+$string['add_detail_page'] = 'add course detail page';
+$string['add_detail_page_help'] = 'The course details page shows more content information about the course and is an additional step to enrolment. This step can be skipped if needed (no).';
+// END ADDED

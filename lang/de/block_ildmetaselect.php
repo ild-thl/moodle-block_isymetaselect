@@ -2,8 +2,6 @@
 
 $string['pluginname'] = 'ISy Course Overview';
 
-$string['blocktitle'] = 'Kursübersicht';
-
 $string['proctime_name'] = 'Bearbeitungszeit';
 $string['proctime_all'] = 'Alle Bearbeitungszeiten';
 $string['proctime_upto15'] = 'Bis 15 Stunden';
@@ -57,3 +55,7 @@ $string['h_confirmation'] = 'Teilnahmebestätigung';
 $string['license'] = 'Lizenz';
 
 $string['filter'] = 'Filtern';
+// ADDED tinjohn 20220920
+$string['add_detail_page'] = 'Kursdetailseite anzeigen';
+$string['add_detail_page_help'] = 'Die Kursdetailseite zeigt weitere Inhaltsangaben zum Kurs und stellt einen zusätzlichen Schritt bis zur Einschreibung dar. Dieser Schritt kann bei Bedarf übersprungen werden (nein). ';
+// END ADDED

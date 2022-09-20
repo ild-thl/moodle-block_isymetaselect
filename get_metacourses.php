@@ -63,8 +63,16 @@ function get_metacourses($coursestodisplay, $context) {
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
                 $starttime = date('d.m.y', $data->starttime);
+// CHANGED tinjohn 20220920
+                $add_detail_page = get_config('block_ildmetaselect','add_detail_page');
+                if($add_detail_page) {
+                  $url = $CFG->wwwroot . '/blocks/ildmetaselect/detailpage.php?id=' . $data->courseid;
+                } else {
+                  // Set ÚRL of course. SingleSignOn enabled.
+                  $url = new \moodle_url('/course/view.php', array('id' => $data->courseid, 'saml' => 'on'));
+                }
+// END CHANGED
 
-                $url = $CFG->wwwroot . '/blocks/ildmetaselect/detailpage.php?id=' . $data->courseid;
                 //$files = $fs->get_area_files($context->id, 'local_ildmeta', 'overviewimage', $data->overviewimage);
                 $coursecontext = context_course::instance($data->courseid);
 
