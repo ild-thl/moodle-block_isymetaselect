@@ -4,10 +4,10 @@ $string['pluginname'] = 'ISy Course Overview';
 
 $string['proctime_name'] = 'Bearbeitungszeit';
 $string['proctime_all'] = 'Alle Bearbeitungszeiten';
-$string['proctime_upto15'] = 'Bis 15 Stunden';
-$string['proctime_between16and20'] = '16 - 20 Stunden';
-$string['proctime_between21and25'] = '21 - 25 Stunden';
-$string['proctime_morethan25'] = 'Über 25 Stunden';
+$string['proctime_upto15'] = 'Bis 15 {$a}';
+$string['proctime_between16and20'] = '16 - 20 {$a}';
+$string['proctime_between21and25'] = '21 - 25 {$a}';
+$string['proctime_morethan25'] = 'Über 25 {$a}';
 
 $string['starttime_name'] = 'Kursbeginn';
 $string['starttime_all'] = 'Alle Kursbeginne';
@@ -58,6 +58,11 @@ $string['filter'] = 'Filtern';
 // ADDED tinjohn 20220920
 $string['add_detail_page'] = 'Kursdetailseite anzeigen';
 $string['add_detail_page_help'] = 'Die Kursdetailseite zeigt weitere Inhaltsangaben zum Kurs und stellt einen zusätzlichen Schritt bis zur Einschreibung dar. Dieser Schritt kann bei Bedarf übersprungen werden (nein). ';
-// END ADDED
-
+$string['add_formmenu_provider'] = 'Anbieter als Auswahlbox (ja)';
+$string['add_formmenu_provider_help'] = '';
+$string['add_formmenu_courselanguage'] = 'Kurssprache als Auswahlbox (ja)';
+$string['add_formmenu_courselanguage_help'] = '';
+$string['add_formmenu_starttime'] = 'Startzeit als Auswahlbox (ja)';
+$string['add_formmenu_starttime'] = '';
 $string['minutes'] = "Minuten";
+// END ADDED
