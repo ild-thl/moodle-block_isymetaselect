@@ -41,32 +41,38 @@ class ildmetaselect_form extends moodleform {
 			$subjectarea->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 		}
 		$mform->addElement($subjectarea);
+		// ADDED option tinjohn 20221010
+		if(	get_config('block_ildmetaselect','add_formmenu_provider')) {
+			$provider = $mform->createElement('select', 'provider', '', [], array());
+			$mform->setType('provider', PARAM_RAW);
 
-		$provider = $mform->createElement('select', 'provider', '', [], array());
-		$mform->setType('provider', PARAM_RAW);
-
-		foreach ($provider_list as $value => $label) {
-			$attributes = array();
-			if ($value === 0) {
-				$attributes['disabled'] = 'disabled';
-				$attributes['selected'] = 'selected';
+			foreach ($provider_list as $value => $label) {
+				$attributes = array();
+				if ($value === 0) {
+					$attributes['disabled'] = 'disabled';
+					$attributes['selected'] = 'selected';
+				}
+				$provider->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 			}
-			$provider->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
+			$mform->addElement($provider);
 		}
-		$mform->addElement($provider);
 
-		$courselanguage = $mform->createElement('select', 'courselanguage', '', [], array());
-		$mform->setType('courselanguage', PARAM_RAW);
 
-		foreach ($lang_list as $value => $label) {
-			$attributes = array();
-			if ($value === 0) {
-				$attributes['disabled'] = 'disabled';
-				$attributes['selected'] = 'selected';
+// ADDED option tinjohn 20221010
+		if (get_config('block_ildmetaselect','add_formmenu_courselanguage')) {
+			$courselanguage = $mform->createElement('select', 'courselanguage', '', [], array());
+			$mform->setType('courselanguage', PARAM_RAW);
+
+			foreach ($lang_list as $value => $label) {
+				$attributes = array();
+				if ($value === 0) {
+					$attributes['disabled'] = 'disabled';
+					$attributes['selected'] = 'selected';
+				}
+				$courselanguage->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 			}
-			$courselanguage->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
-		}
-		$mform->addElement($courselanguage);
+			$mform->addElement($courselanguage);
+	  }
 
 
 		$processingtime = $mform->createElement('select', 'processingtime', '', [], array());
@@ -84,6 +90,8 @@ class ildmetaselect_form extends moodleform {
 
 		$mform->addElement($processingtime);
 
+		// ADDED option tinjohn 20221010
+		if (get_config('block_ildmetaselect','add_formmenu_starttime')) {
 		$starttime = $mform->createElement('select', 'starttime', '', [], array());
 		$mform->setType('starttime', PARAM_RAW);
 
@@ -95,7 +103,9 @@ class ildmetaselect_form extends moodleform {
 			}
 			$starttime->addOption(explode("=>", $label)[1], explode("=>", $label)[0], $attributes);
 		}
-		$mform->addElement($starttime);
+
+			$mform->addElement($starttime);
+    }
 
 		$mform->addElement('submit', 'submitbutton', get_string('search'));
 		$mform->addElement('cancel', 'cancel', get_string('reset'));

@@ -59,3 +59,5 @@ $string['filter'] = 'Filtern';
 $string['add_detail_page'] = 'Kursdetailseite anzeigen';
 $string['add_detail_page_help'] = 'Die Kursdetailseite zeigt weitere Inhaltsangaben zum Kurs und stellt einen zusätzlichen Schritt bis zur Einschreibung dar. Dieser Schritt kann bei Bedarf übersprungen werden (nein). ';
 // END ADDED
+
+$string['minutes'] = "Minuten";
