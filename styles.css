@@ -70,9 +70,9 @@
 }
 
 .metatile-img {
-	background-color: #e2e2e2;
-	width: 190px;
-    min-height: 190px;
+	  background-color: #e2e2e2;
+	  width: 170px; /* CHANGED tinjohn 20222020*/
+    min-height: 170px; /* CHANGED tinjohn 20222020*/
     background-size: cover;
     margin: 0 auto;
 }
@@ -701,9 +701,12 @@ div.metatile-img div.icon-coming-soon {
 }
 .block_ildmetaselect .mform .fitem .col-md-3 {display:none;}
 .block_ildmetaselect .mform .form-group {margin:0px !important;}
-.block_ildmetaselect .mform .col-md-9 {display:block; flex:unset; max-width:100%; padding:5px 0px 5px 5px; width:auto;}
+.block_ildmetaselect .mform .col-md-9 {
+	display:block; flex:unset; max-width:100%; padding:5px 0px 5px 5px;
+	/* CHANGED tinjohn 20221010 width:auto; */
+}
 .block_ildmetaselect .mform #fitem_id_search .col-md-9 {width:auto;}
-.block_ildmetaselect .mform #fitem_id_search {flex:0 !important;}	
+.block_ildmetaselect .mform #fitem_id_search {flex:0 !important;}
 .block_ildmetaselect #id_search {width:250px;}
 @media (max-width:767px) {
 	.block_ildmetaselect .mform {flex-wrap:wrap;}

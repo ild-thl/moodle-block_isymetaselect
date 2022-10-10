@@ -63,7 +63,7 @@ function get_metacourses($coursestodisplay, $context) {
                 //get today midnight
                 $to_midnight = strtotime('today midnight');
                 $starttime = date('d.m.y', $data->starttime);
-// CHANGED tinjohn 20220920
+// CHANGED tinjohn 20220920.
                 $add_detail_page = get_config('block_ildmetaselect','add_detail_page');
                 if($add_detail_page) {
                   $url = $CFG->wwwroot . '/blocks/ildmetaselect/detailpage.php?id=' . $data->courseid;
@@ -71,7 +71,7 @@ function get_metacourses($coursestodisplay, $context) {
                   // Set ÚRL of course. SingleSignOn enabled.
                   $url = new \moodle_url('/course/view.php', array('id' => $data->courseid, 'saml' => 'on'));
                 }
-// END CHANGED
+// END CHANGED.
 
                 //$files = $fs->get_area_files($context->id, 'local_ildmeta', 'overviewimage', $data->overviewimage);
                 $coursecontext = context_course::instance($data->courseid);
@@ -121,7 +121,11 @@ function get_metacourses($coursestodisplay, $context) {
                 $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
                 $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
                 $render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
-                $render_data->hours = get_string('hours', 'block_ildmetaselect');
+                if (get_config('block_ildmetaselect','workload_in_min')) {
+                  $render_data->hours = get_string('minutes', 'block_ildmetaselect');
+                } else {
+                  $render_data->hours = get_string('hours', 'block_ildmetaselect');
+                }
                 $render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
 
                 $string .= $OUTPUT->render_from_template("block_ildmetaselect/get_metacourse", $render_data);
