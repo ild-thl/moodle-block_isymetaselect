@@ -107,8 +107,13 @@ function get_metacourses($coursestodisplay, $context) {
                 $render_data->fileurl = $fileurl;
                 $render_data->coursetitle = $data->coursetitle;
                 $render_data->lecturer = $data->lecturer;
-                $render_data->uni = $uni;
-                $render_data->language = $language;
+
+                if (get_config('block_ildmetaselect','add_formmenu_courselanguage')) {
+                  $render_data->language = $language;
+                }
+                if(	get_config('block_ildmetaselect','add_formmenu_provider')) {
+                  $render_data->uni = $uni;
+                }
                 $render_data->subject = $subject;
                 $render_data->processingtime = $data->processingtime;
                 $render_data->link_detailpage = $data->noindexcourse == 0;

@@ -59,17 +59,12 @@ $string['filter'] = 'Filter';
 // ADDED tinjohn 20220920.
 $string['add_detail_page'] = 'add course detail page';
 $string['add_detail_page_help'] = 'The course details page shows more content information about the course and is an additional step to enrolment. This step can be skipped if needed (no).';
-// ADDED tinjohn 20221010
+// ADDED tinjohn 20221010.
 $string['add_formmenu_provider'] = 'provider in form (yes)';
 $string['add_formmenu_provider_help'] = '';
 $string['add_formmenu_courselanguage'] = 'courselanguage in form (yes)';
 $string['add_formmenu_courselanguage_help'] = '';
 $string['add_formmenu_starttime'] = 'start time in form (yes)';
 $string['add_formmenu_starttime'] = '';
-
-
 $string['minutes'] = "minutes";
-
-
-
 // END ADDED.
