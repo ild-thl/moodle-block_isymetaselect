@@ -4,10 +4,10 @@ $string['pluginname'] = 'ISy Course Overview';
 
 $string['proctime_name'] = 'Workload';
 $string['proctime_all'] = 'All  Workload';
-$string['proctime_upto15'] = 'Up to 15 Hours';
-$string['proctime_between16and20'] = '16 - 20 Hours';
-$string['proctime_between21and25'] = '21 - 25 Hours';
-$string['proctime_morethan25'] = 'Over 25 Hours';
+$string['proctime_upto15'] = 'Up to 15 {$a}';
+$string['proctime_between16and20'] = '16 - 20 {$a}';
+$string['proctime_between21and25'] = '21 - 25 {$a}';
+$string['proctime_morethan25'] = 'Over 25 {$a}';
 
 $string['starttime_name'] = 'Course Start';
 $string['starttime_all'] = 'All Course Starts';

@@ -287,11 +287,17 @@ function get_subjectarea_list($input) {
 function get_filtered_processingtime_list($records) {
     global $DB;
 
+    if (get_config('block_ildmetaselect','workload_in_min')){
+                  $timeunit = get_string('minutes', 'block_ildmetaselect');
+                } else {
+                  $timeunit = get_string('minutes', 'block_ildmetaselect');
+                }
+
     $processingtime_list = [
-        'upto15' => get_string('proctime_upto15', 'block_ildmetaselect'),
-        'between16and20' => get_string('proctime_between16and20', 'block_ildmetaselect'),
-        'between21and25' => get_string('proctime_between21and25', 'block_ildmetaselect'),
-        'morethan25' => get_string('proctime_morethan25', 'block_ildmetaselect')
+        'upto15' => get_string('proctime_upto15', 'block_ildmetaselect', $timeunit),
+        'between16and20' => get_string('proctime_between16and20', 'block_ildmetaselect', $timeunit),
+        'between21and25' => get_string('proctime_between21and25', 'block_ildmetaselect', $timeunit),
+        'morethan25' => get_string('proctime_morethan25', 'block_ildmetaselect', $timeunit)
     ];
 
     $filtered = array();
