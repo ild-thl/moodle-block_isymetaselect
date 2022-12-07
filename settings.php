@@ -24,15 +24,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
-  $yesno = array(0 => get_string('no'), 1 => get_string('yes'));
-  $minhours = array(0 => get_string('hours'), 1 => get_string('minutes'));
-//  $settings->add(new admin_setting_configcheckbox('block_ildmetaselect/add_detail_page',get_string('add_detail_page', 'block_ildmetaselect'),get_string('add_detail_page_help', 'block_ildmetaselect'),1));
+
   $settings->add(new admin_setting_configselect('block_ildmetaselect/add_detail_page',
-         get_string('add_detail_page', 'block_ildmetaselect'),get_string('add_detail_page_help', 'block_ildmetaselect'),
-         array('value' => 1, 'adv' => true), $yesno));
+       get_string('add_detail_page', 'block_ildmetaselect'),get_string('add_detail_page_help', 'block_ildmetaselect'),
+       1,array(0 => get_string('no'), 1 => get_string('yes'))));
   $settings->add(new admin_setting_configselect('block_ildmetaselect/workload_in_min',
-        get_string('workload_in_min', 'block_ildmetaselect'),get_string('workload_in_min_help', 'block_ildmetaselect'),
-        array('value' => 1, 'adv' => true), $minhours));
+       get_string('workload_in_min', 'block_ildmetaselect'),get_string('workload_in_min_help', 'block_ildmetaselect'),
+       1,array(0 => get_string('hours'), 1 => get_string('minutes'))));
+
   $settings->add(new admin_setting_configcheckbox('block_ildmetaselect/add_formmenu_provider',
         get_string('add_formmenu_provider', 'block_ildmetaselect'),get_string('formmenu_provider_help', 'block_ildmetaselect'), 1));
   $settings->add(new admin_setting_configcheckbox('block_ildmetaselect/add_formmenu_courselanguage',
