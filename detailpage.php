@@ -278,7 +278,14 @@ $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block
 $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
 $render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
 $render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
-$render_data->hours = get_string('hours', 'block_ildmetaselect');
+
+// CHANGED tinjohn 20220920.
+if (get_config('block_ildmetaselect','workload_in_min')) {
+  $render_data->hours = get_string('minutes', 'block_ildmetaselect');
+} else {
+  $render_data->hours = get_string('hours', 'block_ildmetaselect');
+}
+// END CHANGED.
 $render_data->free = get_string('free', 'block_ildmetaselect');
 $render_data->enrol = get_string('enrol', 'block_ildmetaselect');
 $render_data->tocourse = get_string('tocourse', 'block_ildmetaselect');
