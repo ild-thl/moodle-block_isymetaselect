@@ -126,11 +126,14 @@ function get_metacourses($coursestodisplay, $context) {
                 $render_data->courselanguage_detail = get_string('courselanguage_detail', 'block_ildmetaselect');
                 $render_data->subjectarea_detail = get_string('subjectarea_detail', 'block_ildmetaselect');
                 $render_data->avgworkload_detail = get_string('avgworkload_detail', 'block_ildmetaselect');
+// CHANGED tinjohn 20220920.
                 if (get_config('block_ildmetaselect','workload_in_min')) {
                   $render_data->hours = get_string('minutes', 'block_ildmetaselect');
                 } else {
                   $render_data->hours = get_string('hours', 'block_ildmetaselect');
                 }
+// END CHANGED.
+
                 $render_data->starttime_detail = get_string('starttime_detail', 'block_ildmetaselect');
 
                 $string .= $OUTPUT->render_from_template("block_ildmetaselect/get_metacourse", $render_data);

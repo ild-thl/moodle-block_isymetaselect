@@ -60,11 +60,14 @@ $string['filter'] = 'Filter';
 $string['add_detail_page'] = 'add course detail page';
 $string['add_detail_page_help'] = 'The course details page shows more content information about the course and is an additional step to enrolment. This step can be skipped if needed (no).';
 // ADDED tinjohn 20221010.
-$string['add_formmenu_provider'] = 'provider in form (yes)';
-$string['add_formmenu_provider_help'] = '';
-$string['add_formmenu_courselanguage'] = 'courselanguage in form (yes)';
-$string['add_formmenu_courselanguage_help'] = '';
+$string['add_formmenu_provider'] = 'select box for provider in form (yes)';
+$string['formmenu_provider_help'] = '';
+$string['add_formmenu_courselanguage'] = 'select box for courselanguage in form (yes)';
+$string['formmenu_courselanguage_help'] = '';
 $string['add_formmenu_starttime'] = 'start time in form (yes)';
-$string['add_formmenu_starttime'] = '';
+$string['formmenu_starttime_help'] = "select box for start time in form";
 $string['minutes'] = "minutes";
+
+$string['workload_in_min'] = "workload time units";
+$string['workload_in_min_help'] = "workload might be given in minutes or hours";
 // END ADDED.

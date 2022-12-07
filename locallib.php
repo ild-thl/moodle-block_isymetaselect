@@ -290,7 +290,7 @@ function get_filtered_processingtime_list($records) {
     if (get_config('block_ildmetaselect','workload_in_min')){
                   $timeunit = get_string('minutes', 'block_ildmetaselect');
                 } else {
-                  $timeunit = get_string('minutes', 'block_ildmetaselect');
+                  $timeunit = get_string('hours', 'block_ildmetaselect');
                 }
 
     $processingtime_list = [

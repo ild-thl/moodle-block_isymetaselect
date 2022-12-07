@@ -43,6 +43,7 @@ class block_ildmetaselect extends block_base {
     public function init() {
         global $PAGE;
         $this->title = get_string('pluginname', 'block_ildmetaselect');
+
     }
     public function has_config() {
       return true;

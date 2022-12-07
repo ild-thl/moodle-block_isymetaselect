@@ -59,10 +59,12 @@ $string['filter'] = 'Filtern';
 $string['add_detail_page'] = 'Kursdetailseite anzeigen';
 $string['add_detail_page_help'] = 'Die Kursdetailseite zeigt weitere Inhaltsangaben zum Kurs und stellt einen zusätzlichen Schritt bis zur Einschreibung dar. Dieser Schritt kann bei Bedarf übersprungen werden (nein). ';
 $string['add_formmenu_provider'] = 'Anbieter als Auswahlbox (ja)';
-$string['add_formmenu_provider_help'] = '';
+$string['formmenu_provider_help'] = '';
 $string['add_formmenu_courselanguage'] = 'Kurssprache als Auswahlbox (ja)';
-$string['add_formmenu_courselanguage_help'] = '';
+$string['formmenu_courselanguage_help'] = '';
 $string['add_formmenu_starttime'] = 'Startzeit als Auswahlbox (ja)';
-$string['add_formmenu_starttime'] = '';
+$string['formmenu_starttime_help'] = '';
 $string['minutes'] = "Minuten";
+$string['workload_in_min'] = "Zeiteinheit des Workloads";
+$string['workload_in_min_help'] = "Workload kann in Minuten oder Stunden angegeben werden";
 // END ADDED
