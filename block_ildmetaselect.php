@@ -42,7 +42,9 @@ class block_ildmetaselect extends block_base {
 
     public function init() {
         global $PAGE;
-        $this->title = get_string('pluginname', 'block_ildmetaselect');
+        //$this->title = get_string('pluginname', 'block_ildmetaselect');
+        $this->title = get_config('block_ildmetaselect','alter_block_title');
+
 
     }
     public function has_config() {
@@ -123,7 +125,19 @@ class block_ildmetaselect extends block_base {
         $context = context_system::instance();
         $this->content = new stdClass();
 
-        $sform = new search_form($PAGE->url);
+        //ADDED tinjohn 20221211
+        $anchors = array(
+          0 => '',
+          1 => '#ildmetaselect_form_anchor_freetxtsearch',
+          2 => '#ildmetaselect_form_anchor_filter',
+          3 => '#ildmetaselect_form_anchor_results'
+         );
+        if(get_config('block_ildmetaselect','form_redirect_to_anchor')) {
+          $urlwanchors = $anchors[get_config('block_ildmetaselect','form_redirect_to_anchor')];
+        } else {
+          $urlwanchors = '';
+        }
+        $sform = new search_form($PAGE->url.$urlwanchors);
         $result .= $sform->render();
 
 
@@ -157,7 +171,13 @@ class block_ildmetaselect extends block_base {
         $customdata['lang_list'] = get_filtered_lang_list($records);
         $customdata['data'] = $data;
 
-        $mform = new ildmetaselect_form($PAGE->url->out(false), $customdata);
+        if(get_config('block_ildmetaselect','form_redirect_to_anchor')) {
+          $urlwanchors = $anchors[get_config('block_ildmetaselect','form_redirect_to_anchor')];
+        } else {
+          $urlwanchors = '';
+        }
+        $mform = new ildmetaselect_form($PAGE->url->out(false).$urlwanchors , $customdata);
+
         $result .= $mform->render();
 
         if ($mform->is_cancelled()) {

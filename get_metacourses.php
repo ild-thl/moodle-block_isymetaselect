@@ -38,6 +38,7 @@ function get_metacourses($coursestodisplay, $context) {
     $string = '';
 
     $string .= '<div class="metatile-container">';
+    $string .= '<span id="ildmetaselect_form_anchor_results"></span>';
 
     $fs = get_file_storage();
 

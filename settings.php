@@ -18,7 +18,7 @@
  *  Block ISymetaselect config form definition class
  *
  * @package		block_ildmetaselect
- * @author		Dustin Neß <dustin.ness@th-luebeck.de>
+ * @author		Tina John <tina.john@th-luebeck.de>
  * @license		http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
@@ -38,5 +38,12 @@ if ($ADMIN->fulltree) {
         get_string('add_formmenu_courselanguage', 'block_ildmetaselect'),get_string('formmenu_courselanguage_help', 'block_ildmetaselect'),1));
   $settings->add(new admin_setting_configcheckbox('block_ildmetaselect/add_formmenu_starttime',
         get_string('add_formmenu_starttime', 'block_ildmetaselect'),get_string('formmenu_starttime_help', 'block_ildmetaselect'),1));
+
+  $settings->add(new admin_setting_configselect('block_ildmetaselect/form_redirect_to_anchor',
+        get_string('form_redirect_to_anchor', 'block_ildmetaselect'),get_string('form_redirect_to_anchor_help', 'block_ildmetaselect'),
+        0,array(0 => '',1 => '#ildmetaselect_form_anchor_freetxtsearch', 2 => '#ildmetaselect_form_anchor_filter', 3 => '#ildmetaselect_form_anchor_results')));
+
+  $settings->add(new admin_setting_configtext_with_maxlength('block_ildmetaselect/alter_block_title',
+       get_string('alter_block_title', 'block_ildmetaselect'),get_string('alter_block_title_help', 'block_ildmetaselect'),get_string('pluginname', 'block_ildmetaselect')));
 
 }

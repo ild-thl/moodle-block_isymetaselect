@@ -18,6 +18,8 @@ class search_form extends moodleform {
 		$sform = $this->_form;
 		$sform->disable_form_change_checker();
 
+		// ADDED tinjohn 20221211.
+		$sform->addElement('html', '<span id="ildmetaselect_form_anchor_freetxtsearch"></span>');
 		$sform->addElement('text', 'search', 'Suche');
 		$sform->setType('search', PARAM_RAW);
 

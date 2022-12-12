@@ -70,4 +70,12 @@ $string['minutes'] = "minutes";
 
 $string['workload_in_min'] = "workload time units";
 $string['workload_in_min_help'] = "workload might be given in minutes or hours";
+
+// ADDED tinjohn 20221211
+$string['form_redirect_to_anchor'] = "redirect to anchor";
+$string['form_redirect_to_anchor_help'] = "Redirection to the original url scrolls to the choosen anchor, if there are problems uncheck it.";
+
+$string['alter_block_title'] = "Block title";
+$string['alter_block_title_help'] = "Set an block title";
+
 // END ADDED.

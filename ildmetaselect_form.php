@@ -29,6 +29,8 @@ class ildmetaselect_form extends moodleform {
 
 		$data = $this->_customdata['data'];
 
+		// ADDED tinjohn 20221211.
+ 		$mform->addElement('html', '<span id="ildmetaselect_form_anchor_filter"></span>');
 		$subjectarea = $mform->createElement('select', 'subjectarea', '', [], array());
 		$mform->setType('subjectarea', PARAM_RAW);
 
