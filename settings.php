@@ -44,6 +44,6 @@ if ($ADMIN->fulltree) {
         0,array(0 => '',1 => '#ildmetaselect_form_anchor_freetxtsearch', 2 => '#ildmetaselect_form_anchor_filter', 3 => '#ildmetaselect_form_anchor_results')));
 
   $settings->add(new admin_setting_configtext_with_maxlength('block_ildmetaselect/alter_block_title',
-       get_string('alter_block_title', 'block_ildmetaselect'),get_string('alter_block_title_help', 'block_ildmetaselect'),get_string('pluginname', 'block_ildmetaselect')));
+       get_string('alter_block_title', 'block_ildmetaselect'),get_string('alter_block_title_help', 'block_ildmetaselect'),get_string('blocktitle', 'block_ildmetaselect')));
 
 }

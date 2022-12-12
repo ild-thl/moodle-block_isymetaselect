@@ -37,12 +37,11 @@ use local_ildmeta\manager;
 
 class block_ildmetaselect extends block_base {
 
-
     public $searchresults;
 
     public function init() {
         global $PAGE;
-        //$this->title = get_string('pluginname', 'block_ildmetaselect');
+        //$this->title = get_string('blocktitle', 'block_ildmetaselect');
         $this->title = get_config('block_ildmetaselect','alter_block_title');
 
 
