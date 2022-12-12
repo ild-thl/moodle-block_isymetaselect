@@ -28,9 +28,6 @@ $string['provider_all'] = 'All Institutions';
 $string['subjectarea'] = 'Subjectarea';
 $string['subjectarea_all'] = 'All Subjectareas';
 
-$string['german'] = 'German';
-$string['english'] = 'English';
-
 $string['lecturer_detail'] = 'Author';
 $string['provider_detail'] = 'Offering Institution';
 $string['courselanguage_detail'] = 'Course Language';
