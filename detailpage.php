@@ -124,11 +124,13 @@ $targetgroup = '';
 $license = '';
 
 $langlist = [
-    'german',
-    'english'
+    'deu',
+    'eng',
+    'ukr',
+    'rus'
 ];
 
-$language = get_string($langlist[$getdb->courselanguage], 'block_ildmetaselect');
+$language = get_string($langlist[$getdb->courselanguage], 'iso6392');
 
 $licenses = $DB->get_records('license');
 
