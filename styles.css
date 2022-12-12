@@ -1,5 +1,6 @@
 .block_ildmetaselect .content {
 	width: inherit;
+	container-type: inline-size;
 }
 #block-region-side-post .block.block_ildmetaselect .content{
 	padding-bottom: 40px;
@@ -15,34 +16,58 @@
 }
 
 .metatile {
-	background-color: #f0f0f0;
-	/*color: #666;*/
-    border-right: 15px solid #1c3d76;
-    margin-bottom: 10px;
-    padding-top: 20px;
+    background-color: #f0f0f0;
+    /*color: #666;*/
+    border-top: 10px solid #1c3d76;
+    border-right: 0px;
+    margin-bottom: 5px;
+    padding-top: 10px;
     width: 100%;
+}
 
+.metatile-table tr {
+	vertical-align: top;
 }
 
 .metatile h2 {
-	text-align: left !important;
+	text-align: center;
 }
 
-.metatile {
+
+@media(min-width: 900px) {
+
+	.metatile {
 	    width: calc(100% - 55px);
-    padding: 20px;
+	    padding: 20px;
+	}
 }
 
 @media(min-width: 700px) {
 	.metatile {
-		padding: 0;
+				background-color: #f0f0f0;
+				/*color: #666;*/
+				  border-top: 0px;
+			    border-right: 15px solid #1c3d76;
+			    margin-bottom: 10px;
+			    padding-top: 20px;
+			    width: 100%;
 
-		width: calc(50% - 20px);
-	}
+			}
 
-	.metatile:nth-child(even) {
-		margin-left: 10px;
-	}
+			.metatile h2 {
+				font-size: 16px;
+			    line-height: 18px;
+			    text-align: left;
+			}
+
+			.metatile {
+				padding: 0;
+				width: calc(50% - 20px);
+			}
+
+			/* .metatile:nth-child(even) {
+				margin-left: 10px;
+			} */
 }
 
 .metatile a,
@@ -59,12 +84,6 @@
 	min-height: 170px;
 }
 
-.metatile h2 {
-	font-size: 16px;
-    line-height: 18px;
-    text-align: left;
-}
-
 .metatile tr td:nth-child(2) {
     text-align: right;
 }
@@ -78,15 +97,15 @@
 }
 
 @media(min-width: 700px) {
-	.metatile-img {
-	float: left;
-	margin-right: 20px;
-	}
+		.metatile-img {
+			float: left;
+			margin-right: 20px;
+		}
 }
 
 .metatileicon {
 	position: relative;
-	    padding-left: 25px;
+	padding-left: 25px;
 }
 
 .metatileicon:before {
@@ -221,13 +240,13 @@
 /* Einspaltige Version */
 
 @media (min-width: 800px) {
-	.metatile:nth-child(even) {
-	    margin-left: 0;
-	}
+			/* .metatile:nth-child(even) {
+			    margin-left: 0;
+			} */
 
-	.metatile {
-	    width: 100%;
-	}
+			.metatile {
+			    width: 100%;
+			}
 }
 .metatile-container {
 	max-width: 900px;
@@ -292,13 +311,13 @@
 
 @media(max-width: 800px) {
 
-.metadetail-header-infos {
-    margin-left: 0;
-}
+		.metadetail-header-infos {
+		    margin-left: 0;
+		}
 
-.metadetail-header-image {
-	display: none;
-}
+	.metadetail-header-image {
+		display: none;
+	}
 
 	.metadetail-header td {
 	    width: 100%;
@@ -410,9 +429,9 @@
 
 @media(min-width: 700px) {
 
-.video-container iframe {
-	max-height: 305px;
-}
+	.video-container iframe {
+		max-height: 305px;
+	}
 
 	.meta-share {
 		display: flex;
@@ -562,18 +581,17 @@ font-size: 18px;
 
 @media(max-width: 700px) {
 
-.block_ildmetaselect #mform1 fieldset > div {
-	float: none;
-}
+	.block_ildmetaselect #mform1 fieldset > div {
+		float: none;
+	}
 
 	.block_ildmetaselect #fitem_id_search {
 		width: calc(100% - 15px);
 	}
 
-.block_ildmetaselect #id_search {
-	width: 100%;
-}
-
+	.block_ildmetaselect #id_search {
+		width: 100%;
+	}
 
 	.block_ildmetaselect .fsubmit {
 		padding: 0 !important;
@@ -644,9 +662,9 @@ font-size: 18px;
 
 	}
 
-	.metatile:nth-child(even) {
+	/* .metatile:nth-child(even) {
     margin-left: 0 !important;
-}
+	} */
 }
 
 .metadetail-body ul, ol {
@@ -756,4 +774,46 @@ div.metatile-img div.icon-coming-soon {
 
 .mediaplugin.mediaplugin_videojs>div {
 	max-width: 100% !important;
+}
+
+
+
+
+/* CHANGED tinjohn 20221010 */
+
+@container (max-width: 286px) {
+	.metatile-img {
+		float: unset;
+		margin: 0 auto;
+	}
+	.metatile-content {
+		font-size: clamp(0.9em, 5cqi, 2em);
+	}
+	.metatile {
+		  background-color: #f0f0f0;
+		  /*color: #666;*/
+	    border-top: 5px solid #1c3d76;
+			border-right: 0px;
+	    padding-top: 10px;
+	    width: 100%;
+			width: calc(100% - 2px);
+			padding: 2px;
+			margin: 0 auto;
+			margin-bottom: 10px;
+	}
+	/* .metatile:nth-child(even) {
+    margin-left: 0;
+		margin-right: auto;
+	}
+	.metatile:nth-child(odd) {
+    margin-left: 0;
+		margin-right: auto;
+	} */
+	.metatile h2 {
+		text-align: center;
+	}
+  .block_ildmetaselect .mform {
+			display: block;
+  }
+
 }
