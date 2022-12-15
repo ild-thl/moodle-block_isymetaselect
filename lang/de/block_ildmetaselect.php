@@ -28,9 +28,6 @@ $string['provider_all'] = 'Alle Institutionen';
 $string['subjectarea'] = 'Wissensgebiet';
 $string['subjectarea_all'] = 'Alle Wissensgebiete';
 
-$string['german'] = 'Deutsch';
-$string['english'] = 'Englisch';
-
 $string['lecturer_detail'] = 'Autor*innen';
 $string['provider_detail'] = 'Anbietende Hochschule';
 $string['courselanguage_detail'] = 'Kurssprache';

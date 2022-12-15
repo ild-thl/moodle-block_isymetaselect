@@ -28,10 +28,11 @@ use local_ildmeta\manager;
 
 function get_metacourses($coursestodisplay, $context) {
     global $DB, $CFG, $OUTPUT;
-
-    $lang_list = [
-        get_string('german', 'block_ildmetaselect'),
-        get_string('english', 'block_ildmetaselect'),
+    $langlist = [
+        get_string('deu', 'iso6392'),
+        get_string('eng', 'iso6392'),
+        get_string('ukr', 'iso6392'),
+        get_string('rus', 'iso6392'),
     ];
 
 
@@ -79,7 +80,7 @@ function get_metacourses($coursestodisplay, $context) {
 
                 $getdb = $DB->get_record('ildmeta', array('courseid' => $data->courseid));
 
-                $language = $lang_list[$getdb->courselanguage];
+                $language = $langlist[$getdb->courselanguage];
 
                 // Get url of overview image.
                 // If no custom image ist set in ildmeta, then use the course image instead.

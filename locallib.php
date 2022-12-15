@@ -390,18 +390,18 @@ function get_starttime_list($input) {
 }
 
 function get_filtered_lang_list($records) {
-    global $DB;
-
-    $lang_list = [
-        get_string('german', 'block_ildmetaselect'),
-        get_string('english', 'block_ildmetaselect')
-    ];
+    $langlist = array(
+        get_string('deu', 'iso6392'),
+        get_string('eng', 'iso6392'),
+        get_string('ukr', 'iso6392'),
+        get_string('rus', 'iso6392'),
+    );
 
     $filtered = array();
     $filtered[] = '0=>' . get_string('courselanguage', 'block_ildmetaselect');
     $filtered[] = '1=>' . get_string('courselanguage_all', 'block_ildmetaselect');
 
-    foreach ($lang_list as $key => $value) {
+    foreach ($langlist as $key => $value) {
         foreach ($records as $record) {
             if ($key == $record->courselanguage) {
                 $filtered[$key + 2] = ($key + 2) . "=>$value";
@@ -413,17 +413,19 @@ function get_filtered_lang_list($records) {
 }
 
 function get_lang_list($input) {
-    $lang_list = [
+    $langlist = [
         'Kurssprache',
         'Alle Kurssprachen',
-        'Deutsch',
-        'Englisch'
+        get_string('deu', 'iso6392'),
+        get_string('eng', 'iso6392'),
+        get_string('ukr', 'iso6392'),
+        get_string('rus', 'iso6392'),
     ];
 
     $data = copy_to_data($input);
     $filtered = array();
 
-    foreach ($lang_list as $key => $value) {
+    foreach ($langlist as $key => $value) {
         $data->courselanguage = ($key);
         if (exist_courses_records($data)) {
             $filtered[$key] = "$key=>$value";
