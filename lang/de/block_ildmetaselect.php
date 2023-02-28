@@ -37,7 +37,7 @@ $string['proctime_morethan25'] = 'Über 25 {$a}';
 
 $string['starttime_name'] = 'Kursbeginn';
 $string['starttime_all'] = 'Alle Kursbeginne';
-$string['starttime_current'] = 'Aktuell laufendend';
+$string['starttime_current'] = 'Aktuell laufend';
 $string['starttime_less2weeks'] = 'Innerhalb der nächsten 2 Wochen';
 $string['starttime_between3and4weeks'] = 'In 3-4 Wochen';
 $string['starttime_between5and6weeks'] = 'In 5-6 Wochen';
@@ -72,7 +72,7 @@ $string['noresultsfound'] = 'Keine Ergebnisse gefunden.';
 $string['h_awaits'] = 'Was erwartet Sie in diesem Kurs?';
 $string['h_learn'] = 'Was können Sie in diesem Kurs lernen?';
 $string['h_outline'] = 'Gliederung';
-$string['h_further_auth'] = 'Weitere Autoren*innen';
+$string['h_further_auth'] = 'Weitere Autor*innen';
 $string['h_target_group'] = 'Zielgruppe';
 $string['h_confirmation'] = 'Teilnahmebestätigung';
 $string['license'] = 'Lizenz';
