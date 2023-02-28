@@ -69,8 +69,8 @@ $string['metatweet'] = 'tweeten';
 
 $string['noresultsfound'] = 'Keine Ergebnisse gefunden.';
 
-$string['h_awaits'] = 'Was erwartet Sie in diesem Kurs?';
-$string['h_learn'] = 'Was können Sie in diesem Kurs lernen?';
+$string['h_awaits'] = 'Was erwartet dich in diesem Kurs?';
+$string['h_learn'] = 'Was kannst du in diesem Kurs lernen?';
 $string['h_outline'] = 'Gliederung';
 $string['h_further_auth'] = 'Weitere Autoren*innen';
 $string['h_target_group'] = 'Zielgruppe';
