@@ -454,3 +454,61 @@ function get_all_request_data() {
     $data->starttime = 'all';
     return $data;
 }
+
+// Added by tinjohn for interoperability reasons. 
+function llsearchterm($searchterm) {
+    global $DB;
+
+    $providers = manager::get_providers();
+
+    $providerquery = '';
+    foreach ($providers as $key => $provider) {
+        if (strpos($provider['name'], $searchterm) !== false) {
+            $providerquery .= "OR provider LIKE '%$key%' ";
+        }
+    }
+
+    // Get subjectarea vocabulary from ildmeta_vocabulary.
+    $vocabulary = $DB->get_record('ildmeta_vocabulary', array('title' => 'subjectarea'), '*', MUST_EXIST);
+    $subjectareas = manager::filter_vocabulary_lang($vocabulary, current_language());
+
+    $subjectareaquery = '';
+    foreach ($subjectareas as $key => $subjectarea) {
+        if (stripos($subjectarea, $searchterm) !== false) {
+            $subjectareaquery .= "OR subjectarea LIKE '%$key%' ";
+        }
+    }
+
+    // Zu durchsuchende Bereiche: Kurstitel, Tags, Kursbeschreibungstext, Metainfos, Vorname + Nachname weiterer Autoren.
+    $searchquery = "SELECT * FROM mdl_ildmeta
+                    WHERE
+                    (coursetitle LIKE :coursetitle
+                        OR tags LIKE :tags
+                        OR teasertext LIKE :teasertext
+                        OR lecturer LIKE :lecturer
+                        $providerquery
+                        $subjectareaquery
+                        OR courselanguage LIKE :courselanguage
+                        OR detailslecturer LIKE :detailslecturer
+                        OR detailsmorelecturer LIKE :detailsmorelecturer)";
+
+    $to_midnight = strtotime('today midnight');
+
+    $searchquery_past = $searchquery . " AND starttime <= $to_midnight ORDER BY starttime DESC, coursetitle ASC";
+    $searchquery_future = $searchquery . " AND starttime > $to_midnight ORDER BY starttime ASC, coursetitle ASC";
+
+    $param = array(
+        'coursetitle' => '%' . $searchterm . '%',
+        'tags' => '%' . $searchterm . '%',
+        'teasertext' => '%' . $searchterm . '%',
+        'lecturer' => '%' . $searchterm . '%',
+        'courselanguage' => '%' . $searchterm . '%',
+        'detailslecturer' => '%' . $searchterm . '%',
+        'detailsmorelecturer' => '%' . $searchterm . '%',
+    );
+
+    $past = $DB->get_records_sql($searchquery_past, $param);
+    $future = $DB->get_records_sql($searchquery_future, $param);
+
+    return(array_merge($past, $future));
+} 
