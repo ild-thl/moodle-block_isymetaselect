@@ -102,3 +102,21 @@ $string['alter_block_title'] = "Block title";
 $string['alter_block_title_help'] = "Set an block title";
 
 // END ADDED.
+
+
+$string['recognition_status_rejected'] = "rejected";
+$string['recognition_status_approved'] = "approved";
+$string['recognition_status_approved_description'] = "This course has been successfully recognized in the past.";
+$string['recognition_status_mixed_description'] = "This course has mixed recognition data.";
+$string['recognition_status_rejected_description'] = "This course has been rejected in the past.";
+$string['recognition_status_no_data_description'] = "There is no recognition data available for this course yet.";
+$string['status'] = "Status";
+$string['recognitionstatus'] = "Recognition Status";
+$string['recognitionhistory'] = "Recognition History";
+$string['close'] = "Close";
+$string['topim'] = "Go to PIM";
+$string['hei'] = "University";
+$string['studyprogramme'] = "Study Programme";
+$string['module'] = "Module";
+$string['credits'] = "Credits";
+$string['year'] = "Year";

@@ -91,3 +91,21 @@ $string['minutes'] = "Minuten";
 $string['workload_in_min'] = "Zeiteinheit des Workloads";
 $string['workload_in_min_help'] = "Workload kann in Minuten oder Stunden angegeben werden";
 // END ADDED
+
+
+$string['recognition_status_rejected'] = "abgelehnt";
+$string['recognition_status_approved'] = "akzeptiert";
+$string['recognition_status_approved_description'] = "Dieser Kurs wurde in der Vergangenheit bereits erfolgreich anerkannt.";
+$string['recognition_status_mixed_description'] = "Für diesen Kurs liegen gemischte Anerkennungsdaten vor.";
+$string['recognition_status_rejected_description'] = "Dieser Kurs wurde in der Vergangenheit abgelehnt.";
+$string['recognition_status_no_data_description'] = "Für diesen Kurs liegen noch keine Anerkennungsdaten vor.";
+$string['status'] = "Status";
+$string['recognitionstatus'] = "Anerkennungsstatus";
+$string['recognitionhistory'] = "Anerkennungshistorie";
+$string['close'] = "Schließen";
+$string['topim'] = "Weiter zu PIM";
+$string['hei'] = "Hochschule";
+$string['studyprogramme'] = "Studiengang";
+$string['module'] = "Modul";
+$string['credits'] = "Credits";
+$string['year'] = "Jahr";

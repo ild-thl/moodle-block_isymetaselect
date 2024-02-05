@@ -28,6 +28,7 @@ require_once(__DIR__ . '/../../config.php');
 require_once('lib.php');
 
 use local_ildmeta\manager;
+use block_ildmetaselect\pim_recognition_history;
 
 $tbl = 'ildmeta';
 $courseid = required_param('id', PARAM_INT);
@@ -305,6 +306,19 @@ if (has_capability('local/ildmeta:allowaccess', $coursecontext)) {
     $render_data->edit_string = '<a href="' . $url_edit . '" class="metaedit"><i class="icon fa fa-cog fa-fw"></i></a>';
 } else {
     $render_data->edit_string = '';
+}
+
+// Is this course setup for recognition?
+$render_data->showrecognition = pim_recognition_history::check_course_recognition($DB, $courseid);
+
+// If so, get the recognition history.
+if ($render_data->showrecognition) {
+    $history = pim_recognition_history::get_recognition_history($DB, $courseid);
+    $render_data->hashistory = !empty($history);
+    list($historyrender, $overallstatus) = pim_recognition_history::process_history($history);
+    $render_data->statusdescription = pim_recognition_history::get_status_description($overallstatus);
+    $render_data->statuscolor = pim_recognition_history::get_status_color($overallstatus);
+    $render_data->history = $historyrender;
 }
 
 $display = $OUTPUT->render_from_template("block_ildmetaselect/detailpage", $render_data);
