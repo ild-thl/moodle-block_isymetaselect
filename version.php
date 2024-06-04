@@ -27,4 +27,4 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_ildmetaselect';
 $plugin->version = 20230100700;
-$plugin->requires  = 2018120300;
+$plugin->requires  = 2023042400; // Moodle 4.2
