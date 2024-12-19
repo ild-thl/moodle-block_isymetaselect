@@ -46,6 +46,7 @@ function get_metacourses($coursestodisplay, $context) {
     if (!empty($coursestodisplay)) {
 
         foreach ($coursestodisplay as $data) {
+            
             if ($coursecheck = $DB->get_record('course', array('id' => $data->courseid))) {
 
                 if ($data->noindexcourse == 1) {
@@ -78,8 +79,10 @@ function get_metacourses($coursestodisplay, $context) {
                 //$files = $fs->get_area_files($context->id, 'local_ildmeta', 'overviewimage', $data->overviewimage);
                 $coursecontext = context_course::instance($data->courseid);
 
-                $getdb = $DB->get_record('ildmeta', array('courseid' => $data->courseid));
-
+                $getdb = $DB->get_record_sql('SELECT courselanguage, overviewimage 
+                                                 FROM {ildmeta} 
+                                                WHERE courseid = :courseid', 
+                                              array('courseid' => $data->courseid));
                 $language = $langlist[$getdb->courselanguage];
 
                 // Get url of overview image.

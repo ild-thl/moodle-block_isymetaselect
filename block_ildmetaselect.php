@@ -149,12 +149,12 @@ class block_ildmetaselect extends block_base {
 
 
                 //first of all get all courses which already started (newest first)
-                $sql_running = "SELECT * FROM {ildmeta} WHERE starttime < ? ORDER BY starttime DESC, coursetitle ASC";
+                $sql_running = "SELECT * FROM {ildmeta} WHERE starttime < ? AND noindexcourse != 1 ORDER BY starttime DESC, coursetitle ASC";
                 $sql_param_r = array('starttime' => $to_midnight);
                 $coursestodisplay_runnig = $DB->get_records_sql($sql_running, $sql_param_r);
 
                 // and now get all courses which will start in the future (starting soon first)
-                $sql_future = "SELECT * FROM {ildmeta} WHERE starttime >= ? ORDER BY starttime ASC, coursetitle ASC";
+                $sql_future = "SELECT * FROM {ildmeta} WHERE starttime >= ? AND noindexcourse != 1 ORDER BY starttime ASC, coursetitle ASC";
                 $sql_param_f = array('starttime' => $to_midnight);
                 $coursestodisplay_future = $DB->get_records_sql($sql_future, $sql_param_f);
 
